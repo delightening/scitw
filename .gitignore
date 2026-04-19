@@ -26,6 +26,10 @@ desktop.ini
 # Office temp files
 ~$*
 
+# Source documents（不同步到 GitHub）
+*.docx
+*.doc
+
 # Node / build
 node_modules/
 dist/

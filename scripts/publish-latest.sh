@@ -44,12 +44,6 @@ fi
 
 git add -- _redirects "$TARGET"
 
-# 若還有同目錄下的 docx 也一併納入（可選）
-DOCX_DIR=$(dirname "$TARGET")
-if compgen -G "$DOCX_DIR/*.docx" > /dev/null; then
-  git add -- "$DOCX_DIR"/*.docx
-fi
-
 if git diff --cached --quiet; then
   echo "沒有變更可 commit。"
   exit 0
