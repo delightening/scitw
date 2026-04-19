@@ -1,0 +1,30 @@
+<!-- scitw-nav:start -->
+<nav id="scitw-nav" style="position:sticky;top:0;z-index:9999;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid #d0dbe6;padding:10px 16px;display:flex;gap:8px;align-items:center;font-family:system-ui,-apple-system,'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;font-size:14px;box-shadow:0 2px 6px rgba(26,58,92,.06);">
+  <button data-scitw="prev" style="cursor:pointer;padding:6px 12px;border:1px solid #a8bdd0;border-radius:6px;background:#fff;color:#1a3a5c;font:inherit;">← 上月</button>
+  <button data-scitw="next" style="cursor:pointer;padding:6px 12px;border:1px solid #a8bdd0;border-radius:6px;background:#fff;color:#1a3a5c;font:inherit;">下月 →</button>
+  <span data-scitw="label" style="color:#5a6f80;margin-left:6px;"></span>
+  <a href="/latest" style="margin-left:auto;padding:6px 12px;border:1px solid #2176ae;border-radius:6px;background:#2176ae;color:#fff;text-decoration:none;">最新一期</a>
+</nav>
+<script>
+(function(){
+  var nav = document.getElementById('scitw-nav');
+  if (!nav) return;
+  var m = location.pathname.match(/(\d{6})\.html$/);
+  if (!m) { nav.style.display='none'; return; }
+  var ym = m[1];
+  var y = parseInt(ym.slice(0,4),10), mo = parseInt(ym.slice(4,6),10);
+  function shift(delta){
+    var yy=y, mm=mo+delta;
+    while(mm>12){mm-=12;yy++;}
+    while(mm<1){mm+=12;yy--;}
+    return yy + String(mm).padStart(2,'0');
+  }
+  function urlFor(targetYm){
+    return location.pathname.replace(/\d{6}\.html$/, targetYm + '.html');
+  }
+  nav.querySelector('[data-scitw="label"]').textContent = y + ' 年 ' + mo + ' 月';
+  nav.querySelector('[data-scitw="prev"]').addEventListener('click', function(){ location.href = urlFor(shift(-1)); });
+  nav.querySelector('[data-scitw="next"]').addEventListener('click', function(){ location.href = urlFor(shift(+1)); });
+})();
+</script>
+<!-- scitw-nav:end -->

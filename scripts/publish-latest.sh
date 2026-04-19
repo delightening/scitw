@@ -24,6 +24,13 @@ if [ -z "${TARGET:-}" ] || [ ! -f "$TARGET" ]; then
   exit 1
 fi
 
+# 若 HTML 尚未包含 nav，則在 <body> 之後注入
+SNIPPET="scripts/nav-snippet.html"
+if [ -f "$SNIPPET" ] && ! grep -q 'scitw-nav:start' "$TARGET"; then
+  sed -i '/<body[^>]*>/r '"$SNIPPET" "$TARGET"
+  echo "  已注入 nav → $TARGET"
+fi
+
 # 寫入 _redirects
 printf "/latest   /%s   302\n" "$TARGET" > _redirects
 
