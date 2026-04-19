@@ -1,0 +1,33 @@
+# Backup dirs
+.git.bak-*/
+
+# Secrets
+.env
+.env.*
+*.env
+
+# Claude local state
+.claude/
+.mcp.json
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*~
+*.bak
+*.tmp
+
+# Office temp files
+~$*
+
+# Node / build
+node_modules/
+dist/
+build/
+*.log
