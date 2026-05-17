@@ -17,128 +17,65 @@
     --border: #dde3ea;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: system-ui, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.7;
-  }
+  body { font-family: system-ui, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
   a { color: var(--accent); text-decoration: none; }
   a:hover { text-decoration: underline; color: var(--primary); }
 
-  /* ── 封面 ── */
-  .cover {
-    background: linear-gradient(135deg, var(--primary) 0%, #0d2640 60%, #112244 100%);
-    color: #fff;
-    padding: 60px 24px 50px;
-    text-align: center;
-  }
-  .cover .kicker {
+  /* ── 月份導航 ── */
+  .month-nav {
+    background: var(--primary);
+    padding: 10px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-size: 0.85rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
+  }
+  .month-nav a {
     color: #90cce0;
-    margin-bottom: 14px;
-  }
-  .cover h1 {
-    font-size: clamp(1.8rem, 5vw, 3rem);
-    font-weight: 800;
-    line-height: 1.2;
-    margin-bottom: 12px;
-  }
-  .cover .subtitle {
-    font-size: 1.05rem;
-    color: #b0d8ea;
-    max-width: 600px;
-    margin: 0 auto 20px;
-  }
-  .cover .meta {
-    font-size: 0.82rem;
-    color: #80b4cc;
-    margin-top: 18px;
-  }
-  .cover .tag {
-    display: inline-block;
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.25);
+    padding: 6px 14px;
+    border: 1px solid rgba(144,204,224,0.4);
     border-radius: 20px;
-    padding: 4px 14px;
-    font-size: 0.8rem;
-    margin: 4px;
-    color: #d0eaf6;
+    transition: background 0.2s;
   }
+  .month-nav a:hover { background: rgba(255,255,255,0.1); text-decoration: none; color: #fff; }
+  .month-nav .current { color: #d0eaf6; font-size: 0.8rem; }
+  .month-nav .placeholder { width: 80px; }
 
-  /* ── 版面容器 ── */
+  /* ── 封面 ── */
+  .cover { background: linear-gradient(135deg, var(--primary) 0%, #0d2640 60%, #112244 100%); color: #fff; padding: 50px 24px 44px; text-align: center; }
+  .cover .kicker { font-size: 0.82rem; letter-spacing: 0.2em; text-transform: uppercase; color: #90cce0; margin-bottom: 12px; }
+  .cover h1 { font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 800; line-height: 1.2; margin-bottom: 10px; }
+  .cover .subtitle { font-size: 1rem; color: #b0d8ea; max-width: 600px; margin: 0 auto 18px; }
+  .cover .meta { font-size: 0.8rem; color: #80b4cc; margin-top: 16px; }
+  .cover .tag { display: inline-block; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); border-radius: 20px; padding: 3px 12px; font-size: 0.78rem; margin: 3px; color: #d0eaf6; }
+
+  /* ── 容器 ── */
   .container { max-width: 900px; margin: 0 auto; padding: 0 18px; }
-  section { padding: 40px 0; }
+  section { padding: 36px 0; }
   section + section { border-top: 1px solid var(--border); }
 
   /* ── 卡片 ── */
-  .card {
-    background: var(--card-bg);
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
-    padding: 24px 28px;
-    margin-bottom: 20px;
-    transition: box-shadow 0.2s;
-  }
+  .card { background: var(--card-bg); border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.07); padding: 22px 26px; margin-bottom: 18px; transition: box-shadow 0.2s; }
   .card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.12); }
 
   /* ── 標題 ── */
-  .section-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary);
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .section-title::before {
-    content: '';
-    display: block;
-    width: 5px;
-    height: 1.5rem;
-    background: var(--accent);
-    border-radius: 3px;
-  }
+  .section-title { font-size: 1.4rem; font-weight: 700; color: var(--primary); margin-bottom: 22px; display: flex; align-items: center; gap: 10px; }
+  .section-title::before { content: ''; display: block; width: 5px; height: 1.4rem; background: var(--accent); border-radius: 3px; }
 
   /* ── 本月亮點 ── */
-  .highlights { display: grid; gap: 20px; }
+  .highlights { display: grid; gap: 18px; }
   @media (min-width: 640px) { .highlights { grid-template-columns: repeat(3, 1fr); } }
-  .highlight-card {
-    background: var(--card-bg);
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-    overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
+  .highlight-card { background: var(--card-bg); border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; }
   .highlight-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.14); }
-  .highlight-rank {
-    background: var(--primary);
-    color: #fff;
-    font-size: 1.8rem;
-    font-weight: 800;
-    text-align: center;
-    padding: 16px;
-    letter-spacing: -0.02em;
-  }
-  .highlight-rank span { font-size: 0.75rem; display: block; font-weight: 400; letter-spacing: 0.05em; color: #90cce0; }
-  .highlight-body { padding: 18px 20px; }
-  .highlight-body h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--primary); }
-  .highlight-body p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 12px; }
-  .source-link { font-size: 0.82rem; }
+  .highlight-rank { background: var(--primary); color: #fff; font-size: 1.7rem; font-weight: 800; text-align: center; padding: 14px; letter-spacing: -0.02em; }
+  .highlight-rank span { font-size: 0.72rem; display: block; font-weight: 400; letter-spacing: 0.05em; color: #90cce0; }
+  .highlight-body { padding: 16px 18px; }
+  .highlight-body h3 { font-size: 0.97rem; font-weight: 700; margin-bottom: 7px; color: var(--primary); }
+  .highlight-body p { font-size: 0.88rem; color: var(--text-light); margin-bottom: 10px; }
+  .source-link { font-size: 0.8rem; }
 
   /* ── badge ── */
-  .badge {
-    display: inline-block;
-    border-radius: 20px;
-    padding: 3px 11px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    margin-bottom: 10px;
-    letter-spacing: 0.03em;
-  }
+  .badge { display: inline-block; border-radius: 20px; padding: 3px 11px; font-size: 0.73rem; font-weight: 600; margin-bottom: 9px; letter-spacing: 0.03em; }
   .badge-space  { background: #e8f4fc; color: #1565c0; }
   .badge-life   { background: #e8f8ec; color: #1b7e34; }
   .badge-phys   { background: #fdf3e3; color: #b35c00; }
@@ -148,64 +85,60 @@
   .badge-paleo  { background: #f3ece0; color: #6d4c10; }
 
   /* ── 文章卡片 ── */
-  .article-title { font-size: 1.05rem; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
-  .article-summary { font-size: 0.92rem; color: var(--text-light); margin-bottom: 12px; }
-  .article-link { font-size: 0.83rem; }
+  .article-title { font-size: 1.02rem; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
+  .article-date { font-size: 0.75rem; color: #8a9baa; margin-bottom: 6px; }
+  .article-summary { font-size: 0.9rem; color: var(--text-light); margin-bottom: 10px; }
+  .article-link { font-size: 0.81rem; }
 
   /* ── 延伸閱讀 ── */
-  .ext-group { margin-bottom: 22px; }
-  .ext-group h3 { font-size: 1rem; font-weight: 700; color: var(--primary); margin-bottom: 10px; }
-  .ext-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .ext-group { margin-bottom: 20px; }
+  .ext-group h3 { font-size: 0.97rem; font-weight: 700; color: var(--primary); margin-bottom: 9px; }
+  .ext-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
   .ext-list li::before { content: '→ '; color: var(--accent); }
-  .ext-list a { font-size: 0.88rem; }
+  .ext-list a { font-size: 0.86rem; }
 
   /* ── 關聯主題 ── */
-  .theme-grid { display: grid; gap: 16px; }
+  .theme-grid { display: grid; gap: 14px; }
   @media (min-width: 600px) { .theme-grid { grid-template-columns: repeat(2, 1fr); } }
-  .theme-card {
-    background: linear-gradient(135deg, #f0f6ff 0%, #eaf4f8 100%);
-    border: 1px solid #cce0f0;
-    border-left: 5px solid var(--accent);
-    border-radius: 10px;
-    padding: 16px 18px;
-  }
-  .theme-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
-  .theme-card p { font-size: 0.87rem; color: var(--text-light); }
+  .theme-card { background: linear-gradient(135deg, #f0f6ff 0%, #eaf4f8 100%); border: 1px solid #cce0f0; border-left: 5px solid var(--accent); border-radius: 10px; padding: 14px 16px; }
+  .theme-card h3 { font-size: 0.92rem; font-weight: 700; color: var(--primary); margin-bottom: 5px; }
+  .theme-card p { font-size: 0.85rem; color: var(--text-light); }
 
   /* ── 頁腳 ── */
-  footer {
-    background: var(--primary);
-    color: #90b0c8;
-    text-align: center;
-    padding: 28px 18px;
-    font-size: 0.82rem;
-  }
+  footer { background: var(--primary); color: #90b0c8; text-align: center; padding: 26px 18px; font-size: 0.8rem; }
   footer a { color: #b0d0e8; }
-  footer .timestamp { margin-top: 6px; font-size: 0.76rem; color: #6a90a8; }
+  footer .timestamp { margin-top: 5px; font-size: 0.74rem; color: #6a90a8; }
 </style>
 </head>
 <body>
 
-<!-- ══ 封面 ══ -->
+<!-- ── 月份導航 ── -->
+<nav class="month-nav">
+  <a href="/Briefings/%E7%A7%91%E5%AD%B8%E4%BA%BA/%E7%A7%91%E5%AD%B8%E4%BA%BA%E6%96%B0%E7%9F%A5%E6%9C%88%E5%A0%B1202604.html">← 2026年4月</a>
+  <span class="current">2026 年 5 月</span>
+  <span class="placeholder"></span>
+</nav>
+
+<!-- ── 封面 ── -->
 <div class="cover">
   <div class="kicker">Scientific American Taiwan × 月度整理</div>
   <h1>科學人新知月報</h1>
-  <h2 style="font-size:1.3rem;font-weight:400;color:#90cce0;margin-bottom:20px;">2026 年 5 月</h2>
-  <p class="subtitle">精選本月最重要的科學突破——從月球任務到海洋洋流危機，從量子計算到火星生命線索</p>
-  <div style="margin-top:18px;">
-    <span class="tag">🚀 天文與太空</span>
-    <span class="tag">🧬 生命科學</span>
-    <span class="tag">🌊 環境氣候</span>
-    <span class="tag">⚛️ 量子 AI</span>
-    <span class="tag">🔬 醫學健康</span>
-    <span class="tag">⚡ 能源材料</span>
+  <h2 style="font-size:1.25rem;font-weight:400;color:#90cce0;margin-bottom:18px;">2026 年 5 月</h2>
+  <p class="subtitle">118顆系外行星確認、宇宙基本常數謎題、棕色脂肪燃燒開關——五月最前沿的科學突破</p>
+  <div style="margin-top:16px;">
+    <span class="tag">🔭 天文與太空</span>
+    <span class="tag">🦕 古生物學</span>
+    <span class="tag">⚡ 物理與材料</span>
+    <span class="tag">🌍 環境氣候</span>
+    <span class="tag">⚛️ 量子科技</span>
+    <span class="tag">🩺 醫學健康</span>
   </div>
-  <div class="meta">產出日期：2026 年 5 月 5 日｜資料來源：科學人 scitw.cc · Nature · Science · NASA</div>
+  <div class="meta">產出日期：2026 年 5 月 17 日｜資料來源：Nature · Science · Wikipedia · ScienceDaily · NASA</div>
 </div>
 
 <div class="container">
 
-<!-- ══ 本月亮點 ══ -->
+<!-- ── 本月亮點 ── -->
 <section>
   <div class="section-title">🏆 本月三大亮點</div>
   <div class="highlights">
@@ -213,254 +146,280 @@
     <div class="highlight-card">
       <div class="highlight-rank">No.1<span>天文與太空</span></div>
       <div class="highlight-body">
-        <h3>Artemis II：人類首度重返月球軌道</h3>
-        <p>2026年4月1日，NASA 阿提米斯二號任務升空，四名太空人繞月飛行10天，成為1972年阿波羅17號後首批離開近地軌道的人類，並刷新人類距地球最遠距離紀錄（406,773公里）。</p>
-        <a class="source-link" href="https://www.nasa.gov/mission/artemis-ii/" target="_blank">→ NASA 官方任務頁面</a>
+        <h3>機器學習一舉確認118顆系外行星</h3>
+        <p>英國華威大學天文學家將機器學習應用於NASA TESS衛星數據，一次確認118顆新系外行星，另有2000顆高品質候選天體，創下單次確認數量新高，大幅加速宜居帶行星搜尋。</p>
+        <a class="source-link" href="https://en.wikipedia.org/wiki/2026_in_science" target="_blank">→ 2026 in Science（Wikipedia）</a>
       </div>
     </div>
 
     <div class="highlight-card">
-      <div class="highlight-rank">No.2<span>天文與太空</span></div>
+      <div class="highlight-rank">No.2<span>醫學健康</span></div>
       <div class="highlight-body">
-        <h3>火星驚現最多樣有機分子群</h3>
-        <p>NASA 好奇號探測車透過新實驗，從35億年歷史的黏土岩層中偵測出逾20種有機分子，其中7種為火星首次發現，包括一種類似DNA前驅物的含氮分子，引發科學界對古代火星生命可能性的重新探討。</p>
-        <a class="source-link" href="https://www.nature.com/articles/s41467-026-70656-0" target="_blank">→ Nature Communications 論文</a>
+        <h3>棕色脂肪「燃燒開關」被找到了</h3>
+        <p>麥基爾大學科學家發現棕色脂肪中一個隱藏的分子開關，可啟動強力的燃燒卡路里系統，或成為肥胖與代謝疾病的全新治療靶點，突破現有減重藥物的限制。</p>
+        <a class="source-link" href="https://www.sciencedaily.com/" target="_blank">→ ScienceDaily（2026年5月）</a>
       </div>
     </div>
 
     <div class="highlight-card">
-      <div class="highlight-rank">No.3<span>環境氣候</span></div>
+      <div class="highlight-rank">No.3<span>物理與材料</span></div>
       <div class="highlight-body">
-        <h3>AMOC 恐弱化50%：海洋翻覆輸送帶警報</h3>
-        <p>發表於《Science Advances》的研究顯示，大西洋翻覆環流（AMOC）至本世紀末將弱化51±8%，較先前氣候模型估計高60%，可能造成歐洲嚴寒冬季加劇、西非與南亞季風位移，影響數億人口糧食安全。</p>
-        <a class="source-link" href="https://www.science.org/doi/10.1126/sciadv.adx4298" target="_blank">→ Science Advances 論文</a>
+        <h3>太陽能蓄電材料：白天儲能、夜晚放熱</h3>
+        <p>加州大學聖塔芭芭拉分校創造出一種「可充電太陽能電池」材料——將陽光儲存在分子中，日落後仍可按需釋放熱能，為無電網地區供暖與工業熱能儲存提供全新解方。</p>
+        <a class="source-link" href="https://www.sciencedaily.com/" target="_blank">→ ScienceDaily（2026年5月）</a>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- ══ 天文與太空 ══ -->
+<!-- ── 天文與太空 ── -->
 <section>
-  <div class="section-title">🚀 天文與太空</div>
+  <div class="section-title">🔭 天文與太空</div>
 
   <div class="card">
     <div class="badge badge-space">天文與太空</div>
-    <div class="article-title">Artemis II：人類重返月球軌道，刷新遠征距離紀錄</div>
+    <div class="article-date">📅 2026年5月3日</div>
+    <div class="article-title">機器學習一舉確認118顆系外行星，候選天體再添2000顆</div>
     <div class="article-summary">
-      阿提米斯二號（Artemis II）於2026年4月1日由 NASA 發射，由指揮官 Reid Wiseman、飛行員 Victor Glover、任務專家 Christina Koch（首位繞月女性）及加拿大太空人 Jeremy Hansen 組成。他們搭乘獵戶座太空船（命名為「Integrity」）繞月飛行，於4月11日返回地球，歷時近10天。任務最遠距地點達406,773公里，超越1970年阿波羅13號紀錄。此行主要目的是驗證獵戶座太空船系統，為後續阿提米斯三號載人月面降落任務奠基。
+      英國華威大學（University of Warwick）天文學家將機器學習模型應用於NASA凌日系外行星巡天衛星（TESS）的觀測數據，一次確認118顆新系外行星，並篩選出逾2000顆「高品質」候選天體。這創下單次系外行星確認數量的新紀錄，同時大幅縮短從原始光變曲線到確認行星所需的時間。研究人員表示，此方法未來可在 Roman 太空望遠鏡等下一代設備上線後發揮更大效用，系統性搜尋宜居帶類地行星。
     </div>
-    <a class="article-link" href="https://www.nasa.gov/mission/artemis-ii/" target="_blank">資料來源：NASA 官方任務頁面</a>
+    <a class="article-link" href="https://en.wikipedia.org/wiki/2026_in_science" target="_blank">資料來源：2026 in Science — Wikipedia</a>
   </div>
 
   <div class="card">
     <div class="badge badge-space">天文與太空</div>
-    <div class="article-title">好奇號火星探測車發現史上最豐富有機分子</div>
+    <div class="article-date">📅 2026年5月8日</div>
+    <div class="article-title">宇宙基本常數為何「剛剛好」？液體是生命的關鍵門檻</div>
     <div class="article-summary">
-      NASA 好奇號探測車在蓋爾隕石坑（Gale Crater）的克諾克法里爾山（Knockfarrill Hill）採集黏土砂岩樣本，以化學溶液萃取法分析，發現逾20種有機分子，其中7種為火星首見，包含三甲苯、四甲苯等多環芳烴，以及一種結構類似DNA前驅物的含氮化合物。研究成果於2026年4月發表於《Nature Communications》。科學家指出，這些分子可能億萬年前便已封存於岩層，但目前無法區分其來源為古代生命、地質作用或隕石輸入。
+      倫敦瑪麗女王大學（Queen Mary University of London）研究人員提出，宇宙的基本物理常數（如電子質量、普朗克常數）座落於一個極度狹窄的範圍內，使液體得以以生命細胞所需的方式流動。研究者指出，若這些常數稍有偏差，液體便會失去複雜生化反應所需的動力學特性，暗示宇宙的精妙調校或許正是生命誕生的必要前提——「宇宙基本常數的微調之謎」再添新解。
     </div>
-    <a class="article-link" href="https://www.nature.com/articles/s41467-026-70656-0" target="_blank">資料來源：Nature Communications</a>
+    <a class="article-link" href="https://www.sciencedaily.com/releases/2026/05/260508022653.htm" target="_blank">資料來源：ScienceDaily（2026年5月8日）</a>
+  </div>
+
+  <div class="card">
+    <div class="badge badge-space">天文與太空</div>
+    <div class="article-date">📅 2026年5月18日</div>
+    <div class="article-title">小行星 2026 JH2 將掠過地球，近距離逼近衛星軌道</div>
+    <div class="article-summary">
+      直徑達35公尺的近地小行星 2026 JH2 將於5月18日（台灣時間）掠過地球，最近距離比部分人造衛星軌道還要近，創下近年來罕見的近距離飛越事件。雖然此次並無撞擊風險，但天文學家已啟動全球連線直播，藉此測試行星防禦觀測系統的協作能力，並藉機研究小行星的自轉特性與表面組成。
+    </div>
+    <a class="article-link" href="https://en.wikipedia.org/wiki/2026_in_science" target="_blank">資料來源：2026 in Science — Wikipedia</a>
   </div>
 </section>
 
-<!-- ══ 生命科學 ══ -->
+<!-- ── 古生物學 ── -->
 <section>
-  <div class="section-title">🧬 生命科學</div>
+  <div class="section-title">🦕 古生物學</div>
 
   <div class="card">
-    <div class="badge badge-life">生命科學</div>
-    <div class="article-title">人工冬眠有望成真：小鼠大腦冷凍解凍後成功恢復運作</div>
+    <div class="badge badge-paleo">古生物學</div>
+    <div class="article-date">📅 2026年5月（本月發表）</div>
+    <div class="article-title">泰國驚現27噸巨型蜥腳類恐龍，改寫東南亞史前史</div>
     <div class="article-summary">
-      科學家完成突破性實驗，將小鼠大腦冷凍後解凍，神經元竟能順利恢復運作，打破「哺乳動物大腦冷凍不可逆」的長期認知。此技術若成熟，未來可望應用於長途太空旅行的人體冬眠，或器官保存領域，大幅延長移植器官的保存時限。目前研究團隊正進一步評估解凍後神經連結的完整性。
+      古生物學家在泰國發現一種全新的長頸蜥腳類恐龍，命名為 Nagatitan chaiyaphumensis，體重估計達27公噸，是迄今東南亞發現最巨大的恐龍之一。這項發現顛覆了過去認為東南亞地區白堊紀缺乏大型蜥腳類的學術共識，顯示該地區的恐龍多樣性可能遠超原本想像。研究者推測該物種與同時期的亞洲及非洲蜥腳類有遷徙關聯。
     </div>
-    <a class="article-link" href="https://www.scitw.cc/posts/20260316-19319" target="_blank">資料來源：科學人 scitw.cc（2026年3月）</a>
+    <a class="article-link" href="https://www.sciencedaily.com/" target="_blank">資料來源：ScienceDaily（2026年5月）</a>
   </div>
 
   <div class="card">
-    <div class="badge badge-life">生命科學</div>
-    <div class="article-title">新型 CRISPR 技術：不切割 DNA 也能精準開啟沉默基因</div>
+    <div class="badge badge-paleo">古生物學</div>
+    <div class="article-date">📅 2026年5月（本月發表）</div>
+    <div class="article-title">衣索比亞化石揭示：早期人屬與南方古猿曾共存260萬年前</div>
     <div class="article-summary">
-      澳洲新南威爾斯大學（UNSW Sydney）研究團隊開發出新一代 CRISPR 技術，不需切斷DNA，改以修改後的 CRISPR 系統遞送酵素，移除DNA上的甲基群（methylation）—— 相當於解除基因的「靜默煞車」。此突破同時解決了數十年來學界對基因靜默機制的爭論，也讓基因療法更加安全，大幅降低脫靶剪切的風險。
+      衣索比亞出土的驚人化石證據顯示，早期人屬（Homo）與一個此前未知的南方古猿（Australopithecus）物種，曾在約260至280萬年前的非洲同一地區共同生活。這打破了「物種替代」的線性人類演化假設，提供了人類起源更加複雜、多支系並存的直接化石證據，對於理解智人如何從眾多古人類中脫穎而出具有重要意義。
     </div>
-    <a class="article-link" href="https://www.sciencedaily.com/releases/2026/01/260104202813.htm" target="_blank">資料來源：ScienceDaily（2026年1月）</a>
-  </div>
-</section>
-
-<!-- ══ AI 與科技 ══ -->
-<section>
-  <div class="section-title">🤖 AI 與科技</div>
-
-  <div class="card">
-    <div class="badge badge-ai">AI 與科技</div>
-    <div class="article-title">AI 助攻量子加密突破：「世界尚未準備好」</div>
-    <div class="article-summary">
-      Google 與量子新創 Oratomic 合作，藉助 AI 開發出新演算法，顯示量子電腦可能比預期更早具備破解現行互聯網加密協議的能力。研究人員坦言 AI 大幅加速了演算法的推導過程，此研究結果已引發密碼學界與網路安全社群高度警覺，被形容為「世界尚未準備好應對」的技術衝擊。
-    </div>
-    <a class="article-link" href="https://time.com/article/2026/04/07/ai-quantum-computing-advance/" target="_blank">資料來源：Time Magazine（2026年4月）</a>
-  </div>
-
-  <div class="card">
-    <div class="badge badge-ai">AI 與科技</div>
-    <div class="article-title">MIT–IBM 計算研究實驗室成立，整合 AI 與量子運算</div>
-    <div class="article-summary">
-      IBM 與麻省理工學院（MIT）於2026年4月29日宣布成立「MIT-IBM 計算研究實驗室」，將研究範疇從基礎人工智慧延伸至量子計算，推動兩大技術的深度融合。同期，NVIDIA 亦發佈開源 AI 模型「Ising」，專為改善量子電腦的校準與錯誤糾正而設計，可將量子錯誤修正速度提升2.5倍、精準度提升3倍，且將設置時間從數日縮短為數小時。
-    </div>
-    <a class="article-link" href="https://newsroom.ibm.com/2026-04-29-the-mit-ibm-computing-research-lab-launches-to-shape-the-future-of-ai-and-quantum-computing" target="_blank">資料來源：IBM Newsroom（2026年4月）</a>
+    <a class="article-link" href="https://www.sciencedaily.com/" target="_blank">資料來源：ScienceDaily（2026年5月）</a>
   </div>
 </section>
 
-<!-- ══ 環境與氣候 ══ -->
-<section>
-  <div class="section-title">🌊 環境與氣候</div>
-
-  <div class="card">
-    <div class="badge badge-env">環境與氣候</div>
-    <div class="article-title">AMOC 恐崩潰：大西洋「暖流傳送帶」加速弱化</div>
-    <div class="article-summary">
-      《Science Advances》最新研究結合氣候模型與實測洋溫、鹽度資料，預測大西洋翻覆環流（AMOC）至2100年將弱化51±8%，比全球氣候模型均值估計高60%。AMOC 過去20年已持續在多個緯度觀測到弱化跡象，流量降幅達10–20%。AMOC 若大幅減弱，將使熱帶降雨帶南移、威脅西非與南亞季風農業，歐洲也可能面臨更嚴峻的寒冬。科學家呼籲各國政府立即展開適應準備。
-    </div>
-    <a class="article-link" href="https://www.science.org/doi/10.1126/sciadv.adx4298" target="_blank">資料來源：Science Advances（2026年4月）</a>
-  </div>
-</section>
-
-<!-- ══ 醫學與健康 ══ -->
-<section>
-  <div class="section-title">🩺 醫學與健康</div>
-
-  <div class="card">
-    <div class="badge badge-med">醫學與健康</div>
-    <div class="article-title">DNA 奈米分子精準靜默膽固醇基因，有望取代終身服藥</div>
-    <div class="article-summary">
-      研究人員開發出一種以 DNA 為基礎的奈米分子，能精準「關閉」PCSK9 基因—— 這個基因負責調控讓低密度脂蛋白（LDL，俗稱「壞膽固醇」）持續在血中循環的蛋白質。不同於現有他汀類藥物需每日服用，新療法有望以單次或低頻次給藥，長期抑制膽固醇，大幅降低心血管疾病風險，為高膽固醇患者帶來突破性治療新選項。
-    </div>
-    <a class="article-link" href="https://poulsbomsc.org/breakthrough-scientific-discoveries-2026/" target="_blank">資料來源：2026 科學突破彙整報告</a>
-  </div>
-
-  <div class="card">
-    <div class="badge badge-med">醫學與健康</div>
-    <div class="article-title">單次血液檢測可偵測50種癌症，英國大型臨床試驗啟動</div>
-    <div class="article-summary">
-      英國科學家開發出一種革命性血液檢測技術，能在初期症狀出現前偵測約50種癌症，大型臨床試驗結果預計於2026年公布。此技術透過循環腫瘤 DNA（ctDNA）特徵分析，辨識多種癌症的早期訊號，若驗證成功，將顛覆傳統癌症篩檢模式，使大規模早期發現成為可能，顯著提高存活率。
-    </div>
-    <a class="article-link" href="https://www.massgeneralbrigham.org/en/about/newsroom/articles/2026-predictions-on-scientific-advancements" target="_blank">資料來源：Mass General Brigham（2026年展望）</a>
-  </div>
-</section>
-
-<!-- ══ 物理與材料 ══ -->
+<!-- ── 物理與材料 ── -->
 <section>
   <div class="section-title">⚡ 物理與材料</div>
 
   <div class="card">
     <div class="badge badge-phys">物理與材料</div>
-    <div class="article-title">鈣鈦礦疊層太陽能電池轉換效率突破34%</div>
+    <div class="article-date">📅 2026年5月13日</div>
+    <div class="article-title">從魚身上借來的蛋白質：人工電突觸讓神經迴路可「編輯」</div>
     <div class="article-summary">
-      鈣鈦礦（Perovskite）疊層太陽能電池的光電轉換效率已突破34%，遠超現行商用矽基太陽能板的約24%上限。此材料成本低廉、製程相對簡單，被視為下一世代太陽能技術的最強候選，若能克服長期穩定性問題，有望徹底改變再生能源市場格局。
+      科學家利用白鱸魚（white perch）體內的連接蛋白（Connexin）設計出人工電突觸，成功在哺乳動物腦神經迴路中實現精準的「迴路編輯」。電突觸不同於一般化學突觸，傳遞速度極快且雙向，此技術突破長期以來改造電突觸的技術瓶頸，未來有望應用於帕金森氏症、癲癇等神經疾病的深腦刺激治療，以及腦機介面的精密控制。
     </div>
-    <a class="article-link" href="https://www.cas.org/resources/cas-insights/scientific-breakthroughs-2026-emerging-trends-watch" target="_blank">資料來源：CAS 科學突破趨勢報告（2026）</a>
+    <a class="article-link" href="https://www.nature.com/nature/volumes/653/issues/8113" target="_blank">資料來源：Nature Vol.653（2026年5月13日）</a>
   </div>
 
   <div class="card">
     <div class="badge badge-phys">物理與材料</div>
-    <div class="article-title">LHC「企鵝衰變」暗示標準模型外的新物理現象</div>
+    <div class="article-date">📅 2026年5月（本月發表）</div>
+    <div class="article-title">「可充電太陽能電池」材料：分子儲光、隨時放熱</div>
     <div class="article-summary">
-      歐洲核子研究中心（CERN）大型強子對撞機（LHC）最新實驗數據中，「企鵝衰變」（Penguin decays）的觀測結果出現與粒子物理標準模型不符的偏差跡象，讓物理學家振奮不已。若此訊號獲進一步確認，將是探索超越標準模型（BSM）新物理的重要突破口，也可能為暗物質研究開啟新視窗。
+      加州大學聖塔芭芭拉分校（UC Santa Barbara）研究團隊研發出一種全新儲能材料，能將太陽光能「封存」在分子的化學鍵結中，並在需要時以熱能形式釋放——即使在太陽已下山數小時後仍可啟動。有別於傳統電池或熱水器，此材料不依賴電能轉換，能量密度高且循環穩定，被視為未來偏遠地區冬季供暖與工業低溫熱能儲存的潛力解方。
     </div>
-    <a class="article-link" href="https://www.nature.com/news" target="_blank">資料來源：Nature 新聞（2026年5月）</a>
+    <a class="article-link" href="https://www.sciencedaily.com/" target="_blank">資料來源：ScienceDaily（2026年5月）</a>
   </div>
 </section>
 
-<!-- ══ 延伸閱讀 ══ -->
+<!-- ── 環境與氣候 ── -->
+<section>
+  <div class="section-title">🌍 環境與氣候</div>
+
+  <div class="card">
+    <div class="badge badge-env">環境與氣候</div>
+    <div class="article-date">📅 2026年5月13日</div>
+    <div class="article-title">120萬年冰芯數據解封：地球最完整的氣候檔案</div>
+    <div class="article-summary">
+      科學家發表了一份來自2.8公里深冰芯的完整數據，時間跨度長達120萬年，是迄今最完整的連續氣候紀錄。透過分析冰中封存的氣泡，研究者得以重建百萬年尺度的大氣CO₂濃度、溫度波動與冰期循環，首次清晰呈現地球「100萬年事件」（MPT）前後冰期週期從4萬年轉為10萬年的完整演化過程，為校準當代氣候模型提供關鍵基準。
+    </div>
+    <a class="article-link" href="https://www.nature.com/nature/volumes/653/issues/8113" target="_blank">資料來源：Nature Vol.653（2026年5月13日）</a>
+  </div>
+
+  <div class="card">
+    <div class="badge badge-env">環境與氣候</div>
+    <div class="article-date">📅 2026年5月12日</div>
+    <div class="article-title">非洲新裂谷正在形成：尚比亞氦氣與碳同位素洩漏出訊號</div>
+    <div class="article-summary">
+      發表於《Frontiers in Earth Science》的研究，分析了尚比亞卡富埃裂谷（Kafue Rift）地熱流體中的氦與碳同位素，首次取得地幔深部熔岩正在上湧的直接地球化學證據，顯示非洲東部大裂谷系統可能正在向西南延伸。若此裂解過程持續，數百萬年後非洲大陸或將從此處一分為二，目前的早期裂谷活動也可能是該地區地震風險的潛在成因。
+    </div>
+    <a class="article-link" href="https://www.frontiersin.org/" target="_blank">資料來源：Frontiers in Earth Science（2026年5月12日）</a>
+  </div>
+</section>
+
+<!-- ── 量子科技 ── -->
+<section>
+  <div class="section-title">⚛️ 量子科技</div>
+
+  <div class="card">
+    <div class="badge badge-ai">量子科技</div>
+    <div class="article-date">📅 2026年5月（本月發表）</div>
+    <div class="article-title">日本科學家突破：量子「W態」可即時偵測，量子通訊大步前進</div>
+    <div class="article-summary">
+      日本研究團隊開發出一種全新方法，可即時偵測量子糾纏中難以捕捉的「W態」（W state）——這種多粒子糾纏態對量子通訊、量子隱形傳態以及量子計算的容錯性具有特殊優勢，但過去難以高效辨識。此突破為建立更穩健的量子網路奠定基礎，有望加速量子網際網路的實用化進程，並為量子密鑰分發（QKD）帶來更高的安全保障。
+    </div>
+    <a class="article-link" href="https://www.sciencedaily.com/" target="_blank">資料來源：ScienceDaily（2026年5月）</a>
+  </div>
+</section>
+
+<!-- ── 醫學與健康 ── -->
+<section>
+  <div class="section-title">🩺 醫學與健康</div>
+
+  <div class="card">
+    <div class="badge badge-med">醫學與健康</div>
+    <div class="article-date">📅 2026年5月（本月發表）</div>
+    <div class="article-title">棕色脂肪的隱藏燃燒開關：代謝疾病治療新靶點</div>
+    <div class="article-summary">
+      加拿大麥基爾大學（McGill University）科學家在棕色脂肪（brown fat，即人體產熱的特殊脂肪組織）中發現一個此前未知的分子開關，能啟動強力的卡路里燃燒系統。研究顯示，此開關的活化可顯著提升靜息代謝率，且不依賴傳統的腎上腺素路徑，為肥胖症、第二型糖尿病及代謝症候群的治療開闢全新方向，有別於現有藥物副作用多的困境。
+    </div>
+    <a class="article-link" href="https://www.sciencedaily.com/" target="_blank">資料來源：ScienceDaily（2026年5月）</a>
+  </div>
+
+  <div class="card">
+    <div class="badge badge-med">醫學與健康</div>
+    <div class="article-date">📅 2026年5月12日</div>
+    <div class="article-title">微血管損傷早期訊號：心腎疾病可提前數年偵測</div>
+    <div class="article-summary">
+      發表於《Nature Communications》的研究揭示，透過分析微血管內皮細胞的特定生物標記，可在心臟病和腎臟病的臨床症狀出現前數年，就提前識別微循環損傷。這項技術若整合進常規健康檢查，可大幅改變心腎疾病的預防策略，讓醫師在器官受損前及早介入，將「治病」轉向「防病」。
+    </div>
+    <a class="article-link" href="https://www.nature.com/ncomms/" target="_blank">資料來源：Nature Communications（2026年5月12日）</a>
+  </div>
+
+  <div class="card">
+    <div class="badge badge-med">醫學與健康</div>
+    <div class="article-date">📅 2026年5月15日</div>
+    <div class="article-title">菠菜萃取物或成乾眼症新療法，植物來源護眼藥開先例</div>
+    <div class="article-summary">
+      研究人員發現，菠菜萃取物中的特定成分能有效促進眼表淚膜的穩定性，在動物模型中顯著改善乾眼症狀，且毒性遠低於現有藥物。乾眼症影響全球逾3億人，現有治療方案有限且易有副作用，若菠菜衍生療法通過臨床試驗，將是眼科植物藥的重要里程碑，也為長期使用3C產品的現代人帶來更溫和的護眼選項。
+    </div>
+    <a class="article-link" href="https://www.nature.com/nature/volumes/653/issues/8113" target="_blank">資料來源：Nature（2026年5月15日）</a>
+  </div>
+
+  <div class="card">
+    <div class="badge badge-med">醫學與健康</div>
+    <div class="article-date">📅 2026年5月（本月發表）</div>
+    <div class="article-title">腦部掃描大規模研究：焦慮症患者膽鹼濃度顯著偏低</div>
+    <div class="article-summary">
+      一項大規模腦部MRS（磁共振光譜）研究分析發現，焦慮症患者大腦前額葉皮質的膽鹼（choline）濃度明顯低於健康對照組。膽鹼是維持神經細胞膜完整性與神經傳導的關鍵營養素，此發現為焦慮症提供了新的生物標記，未來或可透過飲食補充或靶向療法調節膽鹼水平，提供藥物之外的輔助介入方向。
+    </div>
+    <a class="article-link" href="https://www.sciencedaily.com/" target="_blank">資料來源：ScienceDaily（2026年5月）</a>
+  </div>
+</section>
+
+<!-- ── 延伸閱讀 ── -->
 <section>
   <div class="section-title">📚 延伸閱讀</div>
   <div class="card">
-
     <div class="ext-group">
-      <h3>🚀 天文與太空 — Artemis II 與火星</h3>
+      <h3>🔭 天文與太空</h3>
       <ul class="ext-list">
-        <li><a href="https://www.nasa.gov/news-release/nasa-welcomes-record-setting-artemis-ii-moonfarers-back-to-earth/" target="_blank">NASA：歡迎 Artemis II 月球探險家返回地球（官方新聞稿）</a></li>
-        <li><a href="https://www.nature.com/articles/s41467-026-70656-0" target="_blank">Nature Communications：火星 SAM TMAH 實驗偵測多樣有機分子（原始論文）</a></li>
-        <li><a href="https://science.nasa.gov/missions/mars-science-laboratory/nasas-curiosity-rover-detects-largest-organic-molecules-found-on-mars/" target="_blank">NASA JPL：好奇號偵測火星最大有機分子（科普說明）</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/2026_in_science" target="_blank">Wikipedia：2026 in Science — 完整月份事件記錄</a></li>
+        <li><a href="https://www.nature.com/nature/volumes/653/issues/8113" target="_blank">Nature Vol.653 Issue 8113（2026年5月7日刊）</a></li>
+        <li><a href="https://science.nasa.gov/" target="_blank">NASA Science：最新任務與發現</a></li>
       </ul>
     </div>
-
     <div class="ext-group">
-      <h3>🌊 環境與氣候 — AMOC</h3>
+      <h3>🦕 古生物學</h3>
       <ul class="ext-list">
-        <li><a href="https://www.science.org/doi/10.1126/sciadv.adx4298" target="_blank">Science Advances：觀測限制預測本世紀AMOC弱化約50%（原始論文）</a></li>
-        <li><a href="https://interactive.carbonbrief.org/amoc-explainer/index.html" target="_blank">Carbon Brief：AMOC 互動式深度解析</a></li>
-        <li><a href="https://www.livescience.com/planet-earth/climate-change/nations-need-to-prepare-now-key-atlantic-ocean-current-is-much-closer-to-collapse-than-scientists-thought" target="_blank">Live Science：AMOC 比預期更接近崩潰（科普報導）</a></li>
+        <li><a href="https://www.sciencedaily.com/news/fossils_ruins/" target="_blank">ScienceDaily：化石與考古最新研究</a></li>
+        <li><a href="https://www.livescience.com/archaeology" target="_blank">Live Science：古人類學與考古專區</a></li>
       </ul>
     </div>
-
     <div class="ext-group">
-      <h3>🤖 AI 與量子計算</h3>
+      <h3>⚡ 物理與材料</h3>
       <ul class="ext-list">
-        <li><a href="https://time.com/article/2026/04/07/ai-quantum-computing-advance/" target="_blank">Time：AI 助攻量子突破，世界尚未準備好</a></li>
-        <li><a href="https://www.nature.com/articles/d41586-026-00188-6" target="_blank">Nature：2026年七大值得關注技術：從量子計算到 mRNA 療法</a></li>
-        <li><a href="https://newsroom.ibm.com/2026-04-29-the-mit-ibm-computing-research-lab-launches-to-shape-the-future-of-ai-and-quantum-computing" target="_blank">IBM：MIT-IBM 計算研究實驗室正式成立</a></li>
+        <li><a href="https://www.nature.com/nature/volumes/653/issues/8113" target="_blank">Nature：合成電突觸精準迴路編輯（2026年5月13日）</a></li>
+        <li><a href="https://www.cas.org/resources/cas-insights/scientific-breakthroughs-2026-emerging-trends-watch" target="_blank">CAS：2026年科學突破趨勢報告</a></li>
       </ul>
     </div>
-
     <div class="ext-group">
-      <h3>🧬 生命科學與醫學</h3>
+      <h3>⚛️ 量子科技</h3>
       <ul class="ext-list">
-        <li><a href="https://innovativegenomics.org/news/crispr-clinical-trials-2026/" target="_blank">IGI：CRISPR 臨床試驗 2026 年最新進展</a></li>
-        <li><a href="https://www.nature.com/articles/s12276-025-01452-x" target="_blank">Nature：CRISPR 生物科技革命（綜述論文）</a></li>
-        <li><a href="https://www.massgeneralbrigham.org/en/about/newsroom/articles/2026-predictions-on-scientific-advancements" target="_blank">Mass General Brigham：2026年科學與醫學進展預測</a></li>
+        <li><a href="https://www.nature.com/articles/d41586-026-00188-6" target="_blank">Nature：2026年七大值得關注技術——量子計算到mRNA療法</a></li>
+        <li><a href="https://thequantuminsider.com/" target="_blank">The Quantum Insider：量子科技每日追蹤</a></li>
       </ul>
     </div>
-
     <div class="ext-group">
-      <h3>⚡ 能源與物理</h3>
+      <h3>🩺 醫學與健康</h3>
       <ul class="ext-list">
-        <li><a href="https://www.cas.org/resources/cas-insights/scientific-breakthroughs-2026-emerging-trends-watch" target="_blank">CAS：2026年科學突破趨勢觀察報告</a></li>
-        <li><a href="https://www.scientificamerican.com/article/science-carries-on-here-are-our-top-topics-for-2026/" target="_blank">Scientific American：2026年值得關注的科學議題</a></li>
+        <li><a href="https://www.nature.com/ncomms/" target="_blank">Nature Communications：微血管早期損傷偵測研究</a></li>
+        <li><a href="https://www.sciencedaily.com/news/health_medicine/" target="_blank">ScienceDaily 健康醫學頻道</a></li>
+        <li><a href="https://www.massgeneralbrigham.org/en/about/newsroom/articles/2026-predictions-on-scientific-advancements" target="_blank">Mass General Brigham：2026醫學科學展望</a></li>
       </ul>
     </div>
-
   </div>
 </section>
 
-<!-- ══ 關聯主題推薦 ══ -->
+<!-- ── 關聯主題推薦 ── -->
 <section>
   <div class="section-title">🔗 跨領域關聯主題推薦</div>
   <div class="theme-grid">
-
     <div class="theme-card">
-      <h3>🌌 後 Artemis 時代：月球資源開採競賽</h3>
-      <p>Artemis II 成功後，美、中、歐各方月球計畫正加速推進，月球水冰與稀土礦藏的資源爭奪，將同時牽動太空法律、地緣政治與商業航太生態。</p>
+      <h3>🌌 機器學習驅動天文學革命</h3>
+      <p>TESS資料一次確認118顆系外行星，預示未來Roman望遠鏡上線後AI天文學的爆發性成長——人類正進入「算法發現宇宙」的新時代。</p>
     </div>
-
     <div class="theme-card">
-      <h3>🧊 低溫生物學與人體冬眠倫理</h3>
-      <p>小鼠大腦冷凍成功引發人體冬眠的科幻想像，但背後涉及的低溫保存技術、意識連續性哲學問題，以及臨床與倫理邊界，值得深入追蹤。</p>
+      <h3>🧬 多物種並存的人類起源</h3>
+      <p>衣索比亞化石顯示早期人類演化比想像中更加複雜，理解多支系古人類如何互動、競爭與雜交，是解開智人崛起之謎的核心課題。</p>
     </div>
-
     <div class="theme-card">
-      <h3>🔐 後量子密碼學：全球數位安全的緊迫升級</h3>
-      <p>AI 加速量子算法研發使現行加密協議面臨嚴峻威脅，各國政府與企業對後量子密碼學（PQC）標準的佈局，將是未來2–3年最關鍵的網路安全議題。</p>
+      <h3>🔥 分子儲能：超越電池的下一代能源</h3>
+      <p>「可充電太陽能電池」材料挑戰了以電為核心的儲能範式，分子熱能儲存若商業化成熟，將深刻影響建築節能與離網社區的能源架構。</p>
     </div>
-
     <div class="theme-card">
-      <h3>🩸 液態活檢：癌症早篩的新紀元</h3>
-      <p>多癌症血液篩檢技術若通過臨床驗證，將顛覆現行以器官別劃分的癌症篩檢體系，進而改變全球醫療資源配置與健康政策設計方向。</p>
+      <h3>🧠 腦部營養學：精神疾病的飲食介入</h3>
+      <p>焦慮症與膽鹼的關聯打開了「精神科營養醫學」的新視野——飲食、腸腦軸與心理健康的交叉研究，正成為精神醫學最熱的新興領域。</p>
     </div>
-
     <div class="theme-card">
-      <h3>🌊 海洋系統臨界點：超越單一指標的複合風險</h3>
-      <p>AMOC 弱化、珊瑚礁白化、海平面上升三者相互交織，科學界越來越認識到海洋系統存在多重「臨界點」，一旦觸發可能引發難以逆轉的連鎖反應。</p>
+      <h3>🌍 非洲裂谷：板塊重組的地質現場</h3>
+      <p>尚比亞裂谷的新證據提醒我們，地球板塊構造仍在進行中。理解活躍裂谷地區的地震與火山風險，對非洲南部數千萬人口的長期安全至關重要。</p>
     </div>
-
   </div>
 </section>
 
-</div><!-- /container -->
+</div>
 
-<!-- ══ 頁腳 ══ -->
 <footer>
-  <div>科學人新知月報 — 由 AI 輔助編輯整理，內容源自 scitw.cc 及 Nature · Science · NASA 等國際科學媒體</div>
+  <div>科學人新知月報 — 由 AI 輔助編輯整理，內容整合自 Nature · Science · ScienceDaily · Wikipedia · NASA</div>
   <div><a href="https://www.scitw.cc" target="_blank">scitw.cc 科學人雜誌台灣版</a> ｜ <a href="https://scitw.ipigsystem.asia" target="_blank">線上月報平台</a></div>
-  <div class="timestamp">產出時間戳記：2026-05-05 ｜ 本期涵蓋 2026 年 4–5 月重要科學發展</div>
+  <div class="timestamp">產出時間：2026-05-17｜本期涵蓋 2026 年 5 月最新科學發展</div>
 </footer>
 
 </body>

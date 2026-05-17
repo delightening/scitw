@@ -160,9 +160,36 @@
       .highlight-card .rank { font-size: 1.5rem; }
       .section-title { font-size: 1.2rem; }
     }
-  </style>
+  
+  /* ── 月份導航 ── */
+  .month-nav {
+    background: #1a3a5c;
+    padding: 10px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+  }
+  .month-nav a {
+    color: #90cce0;
+    padding: 6px 14px;
+    border: 1px solid rgba(144,204,224,0.4);
+    border-radius: 20px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .month-nav a:hover { background: rgba(255,255,255,0.1); color: #fff; }
+  .month-nav .current { color: #d0eaf6; font-size: 0.8rem; }
+  .month-nav .placeholder { width: 100px; }
+</style>
 </head>
 <body>
+<nav class="month-nav">
+  <span class="placeholder"></span>
+  <span class="current">2026 年 4 月</span>
+  <a href="/Briefings/%E7%A7%91%E5%AD%B8%E4%BA%BA/%E7%A7%91%E5%AD%B8%E4%BA%BA%E6%96%B0%E7%9F%A5%E6%9C%88%E5%A0%B1202605.html">2026年5月 →</a>
+</nav>
+
 
 <!-- scitw-nav:start -->
 <nav id="scitw-nav" style="position:sticky;top:0;z-index:9999;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid #d0dbe6;padding:10px 16px;display:flex;gap:8px;align-items:center;font-family:system-ui,-apple-system,'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;font-size:14px;box-shadow:0 2px 6px rgba(26,58,92,.06);">
