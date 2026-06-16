@@ -175,6 +175,22 @@
     .cover h1 { font-size: 1.7em; }
     h2 { font-size: 1.25em; }
   }
+
+/* ===== scitw unified override (auto-injected) ===== */
+:root {
+  --primary: #1a3a5c !important;
+  --primary-light: #2c5f8d !important;
+  --accent: #d4a017 !important;
+  --bg: #e2e8f0 !important;
+  --card-bg: #ffffff !important;
+  --text: #1f2937 !important;
+  --text-muted: #4b5563 !important;
+}
+body { background: #e2e8f0 !important; color: #1f2937 !important;
+       font-family: system-ui, -apple-system, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif !important; }
+/* 抹除自製月份導航（被 standard nav 取代） */
+.month-nav { display: none !important; }
+/* ===== end ===== */
 </style>
 </head>
 <body data-ym="202606">
@@ -205,12 +221,18 @@
     }
     return '/Briefings/科學人/科學人新知月報' + targetYm + '.html';
   }
+  // 隱藏未來月份的「下月」按鈕
+  var now = new Date();
+  var currYM = now.getFullYear()*100 + (now.getMonth()+1);
+  var nextBtn = nav.querySelector('[data-scitw="next"]');
+  if (parseInt(shift(+1),10) > currYM) { nextBtn.style.display = 'none'; }
   nav.querySelector('[data-scitw="label"]').textContent = y + ' 年 ' + mo + ' 月';
   nav.querySelector('[data-scitw="prev"]').addEventListener('click', function(){ location.href = urlFor(shift(-1)); });
-  nav.querySelector('[data-scitw="next"]').addEventListener('click', function(){ location.href = urlFor(shift(+1)); });
+  nextBtn.addEventListener('click', function(){ location.href = urlFor(shift(+1)); });
 })();
 </script>
 <!-- scitw-nav:end -->
+
 
 <div class="container">
 

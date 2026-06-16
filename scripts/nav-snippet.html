@@ -25,9 +25,14 @@
     }
     return '/Briefings/科學人/科學人新知月報' + targetYm + '.html';
   }
+  // 隱藏未來月份的「下月」按鈕
+  var now = new Date();
+  var currYM = now.getFullYear()*100 + (now.getMonth()+1);
+  var nextBtn = nav.querySelector('[data-scitw="next"]');
+  if (parseInt(shift(+1),10) > currYM) { nextBtn.style.display = 'none'; }
   nav.querySelector('[data-scitw="label"]').textContent = y + ' 年 ' + mo + ' 月';
   nav.querySelector('[data-scitw="prev"]').addEventListener('click', function(){ location.href = urlFor(shift(-1)); });
-  nav.querySelector('[data-scitw="next"]').addEventListener('click', function(){ location.href = urlFor(shift(+1)); });
+  nextBtn.addEventListener('click', function(){ location.href = urlFor(shift(+1)); });
 })();
 </script>
 <!-- scitw-nav:end -->
