@@ -9,7 +9,7 @@
 (function(){
   var nav = document.getElementById('scitw-nav');
   if (!nav) return;
-  var m = location.pathname.match(/(\d{6})\.html$/);
+  var m = location.pathname.match(/(\d{6})(?:-[^/]*)?\.html$/);
   if (!m) { nav.style.display='none'; return; }
   var ym = m[1];
   var y = parseInt(ym.slice(0,4),10), mo = parseInt(ym.slice(4,6),10);
@@ -20,7 +20,7 @@
     return yy + String(mm).padStart(2,'0');
   }
   function urlFor(targetYm){
-    return location.pathname.replace(/\d{6}\.html$/, targetYm + '.html');
+    return location.pathname.replace(/\d{6}(?:-[^/]*)?\.html$/, targetYm + '.html');
   }
   nav.querySelector('[data-scitw="label"]').textContent = y + ' 年 ' + mo + ' 月';
   nav.querySelector('[data-scitw="prev"]').addEventListener('click', function(){ location.href = urlFor(shift(-1)); });
