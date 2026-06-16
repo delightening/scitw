@@ -177,7 +177,7 @@
   }
 </style>
 </head>
-<body>
+<body data-ym="202606">
 <!-- scitw-nav:start -->
 <nav id="scitw-nav" style="position:sticky;top:0;z-index:9999;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid #d0dbe6;padding:10px 16px;display:flex;gap:8px;align-items:center;font-family:system-ui,-apple-system,'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;font-size:14px;box-shadow:0 2px 6px rgba(26,58,92,.06);">
   <button data-scitw="prev" style="cursor:pointer;padding:6px 12px;border:1px solid #a8bdd0;border-radius:6px;background:#fff;color:#1a3a5c;font:inherit;">← 上月</button>
@@ -189,9 +189,9 @@
 (function(){
   var nav = document.getElementById('scitw-nav');
   if (!nav) return;
-  var m = location.pathname.match(/(\d{6})\.html$/);
-  if (!m) { nav.style.display='none'; return; }
-  var ym = m[1];
+  var m = location.pathname.match(/(\d{6})(?:-[^/]*)?\.html$/);
+  var ym = m ? m[1] : (document.body && document.body.dataset && document.body.dataset.ym);
+  if (!ym) { nav.style.display='none'; return; }
   var y = parseInt(ym.slice(0,4),10), mo = parseInt(ym.slice(4,6),10);
   function shift(delta){
     var yy=y, mm=mo+delta;
@@ -200,7 +200,10 @@
     return yy + String(mm).padStart(2,'0');
   }
   function urlFor(targetYm){
-    return location.pathname.replace(/\d{6}\.html$/, targetYm + '.html');
+    if (/\d{6}(?:-[^/]*)?\.html$/.test(location.pathname)) {
+      return location.pathname.replace(/\d{6}(?:-[^/]*)?\.html$/, targetYm + '.html');
+    }
+    return '/Briefings/科學人/科學人新知月報' + targetYm + '.html';
   }
   nav.querySelector('[data-scitw="label"]').textContent = y + ' 年 ' + mo + ' 月';
   nav.querySelector('[data-scitw="prev"]').addEventListener('click', function(){ location.href = urlFor(shift(-1)); });
@@ -208,6 +211,7 @@
 })();
 </script>
 <!-- scitw-nav:end -->
+
 <div class="container">
 
   <!-- ====== Cover ====== -->
