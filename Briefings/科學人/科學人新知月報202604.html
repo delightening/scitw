@@ -1,116 +1,187 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>科學人新知月報 — 2026年4月</title>
+<title>科學人新知月報 — 2026 年 4 月號</title>
 <style>
-  :root {
-    --primary: #1a3a5c;
-    --primary-light: #2a5080;
-    --accent: #0e9aad;
-    --accent2: #e8a020;
-    --bg: #f5f7fa;
-    --card-bg: #ffffff;
-    --text: #2c3e50;
-    --text-light: #5a6a7a;
-    --border: #dde3ea;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: system-ui, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; color: var(--primary); }
-
-  /* ── 月份導航 ── */
-  .month-nav { background: var(--primary); padding: 10px 24px; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; }
-  .month-nav a { color: #90cce0; padding: 6px 14px; border: 1px solid rgba(144,204,224,0.4); border-radius: 20px; transition: background 0.2s; }
-  .month-nav a:hover { background: rgba(255,255,255,0.1); text-decoration: none; color: #fff; }
-  .month-nav .current { color: #d0eaf6; font-size: 0.8rem; }
-  .month-nav .placeholder { width: 100px; }
-
-  /* ── 封面 ── */
-  .cover { background: linear-gradient(135deg, var(--primary) 0%, #0d2640 60%, #112244 100%); color: #fff; padding: 50px 24px 44px; text-align: center; }
-  .cover .kicker { font-size: 0.82rem; letter-spacing: 0.2em; text-transform: uppercase; color: #90cce0; margin-bottom: 12px; }
-  .cover h1 { font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 800; line-height: 1.2; margin-bottom: 10px; }
-  .cover .subtitle { font-size: 1rem; color: #b0d8ea; max-width: 600px; margin: 0 auto 18px; }
-  .cover .meta { font-size: 0.8rem; color: #80b4cc; margin-top: 16px; }
-  .cover .tag { display: inline-block; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); border-radius: 20px; padding: 3px 12px; font-size: 0.78rem; margin: 3px; color: #d0eaf6; }
-
-  /* ── 容器 ── */
-  .container { max-width: 900px; margin: 0 auto; padding: 0 18px; }
-  section { padding: 36px 0; }
-  section + section { border-top: 1px solid var(--border); }
-
-  /* ── 卡片 ── */
-  .card { background: var(--card-bg); border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.07); padding: 22px 26px; margin-bottom: 18px; transition: box-shadow 0.2s; }
-  .card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.12); }
-
-  /* ── 標題 ── */
-  .section-title { font-size: 1.4rem; font-weight: 700; color: var(--primary); margin-bottom: 22px; display: flex; align-items: center; gap: 10px; }
-  .section-title::before { content: ''; display: block; width: 5px; height: 1.4rem; background: var(--accent); border-radius: 3px; }
-
-  /* ── 本月亮點 ── */
-  .highlights { display: grid; gap: 18px; }
-  @media (min-width: 640px) { .highlights { grid-template-columns: repeat(3, 1fr); } }
-  .highlight-card { background: var(--card-bg); border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; }
-  .highlight-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.14); }
-  .highlight-rank { background: var(--primary); color: #fff; font-size: 1.7rem; font-weight: 800; text-align: center; padding: 14px; letter-spacing: -0.02em; }
-  .highlight-rank span { font-size: 0.72rem; display: block; font-weight: 400; letter-spacing: 0.05em; color: #90cce0; }
-  .highlight-body { padding: 16px 18px; }
-  .highlight-body h3 { font-size: 0.97rem; font-weight: 700; margin-bottom: 7px; color: var(--primary); }
-  .highlight-body p { font-size: 0.88rem; color: var(--text-light); margin-bottom: 10px; }
-  .source-link { font-size: 0.8rem; }
-
-  /* ── badge ── */
-  .badge { display: inline-block; border-radius: 20px; padding: 3px 11px; font-size: 0.73rem; font-weight: 600; margin-bottom: 9px; letter-spacing: 0.03em; }
-  .badge-space  { background: #e8f4fc; color: #1565c0; }
-  .badge-life   { background: #e8f8ec; color: #1b7e34; }
-  .badge-phys   { background: #fdf3e3; color: #b35c00; }
-  .badge-env    { background: #e3f5f0; color: #1a6b57; }
-  .badge-ai     { background: #f0eafc; color: #5e35b1; }
-  .badge-med    { background: #fce8ea; color: #b52a39; }
-  .badge-paleo  { background: #f3ece0; color: #6d4c10; }
-
-  /* ── 文章 ── */
-  .article-title { font-size: 1.02rem; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
-  .article-date { font-size: 0.75rem; color: #8a9baa; margin-bottom: 6px; }
-  .article-summary { font-size: 0.9rem; color: var(--text-light); margin-bottom: 10px; }
-  .article-link { font-size: 0.81rem; }
-
-  /* ── 延伸閱讀 ── */
-  .ext-group { margin-bottom: 20px; }
-  .ext-group h3 { font-size: 0.97rem; font-weight: 700; color: var(--primary); margin-bottom: 9px; }
-  .ext-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
-  .ext-list li::before { content: '→ '; color: var(--accent); }
-  .ext-list a { font-size: 0.86rem; }
-
-  /* ── 關聯主題 ── */
-  .theme-grid { display: grid; gap: 14px; }
-  @media (min-width: 600px) { .theme-grid { grid-template-columns: repeat(2, 1fr); } }
-  .theme-card { background: linear-gradient(135deg, #f0f6ff 0%, #eaf4f8 100%); border: 1px solid #cce0f0; border-left: 5px solid var(--accent); border-radius: 10px; padding: 14px 16px; }
-  .theme-card h3 { font-size: 0.92rem; font-weight: 700; color: var(--primary); margin-bottom: 5px; }
-  .theme-card p { font-size: 0.85rem; color: var(--text-light); }
-
-  /* ── 頁腳 ── */
-  footer { background: var(--primary); color: #90b0c8; text-align: center; padding: 26px 18px; font-size: 0.8rem; }
-  footer a { color: #b0d0e8; }
-  footer .timestamp { margin-top: 5px; font-size: 0.74rem; color: #6a90a8; }
-
-/* ===== scitw unified override (auto-injected) ===== */
 :root {
-  --primary: #1a3a5c !important;
-  --primary-light: #2c5f8d !important;
-  --accent: #d4a017 !important;
-  --bg: #e2e8f0 !important;
-  --card-bg: #ffffff !important;
-  --text: #1f2937 !important;
-  --text-muted: #4b5563 !important;
+  --primary: #1a3a5c;
+  --primary-light: #2c5f8d;
+  --accent: #d4a017;
+  --bg: #e2e8f0;
+  --card-bg: #ffffff;
+  --text: #1f2937;
+  --text-muted: #4b5563;
+  --border: #cbd5e1;
 }
-body { background: #e2e8f0 !important; color: #1f2937 !important;
-       font-family: system-ui, -apple-system, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif !important; }
-/* 抹除自製月份導航（被 standard nav 取代） */
-.month-nav { display: none !important; }
-/* ===== end ===== */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+}
+.container { max-width: 980px; margin: 0 auto; padding: 24px 20px 64px; }
+
+/* Cover */
+.cover {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: #fff;
+  padding: 56px 32px;
+  border-radius: 16px;
+  margin-bottom: 32px;
+  box-shadow: 0 8px 24px rgba(26, 58, 92, 0.15);
+}
+.cover h1 { margin: 0 0 8px; font-size: 2.3em; letter-spacing: 1px; font-weight: 700; }
+.cover .issue { font-size: 1.15em; opacity: 0.92; margin: 8px 0 14px; font-weight: 600; }
+.cover .picks { font-size: 1em; opacity: 0.92; margin: 6px 0; line-height: 1.7; }
+.cover .picks b { color: var(--accent); font-weight: 700; margin-right: 4px; }
+.cover .meta {
+  margin-top: 22px;
+  font-size: 0.92em;
+  opacity: 0.88;
+  border-top: 1px solid rgba(255,255,255,0.25);
+  padding-top: 14px;
+}
+
+/* Sections */
+section { margin-bottom: 40px; }
+h2 {
+  color: var(--primary);
+  font-size: 1.5em;
+  border-left: 5px solid var(--accent);
+  padding-left: 14px;
+  margin: 0 0 18px;
+}
+
+/* Top 3 highlights grid */
+.highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+.h-card {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 12px;
+  border-top: 4px solid var(--accent);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.h-card:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.10); }
+.h-card .rank {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 28px; height: 28px;
+  text-align: center; line-height: 28px;
+  font-size: 0.9em;
+  margin-bottom: 8px;
+}
+.h-card h3 { color: var(--primary); margin: 0 0 6px; font-size: 1.05em; }
+.h-card h3 a { color: var(--primary); text-decoration: none; border: none; }
+.h-card h3 a:hover { color: var(--accent); }
+.h-card p { margin: 6px 0; color: var(--text-muted); font-size: 0.92em; }
+
+/* Article card */
+.article {
+  background: var(--card-bg);
+  padding: 20px 22px;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  border-left: 3px solid var(--primary-light);
+}
+.article h3 {
+  color: var(--primary);
+  font-size: 1.1em;
+  margin: 0 0 6px;
+}
+.article h3 a { color: var(--primary); text-decoration: none; border: none; }
+.article h3 a:hover { color: var(--accent); border-bottom: 2px solid var(--accent); }
+.article p { margin: 8px 0; color: var(--text-muted); }
+.article .ext {
+  margin-top: 12px;
+  background: #f1f5f9;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.9em;
+}
+.article .ext-title {
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0 0 6px;
+  font-size: 0.9em;
+}
+.article .ext-title::before {
+  content: "→ ";
+  color: var(--accent);
+}
+.article .ext ul { margin: 4px 0; padding-left: 22px; }
+.article .ext li { margin: 4px 0; }
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.78em;
+  font-weight: 600;
+  color: #fff;
+  margin-right: 8px;
+  margin-bottom: 6px;
+  vertical-align: middle;
+}
+.badge-astro    { background: #4f46e5; }
+.badge-bio      { background: #059669; }
+.badge-physics  { background: #7c3aed; }
+.badge-climate  { background: #0891b2; }
+.badge-ai       { background: #db2777; }
+.badge-medical  { background: #dc2626; }
+.badge-paleo    { background: #b45309; }
+.badge-society  { background: #475569; }
+.date {
+  font-size: 0.82em;
+  color: var(--text-muted);
+  margin-left: 4px;
+}
+.src-tag {
+  display: inline-block;
+  font-size: 0.72em;
+  background: #cbd5e1;
+  color: #1e293b;
+  padding: 1px 7px;
+  border-radius: 8px;
+  margin-right: 6px;
+  font-weight: 600;
+}
+.src-paper { background: #c7d2fe; color: #3730a3; }
+.src-news  { background: #fed7aa; color: #9a3412; }
+.src-scitw { background: #fecaca; color: #991b1b; }
+.src-zh    { background: #bbf7d0; color: #166534; }
+
+/* Links */
+a { color: var(--primary-light); text-decoration: none; border-bottom: 1px dashed var(--primary-light); transition: color 0.2s; }
+a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* Footer */
+footer {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85em;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  margin-top: 40px;
+}
+@media (max-width: 600px) {
+  .cover { padding: 36px 22px; }
+  .cover h1 { font-size: 1.7em; }
+  h2 { font-size: 1.25em; }
+}
 </style>
 </head>
 <body data-ym="202604">
@@ -141,7 +212,6 @@ body { background: #e2e8f0 !important; color: #1f2937 !important;
     }
     return '/Briefings/科學人/科學人新知月報' + targetYm + '.html';
   }
-  // 隱藏未來月份的「下月」按鈕
   var now = new Date();
   var currYM = now.getFullYear()*100 + (now.getMonth()+1);
   var nextBtn = nav.querySelector('[data-scitw="next"]');
@@ -152,289 +222,115 @@ body { background: #e2e8f0 !important; color: #1f2937 !important;
 })();
 </script>
 <!-- scitw-nav:end -->
-
-
-<!-- ── 月份導航 ── -->
-<nav class="month-nav">
-  <span class="placeholder"></span>
-  <span class="current">2026 年 4 月</span>
-  <a href="/Briefings/%E7%A7%91%E5%AD%B8%E4%BA%BA/%E7%A7%91%E5%AD%B8%E4%BA%BA%E6%96%B0%E7%9F%A5%E6%9C%88%E5%A0%B1202605.html">2026年5月 →</a>
-</nav>
-
-<!-- ── 封面 ── -->
-<div class="cover">
-  <div class="kicker">Scientific American Taiwan × 月度整理</div>
-  <h1>科學人新知月報</h1>
-  <h2 style="font-size:1.25rem;font-weight:400;color:#90cce0;margin-bottom:18px;">2026 年 4 月</h2>
-  <p class="subtitle">Artemis II 重返月球、AMOC洋流警報、CERN新粒子——四月最重要的科學突破</p>
-  <div style="margin-top:16px;">
-    <span class="tag">🚀 天文與太空</span>
-    <span class="tag">⚛️ 物理與材料</span>
-    <span class="tag">🤖 AI 與科技</span>
-    <span class="tag">🌊 環境氣候</span>
-    <span class="tag">🧬 生命科學</span>
-    <span class="tag">🩺 醫學健康</span>
-  </div>
-  <div class="meta">產出日期：2026 年 4 月 18 日｜資料來源：scitw.cc · Wikipedia · Nature · NASA · CERN</div>
-</div>
-
 <div class="container">
+  <header class="cover">
+    <h1>科學人新知月報</h1>
+    <div class="issue">2026 年 4 月號</div>
+    <div class="picks">本月精選：<b>·</b>Artemis II 繞月 · <b>·</b>AMOC 洋流 · <b>·</b>雙魅重子 · <b>·</b>月球資源 · <b>·</b>後量子密碼</div>
+    <div class="meta">產出日期：2026 年 4 月 18 日</div>
+  </header>
 
-<!-- ── 本月亮點 ── -->
-<section>
-  <div class="section-title">🏆 本月三大亮點</div>
-  <div class="highlights">
-
-    <div class="highlight-card">
-      <div class="highlight-rank">No.1<span>天文與太空</span></div>
-      <div class="highlight-body">
-        <h3>Artemis II 完成史上首次載人繞月飛行</h3>
-        <p>NASA 於4月1日發射 Artemis II，四名太空人成功繞過月球背面，打破52年來人類最遠距離飛行紀錄，為2028年月球南極登陸奠定基礎。</p>
-        <a class="source-link" href="https://www.nasa.gov/mission/artemis-ii/" target="_blank">→ NASA 任務頁面</a>
-      </div>
-    </div>
-
-    <div class="highlight-card">
-      <div class="highlight-rank">No.2<span>環境與氣候</span></div>
-      <div class="highlight-body">
-        <h3>AMOC 大西洋洋流可能比預期更快崩潰</h3>
-        <p>新研究預測大西洋翻轉洋流（AMOC）本世紀末將減弱51%，遠超原估計，崩潰門檻可能在本世紀中期提早到達，威脅全球氣候穩定。</p>
-        <a class="source-link" href="https://www.science.org/doi/10.1126/sciadv.adx4298" target="_blank">→ Science Advances 論文</a>
-      </div>
-    </div>
-
-    <div class="highlight-card">
-      <div class="highlight-rank">No.3<span>物理與材料</span></div>
-      <div class="highlight-body">
-        <h3>CERN LHCb 發現雙魅重子，完成粒子動物園新成員</h3>
-        <p>CERN 以7σ顯著性確認由兩個魅夸克組成的雙魅重子 Ξcc⁺，有助深入理解強力如何束縛質子等複合粒子。</p>
-        <a class="source-link" href="https://home.cern/news/news/physics/lhcb-collaboration-discovers-new-proton-particle" target="_blank">→ CERN 新聞</a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ── 天文與太空 ── -->
-<section>
-  <div class="section-title">🚀 天文與太空</div>
-
-  <div class="card">
-    <div class="badge badge-space">天文與太空</div>
-    <div class="article-date">📅 2026年4月1–11日</div>
-    <div class="article-title">Artemis II：人類52年來最遠太空飛行，四人繞月返回</div>
-    <div class="article-summary">NASA Artemis II 搭載指揮官 Reid Wiseman、飛行員 Victor Glover、任務專家 Christina Koch（首位繞月女性）與加拿大太空人 Jeremy Hansen 升空，Orion 太空艙抵達距地球406,773公里（打破阿波羅13號紀錄），於4月11日濺落聖地牙哥海岸外。所有主要目標均達成，為後續 Artemis III 載人月面降落鋪路。</div>
-    <a class="article-link" href="https://www.nasa.gov/news-release/nasas-artemis-ii-crew-eclipses-record-for-farthest-human-spaceflight/" target="_blank">資料來源：NASA 新聞稿</a>
-  </div>
-
-  <div class="card">
-    <div class="badge badge-space">天文與太空</div>
-    <div class="article-date">📅 2026年4月8日</div>
-    <div class="article-title">Blue Origin 從月球模擬土壤提取氧氣，就地資源利用邁大步</div>
-    <div class="article-summary">Blue Origin 宣布成功從月球表層土壤模擬物（regolith simulant）中提取出氧氣，是「月球原地資源利用」（ISRU）的重要里程碑。此技術意味著未來月球基地可就地生產氧氣與火箭推進劑，大幅降低從地球運送補給的成本，對於長期月球駐守任務具有關鍵戰略意義。</div>
-    <a class="article-link" href="https://en.wikipedia.org/wiki/2026_in_science" target="_blank">資料來源：2026 in Science — Wikipedia</a>
-  </div>
-
-  <div class="card">
-    <div class="badge badge-space">天文與太空</div>
-    <div class="article-date">📅 2026年3月6日</div>
-    <div class="article-title">GJ 887d：距地10.7光年的超級地球確認位於宜居帶</div>
-    <div class="article-summary">天文學家正式確認 GJ 887d 位於其恆星的宜居帶內，最小質量約為地球的6倍，軌道週期51天。GJ 887 是一顆活動性極低的紅矮星，大幅提高此行星系統孕育生命的機率，是目前已知宜居帶內距太陽系第二近的系外行星。</div>
-    <a class="article-link" href="https://www.astronomy.com/science/astronomers-confirm-potentially-habitable-exoplanet-in-the-solar-neighborhood/" target="_blank">資料來源：Astronomy & Astrophysics</a>
-  </div>
-</section>
-
-<!-- ── 物理與材料 ── -->
-<section>
-  <div class="section-title">⚛️ 物理與材料</div>
-
-  <div class="card">
-    <div class="badge badge-phys">物理與材料</div>
-    <div class="article-date">📅 2026年3月17日</div>
-    <div class="article-title">CERN LHCb 以7σ確認雙魅重子，強力理論獲新驗證</div>
-    <div class="article-summary">CERN 的 LHCb 實驗在 Moriond 會議宣布發現雙魅重子 Ξcc⁺——由兩個魅夸克加一個下夸克組成，質量約為質子的四倍。7σ的統計顯著性遠超「發現」門檻，有助科學家深入理解強力如何束縛複合粒子，並完善量子色動力學（QCD）的預測精度。</div>
-    <a class="article-link" href="https://home.cern/news/news/physics/lhcb-collaboration-discovers-new-proton-particle" target="_blank">資料來源：CERN 官方新聞</a>
-  </div>
-
-  <div class="card">
-    <div class="badge badge-phys">物理與材料</div>
-    <div class="article-date">📅 2026年1月1日</div>
-    <div class="article-title">中國 EAST 突破 Greenwald 電漿密度極限，核融合點火路徑更清晰</div>
-    <div class="article-summary">發表於《Science Advances》的研究顯示，中國合肥 EAST 托卡馬克首次在超越 Greenwald 極限30–65% 的密度下維持穩定電漿，驗證了「電漿壁自組織」（PWSO）理論，打破核融合界長期認為不可逾越的密度壁壘，為未來達到商業點火條件開闢新路徑。</div>
-    <a class="article-link" href="https://scitechdaily.com/china-advances-toward-fusion-ignition-with-major-plasma-breakthrough/" target="_blank">資料來源：SciTech Daily</a>
-  </div>
-
-  <div class="card">
-    <div class="badge badge-phys">物理與材料</div>
-    <div class="article-date">📅 2026年1月14日</div>
-    <div class="article-title">Migdal 效應首次直接觀測，開啟低質量暗物質偵測新方法</div>
-    <div class="article-summary">物理學家首次在實驗室直接觀測到「Migdal 效應」——原子核被高能粒子撞擊時，電子雲延遲響應造成額外能量釋放的量子現象（1939年理論提出）。此觀測為偵測低質量暗物質粒子提供了全新靈敏度，有望突破目前探測器面臨的能量閾值限制。</div>
-    <a class="article-link" href="https://doi.org/10.1038/s41586-025-09918-8" target="_blank">資料來源：Nature（2026年1月14日）</a>
-  </div>
-</section>
-
-<!-- ── AI 與科技 ── -->
-<section>
-  <div class="section-title">🤖 AI 與科技</div>
-
-  <div class="card">
-    <div class="badge badge-ai">AI 與科技</div>
-    <div class="article-date">📅 2026年1月28日</div>
-    <div class="article-title">AlphaGenome 開源：AI 解讀 DNA「暗物質」，160國科學家搶用</div>
-    <div class="article-summary">Google DeepMind 正式開源 AlphaGenome 程式碼與模型權重。AlphaGenome 可一次讀取長達100萬個鹼基對的 DNA 序列，預測基因起始位點、RNA剪接型式及染色質可及性等數千種調控屬性。開源後來自160個國家近3,000位科學家已投入癌症、神經退化性疾病及感染症研究，成為後 AlphaFold 時代基因組學的核心工具。</div>
-    <a class="article-link" href="https://deepmind.google/blog/alphagenome-ai-for-better-understanding-the-genome/" target="_blank">資料來源：Google DeepMind / Nature</a>
-  </div>
-
-  <div class="card">
-    <div class="badge badge-ai">AI 與科技</div>
-    <div class="article-date">📅 2026年4月7日</div>
-    <div class="article-title">AI 助攻量子算法突破，現行網路加密協議面臨威脅</div>
-    <div class="article-summary">Google 與量子新創 Oratomic 利用 AI 加速演算法開發，使量子電腦破解現行網路加密協定（如 RSA）的能力比預期提早到來，被《Time》形容為「世界尚未準備好」的技術衝擊。NVIDIA 同期發布開源量子 AI 模型「Ising」，將量子錯誤修正速度提升2.5倍、精確度提升3倍。</div>
-    <a class="article-link" href="https://time.com/article/2026/04/07/ai-quantum-computing-advance/" target="_blank">資料來源：Time Magazine</a>
-  </div>
-</section>
-
-<!-- ── 環境與氣候 ── -->
-<section>
-  <div class="section-title">🌊 環境與氣候</div>
-
-  <div class="card">
-    <div class="badge badge-env">環境與氣候</div>
-    <div class="article-date">📅 2026年4月15日</div>
-    <div class="article-title">AMOC 恐弱化51%：大西洋翻覆環流崩潰風險大幅上修</div>
-    <div class="article-summary">《Science Advances》研究整合實測洋流數據，預測 AMOC 至2100年將弱化51±8%，比多模型均值估計高60%。過去20年 AMOC 已在多個緯度持續弱化，流量降幅達10–20%。崩潰將使熱帶降雨帶南移、威脅西非與南亞季風農業，歐洲也將面臨更嚴峻的寒冬。科學家呼籲各國立即展開適應準備。</div>
-    <a class="article-link" href="https://www.science.org/doi/10.1126/sciadv.adx4298" target="_blank">資料來源：Science Advances</a>
-  </div>
-
-  <div class="card">
-    <div class="badge badge-env">環境與氣候</div>
-    <div class="article-date">📅 2026年3月9日</div>
-    <div class="article-title">全球暖化速度加快：2015年後升溫率近乎翻倍</div>
-    <div class="article-summary">研究確認，自2015年前後全球平均暖化速率已從每十年0.2°C上升至約0.35°C，增幅達75%。研究者認為這與北極海冰加速融化、氣溶膠排放減少及 El Niño 效應疊加有關，警告現有氣候模型可能低估未來極端氣候事件的頻率與強度。</div>
-    <a class="article-link" href="https://en.wikipedia.org/wiki/2026_in_science" target="_blank">資料來源：Nature Climate Change</a>
-  </div>
-</section>
-
-<!-- ── 生命科學 ── -->
-<section>
-  <div class="section-title">🧬 生命科學</div>
-
-  <div class="card">
-    <div class="badge badge-life">生命科學</div>
-    <div class="article-date">📅 2026年3月20日</div>
-    <div class="article-title">全球首例：實驗室培育食道在動物體內成功修復吞嚥功能</div>
-    <div class="article-summary">大奧蒙德街醫院（GOSH）與倫敦大學學院（UCL）聯合研究團隊，在《Nature Biotechnology》發表在迷你豬體內成功植入實驗室培育食道的成果。以去細胞豬組織為支架植入受體自身細胞，無需免疫抑制劑，六個月後新食道發育出功能性肌肉、神經與血管，可正常收縮推送食物。為先天性食道閉鎖患兒帶來臨床應用的曙光。</div>
-    <a class="article-link" href="https://medicalxpress.com/news/2026-03-tissue-children-born-esophagus.html" target="_blank">資料來源：Nature Biotechnology</a>
-  </div>
-
-  <div class="card">
-    <div class="badge badge-life">生命科學</div>
-    <div class="article-date">📅 2026年2月12日</div>
-    <div class="article-title">自我複製 RNA 酶問世，「RNA 世界」生命起源假說獲最強支持</div>
-    <div class="article-summary">科學家描述了一種能自我複製的 RNA 酶（ribozyme），在無蛋白質的環境下實現模板導向的 RNA 合成。這是迄今最有力的實驗證據，支持地球早期生命可能完全以 RNA 作為遺傳物質與催化劑，為「先有雞還是先有蛋」的生命起源難題邁出關鍵一步。</div>
-    <a class="article-link" href="https://www.science.org/doi/10.1126/science.adt2760" target="_blank">資料來源：Science（2026年2月12日）</a>
-  </div>
-</section>
-
-<!-- ── 醫學與健康 ── -->
-<section>
-  <div class="section-title">🩺 醫學與健康</div>
-
-  <div class="card">
-    <div class="badge badge-med">醫學與健康</div>
-    <div class="article-date">📅 2026年2月24日</div>
-    <div class="article-title">百歲人瑞的血液密碼：氧化壓力顯著偏低揭示長壽機制</div>
-    <div class="article-summary">瑞士研究人員分析百歲老人的37種血液生物標記，發現其氧化壓力指標顯著低於一般老年人，呈現「年輕化」的血液特徵。低慢性發炎與高抗氧化能力的組合，可能是解開長壽之謎的關鍵，未來或可作為延緩衰老療法的開發目標。</div>
-    <a class="article-link" href="https://www.unige.ch/medias/en/2026/le-sang-des-centenaires-eclaire-les-mecanismes-de-la-longevite" target="_blank">資料來源：Nature Aging / 日內瓦大學</a>
-  </div>
-
-  <div class="card">
-    <div class="badge badge-med">醫學與健康</div>
-    <div class="article-date">📅 2026年3月16日</div>
-    <div class="article-title">人工冬眠露曙光：冰封小鼠大腦解凍後神經功能恢復</div>
-    <div class="article-summary">科學人報導一項突破：研究人員成功將小鼠大腦組織冷凍至超低溫後解凍，確認神經細胞活性與突觸連結保持完整，打破「哺乳動物大腦冷凍不可逆」的長期認知。此技術為長途太空旅行人工冬眠、器官長效保存以及腦損傷急救提供了全新生物醫學可能性。</div>
-    <a class="article-link" href="https://www.scitw.cc/posts/20260316-19319" target="_blank">資料來源：科學人 scitw.cc</a>
-  </div>
-</section>
-
-<!-- ── 延伸閱讀 ── -->
-<section>
-  <div class="section-title">📚 延伸閱讀</div>
-  <div class="card">
-    <div class="ext-group">
-      <h3>🚀 天文與太空</h3>
-      <ul class="ext-list">
-        <li><a href="https://www.nasa.gov/mission/artemis-ii/" target="_blank">NASA Artemis II 官方任務頁面</a></li>
-        <li><a href="https://en.wikipedia.org/wiki/Artemis_II" target="_blank">Artemis II — Wikipedia 完整任務資料</a></li>
-        <li><a href="https://www.astronomy.com/science/astronomers-confirm-potentially-habitable-exoplanet-in-the-solar-neighborhood/" target="_blank">GJ 887d 宜居帶系外行星確認報導</a></li>
-      </ul>
-    </div>
-    <div class="ext-group">
-      <h3>⚛️ 物理與材料</h3>
-      <ul class="ext-list">
-        <li><a href="https://home.cern/news/news/physics/lhcb-collaboration-discovers-new-proton-particle" target="_blank">CERN：LHCb 雙魅重子發現官方報導</a></li>
-        <li><a href="https://scitechdaily.com/china-advances-toward-fusion-ignition-with-major-plasma-breakthrough/" target="_blank">SciTech Daily：EAST 核融合電漿突破</a></li>
-        <li><a href="https://doi.org/10.1038/s41586-025-09918-8" target="_blank">Nature：Migdal 效應首次直接觀測論文</a></li>
-      </ul>
-    </div>
-    <div class="ext-group">
-      <h3>🌊 環境與氣候</h3>
-      <ul class="ext-list">
-        <li><a href="https://www.science.org/doi/10.1126/sciadv.adx4298" target="_blank">Science Advances：AMOC 弱化51%預測論文</a></li>
-        <li><a href="https://interactive.carbonbrief.org/amoc-explainer/index.html" target="_blank">Carbon Brief：AMOC 互動式深度解析</a></li>
-      </ul>
-    </div>
-    <div class="ext-group">
-      <h3>🧬 生命科學</h3>
-      <ul class="ext-list">
-        <li><a href="https://www.science.org/doi/10.1126/science.adt2760" target="_blank">Science：自我複製 RNA 酶原始論文</a></li>
-        <li><a href="https://medicalxpress.com/news/2026-03-tissue-children-born-esophagus.html" target="_blank">Nature Biotechnology：實驗室培育食道成果</a></li>
-      </ul>
-    </div>
-    <div class="ext-group">
-      <h3>🤖 AI 與科技</h3>
-      <ul class="ext-list">
-        <li><a href="https://deepmind.google/blog/alphagenome-ai-for-better-understanding-the-genome/" target="_blank">Google DeepMind：AlphaGenome 官方介紹</a></li>
-        <li><a href="https://time.com/article/2026/04/07/ai-quantum-computing-advance/" target="_blank">Time：AI 助攻量子突破報導</a></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- ── 關聯主題推薦 ── -->
-<section>
-  <div class="section-title">🔗 跨領域關聯主題推薦</div>
-  <div class="theme-grid">
-    <div class="theme-card">
-      <h3>🌕 後 Artemis 時代：月球資源爭奪戰</h3>
-      <p>Artemis II 成功後，月球水冰與稀土礦藏的資源爭奪將同時牽動太空法律、地緣政治與商業航太生態，2030年代的月球經濟雛形正在成形。</p>
-    </div>
-    <div class="theme-card">
-      <h3>🔐 後量子密碼學的緊迫升級</h3>
-      <p>AI 加速量子算法研發使現行加密協議面臨嚴峻威脅，NIST 正在標準化的後量子密碼演算法佈局，是未來2–3年最關鍵的網路安全議題。</p>
-    </div>
-    <div class="theme-card">
-      <h3>🌊 海洋臨界點的連鎖風險</h3>
-      <p>AMOC 弱化、珊瑚礁白化、海平面上升三者交織，科學界越來越認識到海洋系統存在多重「臨界點」，一旦觸發可能引發難以逆轉的連鎖反應。</p>
-    </div>
-    <div class="theme-card">
-      <h3>🧬 RNA 生物學的黃金時代</h3>
-      <p>從自我複製 RNA 酶到 mRNA 疫苗、RNA 干擾療法，RNA 科學的多條前沿同時開花，2026年是深入理解「RNA 世界」與現代 RNA 醫學的最佳時機。</p>
-    </div>
-    <div class="theme-card">
-      <h3>🧊 低溫生物學與人體冬眠倫理</h3>
-      <p>小鼠大腦冷凍成功引發人體冬眠的科幻想像，涉及低溫保存技術、意識連續性哲學問題以及臨床倫理邊界，是跨學科的重要新興議題。</p>
-    </div>
-  </div>
-</section>
-
+  <section>
+    <h2>本月亮點 Top 3</h2>
+    <div class="highlights">
+      <div class="h-card">
+  <div class="rank">1</div>
+  <h3><a href="https://www.nasa.gov/mission/artemis-ii/" target="_blank" rel="noopener">Artemis II 完成史上首次載人繞月飛行</a></h3>
+  <p>NASA 4月發射 Artemis II，四名太空人成功繞過月球背面，打破 52 年來人類最遠飛行紀錄，為 2028 年月球南極登陸鋪路。</p>
 </div>
+<div class="h-card">
+  <div class="rank">2</div>
+  <h3><a href="https://www.science.org/doi/10.1126/sciadv.adx4298" target="_blank" rel="noopener">AMOC 大西洋洋流可能比預期更快崩潰</a></h3>
+  <p>新研究預測大西洋翻轉洋流本世紀末將減弱 51%，崩潰門檻可能在本世紀中期提早到達，威脅全球氣候穩定。</p>
+</div>
+<div class="h-card">
+  <div class="rank">3</div>
+  <h3><a href="https://home.cern/news/news/physics/lhcb-collaboration-discovers-new-proton-particle" target="_blank" rel="noopener">CERN LHCb 發現雙魅重子，完成粒子動物園新成員</a></h3>
+  <p>CERN 以 7σ 顯著性確認由兩個魅夸克組成的雙魅重子 Ξcc⁺，有助理解強力如何束縛複合粒子。</p>
+</div>
+    </div>
+  </section>
 
-<footer>
-  <div>科學人新知月報 — 由 AI 輔助編輯整理，內容整合自 scitw.cc · Nature · Science · NASA · CERN · Wikipedia</div>
-  <div><a href="https://www.scitw.cc" target="_blank">scitw.cc 科學人雜誌台灣版</a> ｜ <a href="https://scitw.ipigsystem.asia" target="_blank">線上月報平台</a></div>
-  <div class="timestamp">產出時間：2026-04-18｜本期涵蓋 2026 年 3–4 月重要科學發展</div>
-</footer>
+  <section>
+  <h2>天文與太空</h2>
+  <div class="article">
+  <span class="badge badge-astro">天文與太空</span><span class="date">2026/04/01–11</span>
+  <h3><a href="https://www.nasa.gov/news-release/nasas-artemis-ii-crew-eclipses-record-for-farthest-human-spaceflight/" target="_blank" rel="noopener">Artemis II：人類 52 年來最遠太空飛行，四人繞月返回</a></h3>
+  <p>Orion 太空艙抵達距地 406,773 公里，打破阿波羅 13 紀錄。所有主要目標均達成，為 Artemis III 載人月面降落鋪路。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul>
+      <li><span class="src-tag src-news">國際媒體</span><a href="https://www.nasa.gov/news-release/nasas-artemis-ii-crew-eclipses-record-for-farthest-human-spaceflight/" target="_blank" rel="noopener">NASA 新聞稿</a></li>
+    </ul>
+  </div>
+</div>
+<div class="article">
+  <span class="badge badge-astro">天文與太空</span><span class="date">2026/04/08</span>
+  <h3>Blue Origin 從月球模擬土壤提取氧氣，就地資源利用邁大步</h3>
+  <p>從月球表層 regolith simulant 中成功提取氧氣，意味未來月球基地可就地產氧與火箭推進劑，大幅降低補給成本。</p>
+</div>
+</section>
+<section>
+  <h2>環境與氣候</h2>
+  <div class="article">
+  <span class="badge badge-climate">環境與氣候</span><span class="date">2026/04</span>
+  <h3><a href="https://www.science.org/doi/10.1126/sciadv.adx4298" target="_blank" rel="noopener">AMOC 翻轉洋流崩潰風險</a></h3>
+  <p>新模型顯示 AMOC 本世紀末減弱 51%。崩潰閾值可能在本世紀中期到達，將影響歐洲冬季氣溫、季風與海平面。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul>
+      <li><span class="src-tag src-paper">論文</span><a href="https://www.science.org/doi/10.1126/sciadv.adx4298" target="_blank" rel="noopener">AMOC weakening — Science Advances</a></li>
+    </ul>
+  </div>
+</div>
+</section>
+<section>
+  <h2>物理與材料</h2>
+  <div class="article">
+  <span class="badge badge-physics">物理與材料</span><span class="date">2026/04</span>
+  <h3><a href="https://home.cern/news/news/physics/lhcb-collaboration-discovers-new-proton-particle" target="_blank" rel="noopener">CERN 發現雙魅重子 Ξcc⁺</a></h3>
+  <p>由兩個魅夸克和一個上夸克組成，質量為質子的 3.6 倍。實驗結果驗證 QCD 預測，為複合粒子內部結構提供新數據點。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul>
+      <li><span class="src-tag src-news">國際媒體</span><a href="https://home.cern/news/news/physics/lhcb-collaboration-discovers-new-proton-particle" target="_blank" rel="noopener">CERN 新聞</a></li>
+    </ul>
+  </div>
+</div>
+</section>
+<section>
+  <h2>生命科學</h2>
+  <div class="article">
+  <span class="badge badge-bio">生命科學</span><span class="date">2026/03/16</span>
+  <h3><a href="https://www.scitw.cc/posts/20260316-19319" target="_blank" rel="noopener">人工冬眠有望成真？冰封小鼠大腦解凍後竟順利恢復運作</a></h3>
+  <p>德國團隊以 –196 ℃ 玻璃化保存小鼠海馬迴 7 天，解凍後突觸傳導與可塑性接近未冷凍對照組，為長期太空旅行開啟可能。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul>
+      <li><span class="src-tag src-paper">論文</span><a href="https://www.pnas.org/doi/10.1073/pnas.2516848123" target="_blank" rel="noopener">PNAS — Functional recovery of murine hippocampus</a></li><li><span class="src-tag src-news">國際媒體</span><a href="https://www.nature.com/articles/d41586-026-00756-w" target="_blank" rel="noopener">Nature — Scientists revive frozen mouse brains</a></li>
+    </ul>
+  </div>
+</div>
+</section>
+<section>
+  <h2>AI 與科技</h2>
+  <div class="article">
+  <span class="badge badge-ai">AI 與科技</span><span class="date">2026/04</span>
+  <h3>後量子密碼學的緊迫升級</h3>
+  <p>NIST 加速 PQC 標準採用，企業面臨數年內全面替換 RSA／ECC 的轉型壓力。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul>
+      <li><span class="src-tag src-news">國際媒體</span><a href="https://csrc.nist.gov/projects/post-quantum-cryptography" target="_blank" rel="noopener">NIST PQC standards</a></li>
+    </ul>
+  </div>
+</div>
+</section>
 
+  <footer>
+    <p>科學人新知月報 · 2026 年 4 月號</p>
+    <p>產出時間：2026 年 4 月 18 日｜資料來源：scitw.cc 及國際期刊／媒體</p>
+  </footer>
+</div>
 </body>
 </html>

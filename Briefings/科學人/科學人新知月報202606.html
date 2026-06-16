@@ -3,194 +3,185 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>科學人新知月報 — 2026年6月</title>
+<title>科學人新知月報 — 2026 年 6 月號</title>
 <style>
-  :root {
-    --primary: #1a3a5c;
-    --primary-light: #2c5f8d;
-    --accent: #d4a017;
-    --bg: #f7f9fc;
-    --card-bg: #ffffff;
-    --text: #1f2937;
-    --text-muted: #4b5563;
-    --border: #e5e7eb;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    font-family: system-ui, -apple-system, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.7;
-  }
-  .container { max-width: 960px; margin: 0 auto; padding: 24px 20px 64px; }
-
-  /* ====== Cover ====== */
-  .cover {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-    color: #fff;
-    padding: 56px 32px;
-    border-radius: 16px;
-    margin-bottom: 32px;
-    box-shadow: 0 8px 24px rgba(26, 58, 92, 0.15);
-  }
-  .cover h1 {
-    margin: 0 0 12px;
-    font-size: 2.2em;
-    letter-spacing: 1px;
-    font-weight: 700;
-  }
-  .cover .subtitle { font-size: 1.1em; opacity: 0.9; margin: 8px 0; }
-  .cover .meta {
-    margin-top: 24px;
-    font-size: 0.95em;
-    opacity: 0.85;
-    border-top: 1px solid rgba(255,255,255,0.25);
-    padding-top: 16px;
-  }
-
-  /* ====== Section ====== */
-  section { margin-bottom: 40px; }
-  h2 {
-    color: var(--primary);
-    font-size: 1.5em;
-    border-left: 5px solid var(--accent);
-    padding-left: 14px;
-    margin: 0 0 20px;
-  }
-  h3 {
-    color: var(--primary);
-    font-size: 1.1em;
-    margin: 0 0 8px;
-  }
-
-  /* ====== Highlight cards ====== */
-  .highlight-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 16px;
-  }
-  .highlight-card {
-    background: var(--card-bg);
-    padding: 20px;
-    border-radius: 12px;
-    border-top: 4px solid var(--accent);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .highlight-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
-  }
-  .highlight-card .rank {
-    display: inline-block;
-    background: var(--accent);
-    color: #fff;
-    font-weight: 700;
-    border-radius: 50%;
-    width: 28px; height: 28px;
-    text-align: center; line-height: 28px;
-    font-size: 0.9em;
-    margin-bottom: 10px;
-  }
-
-  /* ====== Article cards ====== */
-  .article {
-    background: var(--card-bg);
-    padding: 20px 22px;
-    border-radius: 10px;
-    margin-bottom: 14px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-    border-left: 3px solid var(--primary-light);
-  }
-  .article p { margin: 8px 0; color: var(--text-muted); }
-  .badge {
-    display: inline-block;
-    padding: 3px 10px;
-    border-radius: 12px;
-    font-size: 0.78em;
-    font-weight: 600;
-    color: #fff;
-    margin-right: 8px;
-    margin-bottom: 6px;
-    vertical-align: middle;
-  }
-  .badge-astro { background: #4f46e5; }
-  .badge-bio { background: #059669; }
-  .badge-physics { background: #7c3aed; }
-  .badge-climate { background: #0891b2; }
-  .badge-ai { background: #db2777; }
-  .badge-medical { background: #dc2626; }
-  .badge-paleo { background: #b45309; }
-  .badge-society { background: #475569; }
-
-  .date {
-    font-size: 0.85em;
-    color: var(--text-muted);
-    margin-left: 4px;
-  }
-  a {
-    color: var(--primary-light);
-    text-decoration: none;
-    border-bottom: 1px dashed var(--primary-light);
-    transition: color 0.2s;
-  }
-  a:hover { color: var(--accent); border-bottom-color: var(--accent); }
-
-  /* ====== Extended reading ====== */
-  .ext-block {
-    background: #f1f5f9;
-    border-radius: 10px;
-    padding: 16px 20px;
-    margin-bottom: 14px;
-  }
-  .ext-block h3 { margin-bottom: 8px; }
-  .ext-block ul { margin: 6px 0; padding-left: 22px; }
-  .ext-block li { margin: 6px 0; }
-
-  /* ====== Trends ====== */
-  .trend-card {
-    background: linear-gradient(135deg, #f8fafc, #e2e8f0);
-    padding: 18px 22px;
-    border-radius: 10px;
-    margin-bottom: 12px;
-    border-left: 4px solid var(--accent);
-  }
-  .trend-card h3 { margin-bottom: 6px; }
-  .trend-card p { margin: 0; color: var(--text-muted); }
-
-  /* ====== Footer ====== */
-  footer {
-    text-align: center;
-    color: var(--text-muted);
-    font-size: 0.85em;
-    padding-top: 24px;
-    border-top: 1px solid var(--border);
-    margin-top: 40px;
-  }
-
-  /* ====== Responsive ====== */
-  @media (max-width: 600px) {
-    .cover { padding: 36px 22px; }
-    .cover h1 { font-size: 1.7em; }
-    h2 { font-size: 1.25em; }
-  }
-
-/* ===== scitw unified override (auto-injected) ===== */
 :root {
-  --primary: #1a3a5c !important;
-  --primary-light: #2c5f8d !important;
-  --accent: #d4a017 !important;
-  --bg: #e2e8f0 !important;
-  --card-bg: #ffffff !important;
-  --text: #1f2937 !important;
-  --text-muted: #4b5563 !important;
+  --primary: #1a3a5c;
+  --primary-light: #2c5f8d;
+  --accent: #d4a017;
+  --bg: #e2e8f0;
+  --card-bg: #ffffff;
+  --text: #1f2937;
+  --text-muted: #4b5563;
+  --border: #cbd5e1;
 }
-body { background: #e2e8f0 !important; color: #1f2937 !important;
-       font-family: system-ui, -apple-system, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif !important; }
-/* 抹除自製月份導航（被 standard nav 取代） */
-.month-nav { display: none !important; }
-/* ===== end ===== */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+}
+.container { max-width: 980px; margin: 0 auto; padding: 24px 20px 64px; }
+
+/* Cover */
+.cover {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: #fff;
+  padding: 56px 32px;
+  border-radius: 16px;
+  margin-bottom: 32px;
+  box-shadow: 0 8px 24px rgba(26, 58, 92, 0.15);
+}
+.cover h1 { margin: 0 0 8px; font-size: 2.3em; letter-spacing: 1px; font-weight: 700; }
+.cover .issue { font-size: 1.15em; opacity: 0.92; margin: 8px 0 14px; font-weight: 600; }
+.cover .picks { font-size: 1em; opacity: 0.92; margin: 6px 0; line-height: 1.7; }
+.cover .picks b { color: var(--accent); font-weight: 700; margin-right: 4px; }
+.cover .meta {
+  margin-top: 22px;
+  font-size: 0.92em;
+  opacity: 0.88;
+  border-top: 1px solid rgba(255,255,255,0.25);
+  padding-top: 14px;
+}
+
+/* Sections */
+section { margin-bottom: 40px; }
+h2 {
+  color: var(--primary);
+  font-size: 1.5em;
+  border-left: 5px solid var(--accent);
+  padding-left: 14px;
+  margin: 0 0 18px;
+}
+
+/* Top 3 highlights grid */
+.highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+.h-card {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 12px;
+  border-top: 4px solid var(--accent);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.h-card:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.10); }
+.h-card .rank {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 28px; height: 28px;
+  text-align: center; line-height: 28px;
+  font-size: 0.9em;
+  margin-bottom: 8px;
+}
+.h-card h3 { color: var(--primary); margin: 0 0 6px; font-size: 1.05em; }
+.h-card h3 a { color: var(--primary); text-decoration: none; border: none; }
+.h-card h3 a:hover { color: var(--accent); }
+.h-card p { margin: 6px 0; color: var(--text-muted); font-size: 0.92em; }
+
+/* Article card */
+.article {
+  background: var(--card-bg);
+  padding: 20px 22px;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  border-left: 3px solid var(--primary-light);
+}
+.article h3 {
+  color: var(--primary);
+  font-size: 1.1em;
+  margin: 0 0 6px;
+}
+.article h3 a { color: var(--primary); text-decoration: none; border: none; }
+.article h3 a:hover { color: var(--accent); border-bottom: 2px solid var(--accent); }
+.article p { margin: 8px 0; color: var(--text-muted); }
+.article .ext {
+  margin-top: 12px;
+  background: #f1f5f9;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.9em;
+}
+.article .ext-title {
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0 0 6px;
+  font-size: 0.9em;
+}
+.article .ext-title::before {
+  content: "→ ";
+  color: var(--accent);
+}
+.article .ext ul { margin: 4px 0; padding-left: 22px; }
+.article .ext li { margin: 4px 0; }
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.78em;
+  font-weight: 600;
+  color: #fff;
+  margin-right: 8px;
+  margin-bottom: 6px;
+  vertical-align: middle;
+}
+.badge-astro    { background: #4f46e5; }
+.badge-bio      { background: #059669; }
+.badge-physics  { background: #7c3aed; }
+.badge-climate  { background: #0891b2; }
+.badge-ai       { background: #db2777; }
+.badge-medical  { background: #dc2626; }
+.badge-paleo    { background: #b45309; }
+.badge-society  { background: #475569; }
+.date {
+  font-size: 0.82em;
+  color: var(--text-muted);
+  margin-left: 4px;
+}
+.src-tag {
+  display: inline-block;
+  font-size: 0.72em;
+  background: #cbd5e1;
+  color: #1e293b;
+  padding: 1px 7px;
+  border-radius: 8px;
+  margin-right: 6px;
+  font-weight: 600;
+}
+.src-paper { background: #c7d2fe; color: #3730a3; }
+.src-news  { background: #fed7aa; color: #9a3412; }
+.src-scitw { background: #fecaca; color: #991b1b; }
+.src-zh    { background: #bbf7d0; color: #166534; }
+
+/* Links */
+a { color: var(--primary-light); text-decoration: none; border-bottom: 1px dashed var(--primary-light); transition: color 0.2s; }
+a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* Footer */
+footer {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85em;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  margin-top: 40px;
+}
+@media (max-width: 600px) {
+  .cover { padding: 36px 22px; }
+  .cover h1 { font-size: 1.7em; }
+  h2 { font-size: 1.25em; }
+}
 </style>
 </head>
 <body data-ym="202606">
@@ -221,7 +212,6 @@ body { background: #e2e8f0 !important; color: #1f2937 !important;
     }
     return '/Briefings/科學人/科學人新知月報' + targetYm + '.html';
   }
-  // 隱藏未來月份的「下月」按鈕
   var now = new Date();
   var currYM = now.getFullYear()*100 + (now.getMonth()+1);
   var nextBtn = nav.querySelector('[data-scitw="next"]');
@@ -232,217 +222,118 @@ body { background: #e2e8f0 !important; color: #1f2937 !important;
 })();
 </script>
 <!-- scitw-nav:end -->
-
-
 <div class="container">
-
-  <!-- ====== Cover ====== -->
   <header class="cover">
     <h1>科學人新知月報</h1>
-    <div class="subtitle">2026 年 6 月號 · Scientific American Taiwan Monthly</div>
-    <div class="subtitle">本月精選：黑洞合併、火星捷徑、人工冬眠、UFO 解密</div>
-    <div class="meta">產出日期：2026 年 6 月 5 日｜資料涵蓋：2026 年 5 月 – 6 月初</div>
+    <div class="issue">2026 年 6 月號</div>
+    <div class="picks">本月精選：<b>·</b>黑洞合併 · <b>·</b>火星捷徑 · <b>·</b>人工冬眠 · <b>·</b>UFO 解密 · <b>·</b>工作壓力頭痛</div>
+    <div class="meta">產出日期：2026 年 6 月 5 日</div>
   </header>
 
-  <!-- ====== Top 3 Highlights ====== -->
   <section>
     <h2>本月亮點 Top 3</h2>
-    <div class="highlight-grid">
-      <div class="highlight-card">
-        <div class="rank">1</div>
-        <h3>小行星指路！火星「通勤」120 天</h3>
-        <p>巴西天文學家循小行星 2001 CA21 軌道，意外發現一條地球–火星間的低能量捷徑，可將原本 500 天的單程縮短至 120 天，2031 年將迎來首個發射窗口。</p>
-        <a href="https://www.scitw.cc/posts/20260511-19493" target="_blank" rel="noopener">→ 閱讀原文</a>
-      </div>
-      <div class="highlight-card">
-        <div class="rank">2</div>
-        <h3>百年內，人類或可目睹黑洞互撞</h3>
-        <p>LIGO–Virgo 第五版重力波目錄新增 161 起合併事件，並偵測到史上最大質量黑洞合併。模型推估在百年內，我們有機會直接觀測到雙黑洞撞擊事件。</p>
-        <a href="https://www.scitw.cc/posts/20260420-19428" target="_blank" rel="noopener">→ 閱讀原文</a>
-      </div>
-      <div class="highlight-card">
-        <div class="rank">3</div>
-        <h3>冰封小鼠大腦解凍後重新運作</h3>
-        <p>德國團隊以 –196 ℃ 玻璃化保存小鼠海馬迴切片長達 7 天，解凍後神經元突觸活性近乎完整恢復，朝「人工冬眠」與長程太空旅行邁出關鍵一步。</p>
-        <a href="https://www.scitw.cc/posts/20260316-19319" target="_blank" rel="noopener">→ 閱讀原文</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====== Categories ====== -->
-  <section>
-    <h2>天文與太空</h2>
-
-    <div class="article">
-      <span class="badge badge-astro">天文太空</span><span class="date">2026/05/11</span>
-      <h3>小行星提供星際捷徑：地球到火星「通勤時間」從 500 天壓縮到 120 天</h3>
-      <p>巴西天文學家 Marcelo de Oliveira Souza 在追蹤近地小行星 2001 CA21 時，發現其早期軌道資料勾勒出一個跨越地球與火星軌道的延展低傾角橢圓。研究發表於《Acta Astronautica》，提出一條全程 226 天、最短可達 153 天的雙程任務路徑。如能在 2031 年發射窗口前完成飛行器設計，火星往返時間可望腰斬。</p>
-      <a href="https://www.scitw.cc/posts/20260511-19493" target="_blank" rel="noopener">原文連結</a>
-    </div>
-
-    <div class="article">
-      <span class="badge badge-astro">天文太空</span><span class="date">2026/04/20</span>
-      <h3>大場面要來了？百年內人類或許能看到兩大黑洞互撞</h3>
-      <p>隨著 LIGO 與重啟後的 Virgo 偵測靈敏度提升，重力波信號量已增加至每週 3–4 起。最新模型推估超大質量黑洞合併雖罕見，但在百年觀測尺度內並非全無機會。GW240615 等新事件首度定位精準到電磁追蹤可行的程度。</p>
-      <a href="https://www.scitw.cc/posts/20260420-19428" target="_blank" rel="noopener">原文連結</a>
+    <div class="highlights">
+      <div class="h-card">
+  <div class="rank">1</div>
+  <h3><a href="https://www.scitw.cc/posts/20260511-19493" target="_blank" rel="noopener">小行星指路！火星「通勤」120 天</a></h3>
+  <p>巴西天文學家循小行星 2001 CA21 軌道發現低能量捷徑，可將原本 500 天的單程縮短至 120 天，2031 年有發射窗口。</p>
+</div>
+<div class="h-card">
+  <div class="rank">2</div>
+  <h3><a href="https://www.scitw.cc/posts/20260420-19428" target="_blank" rel="noopener">百年內人類或可目睹黑洞互撞</a></h3>
+  <p>LIGO–Virgo 第五版重力波目錄新增 161 起合併事件，並偵測到史上最大質量黑洞合併。</p>
+</div>
+<div class="h-card">
+  <div class="rank">3</div>
+  <h3><a href="https://www.scitw.cc/posts/20260316-19319" target="_blank" rel="noopener">冰封小鼠大腦解凍後重新運作</a></h3>
+  <p>德國團隊以 –196 ℃ 玻璃化保存小鼠海馬迴 7 天，解凍後突觸活性近乎完整恢復，朝人工冬眠邁出關鍵一步。</p>
+</div>
     </div>
   </section>
 
   <section>
-    <h2>生命科學</h2>
+  <h2>天文與太空</h2>
+  <div class="article">
+  <span class="badge badge-astro">天文與太空</span><span class="date">2026/05/11</span>
+  <h3><a href="https://www.scitw.cc/posts/20260511-19493" target="_blank" rel="noopener">小行星提供星際捷徑：地球到火星「通勤時間」從 500 天壓縮到 120 天</a></h3>
+  <p>巴西天文學家在追蹤近地小行星 2001 CA21 時發現低能量捷徑。研究發表於《Acta Astronautica》，最短可達 153 天的雙程任務路徑。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul>
+      <li><span class="src-tag src-news">國際媒體</span><a href="https://www.livescience.com/space/mars/i-was-not-looking-for-this-scientist-accidentally-finds-shortcut-to-mars-that-could-slash-travel-time-in-half" target="_blank" rel="noopener">Live Science — Scientist finds shortcut to Mars</a></li><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/Editorial-289" target="_blank" rel="noopener">距離雖近卻如此遙遠──火星採樣的崎嶇路</a></li>
+    </ul>
+  </div>
+</div>
+<div class="article">
+  <span class="badge badge-astro">天文與太空</span><span class="date">2026/04/20</span>
+  <h3><a href="https://www.scitw.cc/posts/20260420-19428" target="_blank" rel="noopener">大場面要來了？百年內人類或許能看到兩大黑洞互撞</a></h3>
+  <p>隨 LIGO 與 Virgo 靈敏度提升，重力波信號量已增加至每週 3–4 起。GW240615 等新事件首度定位精準。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul>
+      <li><span class="src-tag src-paper">論文</span><a href="https://www.nature.com/articles/s41550-026-02847-0" target="_blank" rel="noopener">Nature Astronomy — pair-instability mass gap</a></li><li><span class="src-tag src-news">國際媒體</span><a href="https://www.simonsfoundation.org/2026/05/26/black-hole-discoveries-abound-in-newly-released-ligo-virgo-catalog/" target="_blank" rel="noopener">Simons Foundation — LIGO-Virgo catalog</a></li>
+    </ul>
+  </div>
+</div>
+</section>
+<section>
+  <h2>醫學與健康</h2>
+  <div class="article">
+  <span class="badge badge-medical">醫學與健康</span><span class="date">2026/05/06</span>
+  <h3><a href="https://www.scitw.cc/posts/20260506-19485" target="_blank" rel="noopener">工作壓力不退場，頭痛就容易上場</a></h3>
+  <p>慢性工作壓力升高皮質醇，改變疼痛通道敏感度，使偏頭痛慢性化。建議行為介入納入治療常規。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul>
+      <li><span class="src-tag src-paper">論文</span><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8105928/" target="_blank" rel="noopener">Migraine and stress — PMC</a></li>
+    </ul>
+  </div>
+</div>
+<div class="article">
+  <span class="badge badge-medical">醫學與健康</span><span class="date">2026/04/20</span>
+  <h3><a href="https://www.scitw.cc/posts/20260420-19429" target="_blank" rel="noopener">高枕則無憂？枕頭過高是視力的殺手！</a></h3>
+  <p>枕頭由最低調到最高，頸椎角度增加 66%、前凸距離增加 25%，長期可能影響眼部血流並導致視力惡化。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul>
+      <li><span class="src-tag src-paper">論文</span><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5012320/" target="_blank" rel="noopener">Pillow height biomechanics — PMC</a></li>
+    </ul>
+  </div>
+</div>
+</section>
+<section>
+  <h2>生命科學</h2>
+  <div class="article">
+  <span class="badge badge-bio">生命科學</span><span class="date">2026/03/16</span>
+  <h3><a href="https://www.scitw.cc/posts/20260316-19319" target="_blank" rel="noopener">人工冬眠有望成真？冰封小鼠大腦解凍後竟順利恢復運作</a></h3>
+  <p>德國團隊以 –196 ℃ 玻璃化保存小鼠海馬迴 7 天，解凍後突觸傳導近乎完整恢復。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul>
+      <li><span class="src-tag src-paper">論文</span><a href="https://www.pnas.org/doi/10.1073/pnas.2516848123" target="_blank" rel="noopener">PNAS — Functional recovery after vitrification</a></li><li><span class="src-tag src-news">國際媒體</span><a href="https://www.nature.com/articles/d41586-026-00756-w" target="_blank" rel="noopener">Nature — Scientists revive frozen mouse brains</a></li>
+    </ul>
+  </div>
+</div>
+</section>
+<section>
+  <h2>社會與科學政策</h2>
+  <div class="article">
+  <span class="badge badge-society">社會與科學政策</span><span class="date">2026/05/09</span>
+  <h3><a href="https://www.scitw.cc/posts/20260509-19491" target="_blank" rel="noopener">UFO 檔案解密開跑，川普預告後面還有</a></h3>
+  <p>國防部 5/8 啟動 PURSUE 平台，公布 1944 年迄今未解 UAP 報告與軍方記錄。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul>
+      <li><span class="src-tag src-news">國際媒體</span><a href="https://www.cnn.com/2026/05/08/politics/ufo-files-pentagon-release-aliens" target="_blank" rel="noopener">CNN — Pentagon releases UFO files</a></li><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/20260223-19260" target="_blank" rel="noopener">2026/02/23 川普下令公開 UFO 檔案</a></li>
+    </ul>
+  </div>
+</div>
+</section>
 
-    <div class="article">
-      <span class="badge badge-bio">生命科學</span><span class="date">2026/03/16</span>
-      <h3>人工冬眠有望成真？冰封小鼠大腦解凍後竟順利恢復運作</h3>
-      <p>德國研究團隊以含冷凍保護劑的溶液預處理小鼠海馬迴切片，再以液態氮快速降至 –196 ℃ 並於 –150 ℃ 維持玻璃化狀態長達 7 天。解凍後，神經膜結構完整、粒線體代謝正常，突觸傳導與可塑性接近未冷凍對照組。研究發表於《PNAS》，為長期太空旅行與重症患者「時間延緩治療」開啟可能。</p>
-      <a href="https://www.scitw.cc/posts/20260316-19319" target="_blank" rel="noopener">原文連結</a>
-    </div>
-
-    <div class="article">
-      <span class="badge badge-bio">生命科學</span><span class="date">2026/02/11</span>
-      <h3>福島逃逸家豬用「超強生育力」把自己洗出野外基因庫</h3>
-      <p>核災後逃離農場的家豬與野豬雜交繁衍，研究顯示其混合基因組正以驚人速度透過超高生殖力反向「漂白」野生種群，顯示人類飼育性狀如何快速回滲自然族群，對生物保育策略提出新挑戰。</p>
-      <a href="https://www.scitw.cc/posts/20260211-19244" target="_blank" rel="noopener">原文連結</a>
-    </div>
-  </section>
-
-  <section>
-    <h2>醫學與健康</h2>
-
-    <div class="article">
-      <span class="badge badge-medical">醫學健康</span><span class="date">2026/05/06</span>
-      <h3>工作壓力不退場，頭痛就容易上場</h3>
-      <p>新近研究指出，慢性工作壓力會持續升高皮質醇，改變疼痛通道敏感度，使偏頭痛慢性化。對醫護人員與長工時族群尤為明顯。研究建議將行為介入（如壓力釋放、睡眠規律化）納入慢性頭痛治療常規。</p>
-      <a href="https://www.scitw.cc/posts/20260506-19485" target="_blank" rel="noopener">原文連結</a>
-    </div>
-
-    <div class="article">
-      <span class="badge badge-medical">醫學健康</span><span class="date">2026/04/20</span>
-      <h3>高枕則無憂？枕頭過高是視力的殺手！</h3>
-      <p>研究比較不同枕頭高度對頸椎曲度與眼壓的影響：將枕頭由最低調到最高，頸椎角度增加 66%、前凸距離增加 25%，長期可能影響眼部血流並導致視力惡化。臨床建議枕頭高度應使頸椎維持自然 C 形曲線。</p>
-      <a href="https://www.scitw.cc/posts/20260420-19429" target="_blank" rel="noopener">原文連結</a>
-    </div>
-  </section>
-
-  <section>
-    <h2>AI 與科技</h2>
-
-    <div class="article">
-      <span class="badge badge-ai">AI 科技</span><span class="date">2026/05/27</span>
-      <h3>AlphaFold 3 延伸戰場：從蛋白質到 RNA 結構皆能預測</h3>
-      <p>科學家將 AlphaFold 3 信心分數導入 sgRNA 活性評估，發現它能捕捉序列變異對 RNA 結構的影響。研究團隊也利用 AF3 模擬 CRISPR 防禦蛋白與類似真核蛋白的結構相似性，加速基因編輯藥物開發。</p>
-      <a href="https://www.scientificamerican.com/article/new-protein-folding-ai-vastly-expands-on-alphafolds-efforts/" target="_blank" rel="noopener">延伸閱讀（Scientific American）</a>
-    </div>
-  </section>
-
-  <section>
-    <h2>物理與材料</h2>
-
-    <div class="article">
-      <span class="badge badge-physics">物理材料</span><span class="date">2026/05</span>
-      <h3>日本團隊瞬間檢測量子「W 態」，開啟可擴展量子通訊</h3>
-      <p>研究團隊開發出可在奈光子晶片中按需產生並偵測 W 糾纏態的方法，被視為量子網路與遠距傳輸的里程碑。與此同時，德國科學家以歐洲新建的百萬兆次級超級電腦 JUPITER 首度完整模擬 50 量子位元系統，展現量子–古典混合運算的新里程碑。</p>
-      <a href="https://www.sciencedaily.com/releases/2026/05/260513034640.htm" target="_blank" rel="noopener">延伸閱讀（ScienceDaily）</a>
-    </div>
-  </section>
-
-  <section>
-    <h2>社會與科學政策</h2>
-
-    <div class="article">
-      <span class="badge badge-society">科學政策</span><span class="date">2026/05/09</span>
-      <h3>UFO 檔案解密開跑，川普預告後面還有</h3>
-      <p>美國國防部 5 月 8 日依川普總統 2 月行政命令，啟動 PURSUE（Presidential Unsealing and Reporting System for UAP Encounters）平台，公布 1944 年迄今未解空中異象（UAP）報告、照片、影片與軍方記錄。首批檔案尚未證實外星生命，但開啟政府對 UAP 資料的滾動式解密機制，科學界呼籲須有同行審查機制配套。</p>
-      <a href="https://www.scitw.cc/posts/20260509-19491" target="_blank" rel="noopener">原文連結</a>
-    </div>
-  </section>
-
-  <!-- ====== Extended Reading ====== -->
-  <section>
-    <h2>延伸閱讀（國際期刊）</h2>
-
-    <div class="ext-block">
-      <h3>天文與太空</h3>
-      <ul>
-        <li><a href="https://www.nature.com/articles/d41586-025-02212-7" target="_blank" rel="noopener">Monster black hole merger is biggest ever seen — Nature</a></li>
-        <li><a href="https://www.simonsfoundation.org/2026/05/26/black-hole-discoveries-abound-in-newly-released-ligo-virgo-catalog/" target="_blank" rel="noopener">Black Hole Discoveries Abound in Newly Released LIGO-Virgo Catalog — Simons Foundation</a></li>
-        <li><a href="https://www.livescience.com/space/mars/i-was-not-looking-for-this-scientist-accidentally-finds-shortcut-to-mars-that-could-slash-travel-time-in-half" target="_blank" rel="noopener">Scientist Accidentally Finds Shortcut to Mars — Live Science</a></li>
-      </ul>
-    </div>
-
-    <div class="ext-block">
-      <h3>生命科學</h3>
-      <ul>
-        <li><a href="https://www.nature.com/articles/d41586-026-00756-w" target="_blank" rel="noopener">Scientists revive activity in frozen mouse brains for the first time — Nature</a></li>
-        <li><a href="https://www.pnas.org/doi/10.1073/pnas.2516848123" target="_blank" rel="noopener">Functional recovery of the adult murine hippocampus after cryopreservation by vitrification — PNAS</a></li>
-        <li><a href="https://www.biorxiv.org/content/10.64898/2025.12.09.692927.full.pdf" target="_blank" rel="noopener">Artificial hibernation uncovers distinct synaptic engram architecture — bioRxiv</a></li>
-      </ul>
-    </div>
-
-    <div class="ext-block">
-      <h3>醫學與健康</h3>
-      <ul>
-        <li><a href="https://migrainecollaborative.org/january-2026-clinical-research-update-the-latest-findings-in-migraine" target="_blank" rel="noopener">2026 Clinical Research Update: Latest Findings in Migraine — Migraine Science Collaborative</a></li>
-        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5012320/" target="_blank" rel="noopener">Effect of pillow height on the biomechanics of the head-neck complex — J. Phys. Ther. Sci.</a></li>
-      </ul>
-    </div>
-
-    <div class="ext-block">
-      <h3>AI 與量子</h3>
-      <ul>
-        <li><a href="https://academic.oup.com/bib/article/26/4/bbaf419/8236503" target="_blank" rel="noopener">Design of function-regulating RNA via deep learning and AlphaFold 3 — Briefings in Bioinformatics</a></li>
-        <li><a href="https://www.sciencedaily.com/releases/2026/05/260513034640.htm" target="_blank" rel="noopener">Quantum breakthrough could revolutionize teleportation and computing — ScienceDaily</a></li>
-        <li><a href="https://www.sciencedaily.com/releases/2026/02/260216084525.htm" target="_blank" rel="noopener">Majorana qubits decoded in quantum computing breakthrough — ScienceDaily</a></li>
-      </ul>
-    </div>
-
-    <div class="ext-block">
-      <h3>科學政策</h3>
-      <ul>
-        <li><a href="https://www.cnn.com/2026/05/08/politics/ufo-files-pentagon-release-aliens" target="_blank" rel="noopener">Pentagon releases initial batch of declassified UAP files — CNN</a></li>
-        <li><a href="https://defensescoop.com/2026/05/14/uap-trump-first-pursue-ufo-file-drop/" target="_blank" rel="noopener">UAP research community reacts to Trump's first PURSUE file drop — DefenseScoop</a></li>
-        <li><a href="https://en.wikipedia.org/wiki/United_States_UAP_files" target="_blank" rel="noopener">United States UAP files — Wikipedia</a></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ====== Cross-domain Trends ====== -->
-  <section>
-    <h2>關聯主題推薦</h2>
-
-    <div class="trend-card">
-      <h3>太空旅行的「人工冬眠」可行性</h3>
-      <p>當火星捷徑與冷凍腦切片技術同時取得突破，「長程任務 × 低代謝休眠」的組合方案成為航太醫學新焦點，NASA 與 ESA 都已啟動跨領域評估。</p>
-    </div>
-
-    <div class="trend-card">
-      <h3>AI × 結構生物學的第二波應用</h3>
-      <p>AlphaFold 3 從蛋白質擴展到 RNA、配體、金屬離子與小分子，預期推動下一輪 CRISPR 系統設計與抗病毒藥物開發。</p>
-    </div>
-
-    <div class="trend-card">
-      <h3>重力波觀測進入「常態化」時代</h3>
-      <p>LIGO–Virgo 第五版目錄釋出 161 起新事件，平均每週 3–4 訊號，黑洞統計學從稀有個案邁向群體分析，並將與電磁波觀測形成多信使天文學主軸。</p>
-    </div>
-
-    <div class="trend-card">
-      <h3>慢性壓力的全身效應</h3>
-      <p>從偏頭痛到視覺老化、從工作倦怠到睡眠品質，2026 年的醫學研究正持續描繪「皮質醇–神經–血管」連動圖譜，預期將翻新職場健康政策。</p>
-    </div>
-
-    <div class="trend-card">
-      <h3>科學透明度與政府資料解密</h3>
-      <p>UAP 檔案解密為政府科學資料開放樹立先例。如何在公眾興趣與同行審查間取得平衡，將是接下來重要的科學治理議題。</p>
-    </div>
-  </section>
-
-  <!-- ====== Footer ====== -->
   <footer>
     <p>科學人新知月報 · 2026 年 6 月號</p>
-    <p>產出時間：2026-06-05 01:08（UTC+8）｜資料來源：scitw.cc、Nature、Science、PNAS、Scientific American、ScienceDaily</p>
-    <p>本報為自動化整理之科學新聞摘要，文中觀點與摘要僅供參考，正式內容以原始期刊與報導為準。</p>
+    <p>產出時間：2026 年 6 月 5 日｜資料來源：scitw.cc 及國際期刊／媒體</p>
   </footer>
-
 </div>
 </body>
 </html>
