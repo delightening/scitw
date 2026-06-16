@@ -196,6 +196,9 @@
     .cover h1 { font-size: 1.7em; }
     h2 { font-size: 1.25em; }
   }
+
+  .title-link { color: var(--primary) !important; border-bottom: none !important; }
+  .title-link:hover { color: var(--accent) !important; border-bottom: 2px solid var(--accent) !important; }
 </style>
 </head>
 <body>
@@ -210,7 +213,7 @@
 (function(){
   var nav = document.getElementById('scitw-nav');
   if (!nav) return;
-  var m = location.pathname.match(/(\d{6})\.html$/);
+  var m = location.pathname.match(/(\d{6})(?:-[^/]*)?\.html$/);
   if (!m) { nav.style.display='none'; return; }
   var ym = m[1];
   var y = parseInt(ym.slice(0,4),10), mo = parseInt(ym.slice(4,6),10);
@@ -221,7 +224,7 @@
     return yy + String(mm).padStart(2,'0');
   }
   function urlFor(targetYm){
-    return location.pathname.replace(/\d{6}\.html$/, targetYm + '.html');
+    return location.pathname.replace(/\d{6}(?:-[^/]*)?\.html$/, targetYm + '.html');
   }
   nav.querySelector('[data-scitw="label"]').textContent = y + ' 年 ' + mo + ' 月';
   nav.querySelector('[data-scitw="prev"]').addEventListener('click', function(){ location.href = urlFor(shift(-1)); });
@@ -229,6 +232,7 @@
 })();
 </script>
 <!-- scitw-nav:end -->
+
 <div class="container">
 
   <!-- ====== Cover ====== -->
@@ -257,9 +261,8 @@
 
     <div class="article cover-story">
       <span class="badge badge-cover">封面故事</span><span class="date">2026 年 6 月號</span>
-      <h3>從延緩洗腎到修復腎臟：標靶藥物與糖尿病用藥的醫學轉折</h3>
+      <h3><a href="https://www.scitw.cc/magazines/single/292" target="_blank" rel="noopener" class="title-link">從延緩洗腎到修復腎臟：標靶藥物與糖尿病用藥的醫學轉折</a></h3>
       <p>腎臟和肝臟一樣是「沉默的器官」，早期病變幾乎沒有症狀，台灣 2024 年腎臟病仍居十大死因第九位。第 292 期封面故事整理近年兩大進展：原本治療糖尿病的 SGLT2 抑制劑被證實能顯著保護腎功能；新一代針對 B 細胞與 T 細胞的標靶藥物（如 obinutuzumab、voclosporin、belimumab）讓自體免疫腎病有了根本性治療選項，醫學目標正從「延緩透析」轉向「修復腎臟」。</p>
-      <a class="source-link" href="https://www.scitw.cc/magazines/single/292" target="_blank" rel="noopener">→ 6 月號封面故事頁（scitw.cc）</a>
 
       <div class="ext">
         <p class="ext-title">延伸閱讀</p>
@@ -286,9 +289,8 @@
     <!-- ARTICLE 1 -->
     <div class="article">
       <span class="badge badge-astro">天文太空</span><span class="date">2026/05/11</span>
-      <h3>小行星提供星際捷徑：地球到火星「通勤時間」從 500 天壓縮到 120 天</h3>
+      <h3><a href="https://www.scitw.cc/posts/20260511-19493" target="_blank" rel="noopener" class="title-link">小行星提供星際捷徑：地球到火星「通勤時間」從 500 天壓縮到 120 天</a></h3>
       <p>巴西天文學家 Marcelo de Oliveira Souza 在追蹤近地小行星 2001 CA21 時，意外發現其早期軌道勾勒出一個跨越地球與火星軌道的低傾角橢圓。據《Acta Astronautica》發表的研究，此路徑可讓火星雙程任務縮短至 153–226 天，2031 年將迎來首個發射窗口。</p>
-      <a class="source-link" href="https://www.scitw.cc/posts/20260511-19493" target="_blank" rel="noopener">→ 連結到 scitw.cc 原文</a>
 
       <div class="ext">
         <p class="ext-title">延伸閱讀</p>
@@ -304,9 +306,8 @@
     <!-- ARTICLE 2 -->
     <div class="article">
       <span class="badge badge-society">科學政策</span><span class="date">2026/05/09</span>
-      <h3>UFO 檔案解密開跑，川普預告後面還有</h3>
+      <h3><a href="https://www.scitw.cc/posts/20260509-19491" target="_blank" rel="noopener" class="title-link">UFO 檔案解密開跑，川普預告後面還有</a></h3>
       <p>美國國防部 5 月 8 日依川普 2 月行政命令啟動 PURSUE（Presidential Unsealing and Reporting System for UAP Encounters）平台，公布 1944 年迄今的未解空中異象（UAP）報告、照片、影片與軍方記錄。首批檔案並未證實外星生命，但開啟政府對 UAP 資料的滾動式解密機制。</p>
-      <a class="source-link" href="https://www.scitw.cc/posts/20260509-19491" target="_blank" rel="noopener">→ 連結到 scitw.cc 原文</a>
 
       <div class="ext">
         <p class="ext-title">延伸閱讀</p>
@@ -323,9 +324,8 @@
     <!-- ARTICLE 3 -->
     <div class="article">
       <span class="badge badge-medical">醫學健康</span><span class="date">2026/05/06</span>
-      <h3>工作壓力不退場，頭痛就容易上場</h3>
+      <h3><a href="https://www.scitw.cc/posts/20260506-19485" target="_blank" rel="noopener" class="title-link">工作壓力不退場，頭痛就容易上場</a></h3>
       <p>慢性工作壓力持續抬升皮質醇，會改變疼痛通道敏感度並使偏頭痛慢性化。研究對醫護、長工時族群尤具意義，建議將壓力管理、規律睡眠等行為介入，納入慢性頭痛治療常規。</p>
-      <a class="source-link" href="https://www.scitw.cc/posts/20260506-19485" target="_blank" rel="noopener">→ 連結到 scitw.cc 原文</a>
 
       <div class="ext">
         <p class="ext-title">延伸閱讀</p>
@@ -349,9 +349,8 @@
     <!-- ARTICLE 4 -->
     <div class="article">
       <span class="badge badge-astro">天文太空</span><span class="date">2026/04/20</span>
-      <h3>大場面要來了？百年內人類或許能看到兩大黑洞互撞</h3>
+      <h3><a href="https://www.scitw.cc/posts/20260420-19428" target="_blank" rel="noopener" class="title-link">大場面要來了？百年內人類或許能看到兩大黑洞互撞</a></h3>
       <p>LIGO 與重啟後的 Virgo 已將靈敏度提升至每週能偵測 3–4 起重力波訊號。最新模型推估在百年觀測尺度內，人類有機會直接觀測雙黑洞合併。LIGO–Virgo 第五版目錄一口氣新增 161 起事件，包括史上質量最大的合併。</p>
-      <a class="source-link" href="https://www.scitw.cc/posts/20260420-19428" target="_blank" rel="noopener">→ 連結到 scitw.cc 原文</a>
 
       <div class="ext">
         <p class="ext-title">延伸閱讀</p>
@@ -367,9 +366,8 @@
     <!-- ARTICLE 5 -->
     <div class="article">
       <span class="badge badge-medical">醫學健康</span><span class="date">2026/04/20</span>
-      <h3>高枕則無憂？枕頭過高是視力的殺手！</h3>
+      <h3><a href="https://www.scitw.cc/posts/20260420-19429" target="_blank" rel="noopener" class="title-link">高枕則無憂？枕頭過高是視力的殺手！</a></h3>
       <p>研究比較不同枕頭高度對頸椎與眼壓的影響：將枕頭由最低調到最高，頸椎角度增加 66%、前凸距離增加 25%，長期可能影響眼部血流並導致視力惡化。臨床建議枕頭應保持頸椎自然 C 形曲線。</p>
-      <a class="source-link" href="https://www.scitw.cc/posts/20260420-19429" target="_blank" rel="noopener">→ 連結到 scitw.cc 原文</a>
 
       <div class="ext">
         <p class="ext-title">延伸閱讀</p>
@@ -383,9 +381,8 @@
     <!-- ARTICLE 6 -->
     <div class="article">
       <span class="badge badge-bio">生命科學</span><span class="date">2026/03/16</span>
-      <h3>人工冬眠有望成真？冰封小鼠大腦解凍後竟順利恢復運作</h3>
+      <h3><a href="https://www.scitw.cc/posts/20260316-19319" target="_blank" rel="noopener" class="title-link">人工冬眠有望成真？冰封小鼠大腦解凍後竟順利恢復運作</a></h3>
       <p>德國研究團隊以含冷凍保護劑的溶液預處理小鼠海馬迴切片，再以液態氮快速降至 –196 ℃ 並維持玻璃化狀態長達 7 天。解凍後神經膜結構完整、突觸傳導與可塑性接近未冷凍對照組，為長期太空旅行與重症「時間延緩治療」開啟可能。</p>
-      <a class="source-link" href="https://www.scitw.cc/posts/20260316-19319" target="_blank" rel="noopener">→ 連結到 scitw.cc 原文</a>
 
       <div class="ext">
         <p class="ext-title">延伸閱讀</p>
