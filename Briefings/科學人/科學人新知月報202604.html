@@ -186,42 +186,80 @@ footer {
 </head>
 <body data-ym="202604">
 <!-- scitw-nav:start -->
-<nav id="scitw-nav" style="position:sticky;top:0;z-index:9999;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid #d0dbe6;padding:10px 16px;display:flex;gap:8px;align-items:center;font-family:system-ui,-apple-system,'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;font-size:14px;box-shadow:0 2px 6px rgba(26,58,92,.06);">
+<nav id="scitw-nav" style="position:sticky;top:0;z-index:9999;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid #d0dbe6;padding:10px 16px;display:flex;gap:8px;align-items:center;font-family:system-ui,-apple-system,'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;font-size:14px;box-shadow:0 2px 6px rgba(26,58,92,.06);flex-wrap:wrap;">
   <button data-scitw="prev" style="cursor:pointer;padding:6px 12px;border:1px solid #a8bdd0;border-radius:6px;background:#fff;color:#1a3a5c;font:inherit;">← 上月</button>
   <button data-scitw="next" style="cursor:pointer;padding:6px 12px;border:1px solid #a8bdd0;border-radius:6px;background:#fff;color:#1a3a5c;font:inherit;">下月 →</button>
   <span data-scitw="label" style="color:#5a6f80;margin-left:6px;"></span>
+  <span data-scitw="revs" style="margin-left:14px;display:none;color:#5a6f80;align-items:center;gap:6px;">
+    <span style="color:#7a8a9a;font-size:12px;">本期版本：</span>
+    <span data-scitw="rev-list" style="display:inline-flex;gap:4px;"></span>
+  </span>
   <a href="/latest" style="margin-left:auto;padding:6px 12px;border:1px solid #2176ae;border-radius:6px;background:#2176ae;color:#fff;text-decoration:none;">最新一期</a>
 </nav>
 <script>
 (function(){
+  var REVISIONS = {
+    "202606": ["", "-1"]
+  };
+
   var nav = document.getElementById('scitw-nav');
   if (!nav) return;
-  var m = location.pathname.match(/(\d{6})(?:-[^/]*)?\.html$/);
-  var ym = m ? m[1] : (document.body && document.body.dataset && document.body.dataset.ym);
-  if (!ym) { nav.style.display='none'; return; }
-  var y = parseInt(ym.slice(0,4),10), mo = parseInt(ym.slice(4,6),10);
+
+  var m = location.pathname.match(/(\d{6})(-[^/]*)?\.html$/);
+  var baseYm, currentSuffix;
+  if (m) {
+    baseYm = m[1];
+    currentSuffix = m[2] || "";
+  } else {
+    baseYm = document.body && document.body.dataset && document.body.dataset.ym ? document.body.dataset.ym.split('-')[0] : null;
+    currentSuffix = "";
+  }
+  if (!baseYm) { nav.style.display='none'; return; }
+
+  var y = parseInt(baseYm.slice(0,4),10), mo = parseInt(baseYm.slice(4,6),10);
   function shift(delta){
     var yy=y, mm=mo+delta;
     while(mm>12){mm-=12;yy++;}
     while(mm<1){mm+=12;yy--;}
     return yy + String(mm).padStart(2,'0');
   }
-  function urlFor(targetYm){
-    if (/\d{6}(?:-[^/]*)?\.html$/.test(location.pathname)) {
-      return location.pathname.replace(/\d{6}(?:-[^/]*)?\.html$/, targetYm + '.html');
-    }
-    return '/Briefings/科學人/科學人新知月報' + targetYm + '.html';
+  function pathFor(ym, suffix){
+    return '/Briefings/科學人/科學人新知月報' + ym + (suffix||'') + '.html';
   }
+  function urlForMonth(targetYm){
+    if (/\d{6}(?:-[^/]*)?\.html$/.test(location.pathname)) {
+      return location.pathname.replace(/(\d{6})(?:-[^/]*)?\.html$/, targetYm + '.html');
+    }
+    return pathFor(targetYm, '');
+  }
+
   var now = new Date();
   var currYM = now.getFullYear()*100 + (now.getMonth()+1);
   var nextBtn = nav.querySelector('[data-scitw="next"]');
   if (parseInt(shift(+1),10) > currYM) { nextBtn.style.display = 'none'; }
-  nav.querySelector('[data-scitw="label"]').textContent = y + ' 年 ' + mo + ' 月';
-  nav.querySelector('[data-scitw="prev"]').addEventListener('click', function(){ location.href = urlFor(shift(-1)); });
-  nextBtn.addEventListener('click', function(){ location.href = urlFor(shift(+1)); });
+  nav.querySelector('[data-scitw="label"]').textContent = y + ' 年 ' + mo + ' 月' + (currentSuffix ? ' (修訂' + currentSuffix.replace('-','') + ')' : '');
+  nav.querySelector('[data-scitw="prev"]').addEventListener('click', function(){ location.href = urlForMonth(shift(-1)); });
+  nextBtn.addEventListener('click', function(){ location.href = urlForMonth(shift(+1)); });
+
+  var revs = REVISIONS[baseYm] || [""];
+  if (revs.length > 1) {
+    var revsWrap = nav.querySelector('[data-scitw="revs"]');
+    var revsList = nav.querySelector('[data-scitw="rev-list"]');
+    revsWrap.style.display = 'inline-flex';
+    revs.forEach(function(suf){
+      var label = suf ? suf.replace('-','v') : '原版';
+      var btn = document.createElement('a');
+      btn.textContent = label;
+      btn.href = pathFor(baseYm, suf);
+      var active = (suf === currentSuffix);
+      btn.style.cssText = 'padding:3px 10px;border-radius:6px;text-decoration:none;border:1px solid '+(active?'#d4a017':'#a8bdd0')+';background:'+(active?'#d4a017':'#fff')+';color:'+(active?'#fff':'#1a3a5c')+';font-size:12px;font-weight:'+(active?'700':'500')+';';
+      revsList.appendChild(btn);
+    });
+  }
 })();
 </script>
 <!-- scitw-nav:end -->
+
 <div class="container">
   <header class="cover">
     <h1>科學人新知月報</h1>
