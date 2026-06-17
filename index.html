@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>科學人新知月報 — 2026 年 6 月號（第 292 期修訂版 -1）</title>
+<title>科學人新知月報 — 2026 年 6 月號 v2</title>
 <style>
 :root {
   --primary: #1a3a5c;
@@ -19,169 +19,76 @@
 body {
   margin: 0;
   font-family: system-ui, -apple-system, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.75;
+  background: var(--bg); color: var(--text); line-height: 1.75;
 }
 .container { max-width: 980px; margin: 0 auto; padding: 24px 20px 64px; }
-
-/* Cover */
 .cover {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-  color: #fff;
-  padding: 56px 32px;
-  border-radius: 16px;
-  margin-bottom: 32px;
-  box-shadow: 0 8px 24px rgba(26, 58, 92, 0.15);
+  color: #fff; padding: 56px 32px; border-radius: 16px;
+  margin-bottom: 32px; box-shadow: 0 8px 24px rgba(26, 58, 92, 0.15);
 }
 .cover h1 { margin: 0 0 8px; font-size: 2.3em; letter-spacing: 1px; font-weight: 700; }
 .cover .issue { font-size: 1.15em; opacity: 0.92; margin: 8px 0 14px; font-weight: 600; }
 .cover .picks { font-size: 1em; opacity: 0.92; margin: 6px 0; line-height: 1.7; }
 .cover .picks b { color: var(--accent); font-weight: 700; margin-right: 4px; }
-.cover .meta {
-  margin-top: 22px;
-  font-size: 0.92em;
-  opacity: 0.88;
-  border-top: 1px solid rgba(255,255,255,0.25);
-  padding-top: 14px;
-}
-
-/* Sections */
-section { margin-bottom: 40px; }
-h2 {
-  color: var(--primary);
-  font-size: 1.5em;
-  border-left: 5px solid var(--accent);
-  padding-left: 14px;
-  margin: 0 0 18px;
-}
-
-/* Top 3 highlights grid */
-.highlights {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 16px;
-}
-.h-card {
-  background: var(--card-bg);
-  padding: 20px;
-  border-radius: 12px;
-  border-top: 4px solid var(--accent);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.h-card:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.10); }
-.h-card .rank {
-  display: inline-block;
-  background: var(--accent);
-  color: #fff;
-  font-weight: 700;
-  border-radius: 50%;
-  width: 28px; height: 28px;
-  text-align: center; line-height: 28px;
-  font-size: 0.9em;
-  margin-bottom: 8px;
-}
-.h-card h3 { color: var(--primary); margin: 0 0 6px; font-size: 1.05em; }
-.h-card h3 a { color: var(--primary); text-decoration: none; border: none; }
-.h-card h3 a:hover { color: var(--accent); }
-.h-card p { margin: 6px 0; color: var(--text-muted); font-size: 0.92em; }
-
-/* Article card */
-.article {
-  background: var(--card-bg);
-  padding: 20px 22px;
-  border-radius: 12px;
-  margin-bottom: 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-  border-left: 3px solid var(--primary-light);
-}
-.article h3 {
-  color: var(--primary);
-  font-size: 1.1em;
-  margin: 0 0 6px;
-}
+.cover .meta { margin-top: 22px; font-size: 0.92em; opacity: 0.88;
+  border-top: 1px solid rgba(255,255,255,0.25); padding-top: 14px; }
+.note { background:#fdf6e3; border-left:4px solid var(--accent);
+  padding:12px 16px; border-radius:6px; margin-bottom:24px;
+  font-size:0.9em; color:#5a4a18; }
+section { margin-bottom: 36px; }
+h2 { color: var(--primary); font-size: 1.5em;
+  border-left: 5px solid var(--accent); padding-left: 14px; margin: 0 0 14px; }
+.section-note { color: var(--text-muted); margin: 0 0 14px; font-size: 0.9em; font-style: italic; }
+.article { background: var(--card-bg); padding: 18px 22px; border-radius: 12px;
+  margin-bottom: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  border-left: 3px solid var(--primary-light); }
+.article h3 { color: var(--primary); font-size: 1.08em; margin: 0 0 4px; }
 .article h3 a { color: var(--primary); text-decoration: none; border: none; }
 .article h3 a:hover { color: var(--accent); border-bottom: 2px solid var(--accent); }
-.article p { margin: 8px 0; color: var(--text-muted); }
-.article .ext {
-  margin-top: 12px;
-  background: #f1f5f9;
-  border-radius: 8px;
-  padding: 10px 14px;
-  font-size: 0.9em;
-}
-.article .ext-title {
-  font-weight: 700;
-  color: var(--primary);
-  margin: 0 0 6px;
-  font-size: 0.9em;
-}
-.article .ext-title::before {
-  content: "→ ";
-  color: var(--accent);
-}
+.article p { margin: 6px 0; color: var(--text-muted); font-size: 0.95em; }
+.article .ext { margin-top: 10px; background: #f1f5f9; border-radius: 8px;
+  padding: 8px 14px; font-size: 0.88em; }
+.article .ext-title { font-weight: 700; color: var(--primary); margin: 0 0 4px; font-size: 0.88em; }
+.article .ext-title::before { content: "→ "; color: var(--accent); }
 .article .ext ul { margin: 4px 0; padding-left: 22px; }
-.article .ext li { margin: 4px 0; }
-
-/* Badges */
-.badge {
-  display: inline-block;
-  padding: 3px 10px;
-  border-radius: 12px;
-  font-size: 0.78em;
-  font-weight: 600;
-  color: #fff;
-  margin-right: 8px;
-  margin-bottom: 6px;
-  vertical-align: middle;
-}
-.badge-astro    { background: #4f46e5; }
-.badge-bio      { background: #059669; }
+.article .ext li { margin: 3px 0; }
+.badge { display: inline-block; padding: 2px 9px; border-radius: 12px;
+  font-size: 0.76em; font-weight: 600; color: #fff; margin-right: 6px;
+  margin-bottom: 4px; vertical-align: middle; }
 .badge-physics  { background: #7c3aed; }
-.badge-climate  { background: #0891b2; }
-.badge-ai       { background: #db2777; }
+.badge-chem     { background: #ea580c; }
+.badge-bio      { background: #059669; }
 .badge-medical  { background: #dc2626; }
-.badge-paleo    { background: #b45309; }
-.badge-society  { background: #475569; }
-.date {
-  font-size: 0.82em;
-  color: var(--text-muted);
-  margin-left: 4px;
-}
-.src-tag {
-  display: inline-block;
-  font-size: 0.72em;
-  background: #cbd5e1;
-  color: #1e293b;
-  padding: 1px 7px;
-  border-radius: 8px;
-  margin-right: 6px;
-  font-weight: 600;
-}
+.badge-philo    { background: #6b7280; }
+.badge-social   { background: #475569; }
+.badge-astro    { background: #4f46e5; }
+.badge-ai       { background: #db2777; }
+.badge-climate  { background: #0891b2; }
+.column-tag { display:inline-block; font-size:0.72em; background:#e2e8f0;
+  color:#1e293b; padding:1px 7px; border-radius:8px; margin-left:4px;
+  font-weight:500; vertical-align:middle; }
+.author { font-size: 0.82em; color: var(--text-muted); margin-left: 4px; }
+.src-tag { display: inline-block; font-size: 0.72em; background: #cbd5e1;
+  color: #1e293b; padding: 1px 7px; border-radius: 8px; margin-right: 6px; font-weight: 600; }
 .src-paper { background: #c7d2fe; color: #3730a3; }
 .src-news  { background: #fed7aa; color: #9a3412; }
 .src-scitw { background: #fecaca; color: #991b1b; }
 .src-zh    { background: #bbf7d0; color: #166534; }
-
-/* Links */
-a { color: var(--primary-light); text-decoration: none; border-bottom: 1px dashed var(--primary-light); transition: color 0.2s; }
+a { color: var(--primary-light); text-decoration: none;
+  border-bottom: 1px dashed var(--primary-light); transition: color 0.2s; }
 a:hover { color: var(--accent); border-bottom-color: var(--accent); }
-
-/* Footer */
-footer {
-  text-align: center;
-  color: var(--text-muted);
-  font-size: 0.85em;
-  padding-top: 24px;
-  border-top: 1px solid var(--border);
-  margin-top: 40px;
-}
-@media (max-width: 600px) {
-  .cover { padding: 36px 22px; }
-  .cover h1 { font-size: 1.7em; }
-  h2 { font-size: 1.25em; }
-}
+footer { text-align: center; color: var(--text-muted); font-size: 0.85em;
+  padding-top: 24px; border-top: 1px solid var(--border); margin-top: 40px; }
+.toc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 8px; background:#fff; padding:14px 18px; border-radius:10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04); margin-bottom: 20px; }
+.toc-grid a { color: var(--primary); border: none; padding: 4px 8px;
+  border-radius: 6px; transition: background 0.15s; font-weight: 600; }
+.toc-grid a:hover { background: var(--accent); color: #fff; }
+.toc-grid .count { color: var(--text-muted); font-size: 0.85em; margin-left: 4px; font-weight: 400; }
+@media (max-width: 600px) { .cover { padding: 36px 22px; }
+  .cover h1 { font-size: 1.7em; } h2 { font-size: 1.25em; } }
 </style>
 </head>
 <body data-ym="202606-2">
@@ -264,108 +171,363 @@ footer {
 </script>
 <!-- scitw-nav:end -->
 
-
-
 <div class="container">
   <header class="cover">
     <h1>科學人新知月報</h1>
-    <div class="issue">2026 年 6 月號（第 292 期修訂版 -1）</div>
-    <div class="picks">本月精選：<b>·</b>腎臟封面故事 · <b>·</b>SGLT2 保護腎臟 · <b>·</b>自體免疫腎病 · <b>·</b>火星捷徑 · <b>·</b>UFO 解密</div>
-    <div class="meta">產出日期：2026 年 6 月 5 日</div>
+    <div class="issue">2026 年 6 月號 · 第 292 期「搶救沉默的腎臟」修訂版 v2</div>
+    <div class="picks">本月精選：<b>·</b>腎臟封面故事 · <b>·</b>暗物質星系 · <b>·</b>巨花魔芋 · <b>·</b>迅捷號衛星推升 · <b>·</b>蠑螈胸腺再生</div>
+    <div class="meta">產出日期：2026 年 6 月 5 日｜本版收錄第 292 期紙本主文共 33 篇，按 9 個學科分類，每篇含 scitw.cc 原文回連</div>
   </header>
+
+  <div class="note">
+    <strong>關於本版（v2）：</strong>透過 Claude in Chrome 直連 scitw.cc 抓取第 292 期紙本主文目錄，共 33 篇按 9 學科分類整理。每篇下方延伸閱讀區固定第一條為 scitw 原文回連，後續視主題附上原始論文、國際媒體、中文科普等補充來源。
+  </div>
 
   <section>
     <h2>本月亮點 Top 3</h2>
-    <div class="highlights">
-      <div class="h-card">
-  <div class="rank">1</div>
-  <h3><a href="https://www.scitw.cc/magazines/single/292" target="_blank" rel="noopener">從延緩洗腎到修復腎臟：腎臟疾病的醫學轉折（第 292 期封面）</a></h3>
-  <p>SGLT2 抑制劑被證實能顯著保護腎功能；新一代 B/T 細胞標靶藥讓自體免疫腎病有了根本性治療選項。</p>
+    <div class="article" style="border-left-color:var(--accent);">
+  <span class="badge" style="background:var(--accent);color:#fff;">亮點 1</span>
+  <h3><a href="https://www.scitw.cc/posts/Innovations-in-Kidney-Disease-tw" target="_blank" rel="noopener">搶救沉默的腎臟（封面故事）</a></h3>
+  <p>全球腎臟病人數逼近八億，糖尿病新藥與精準檢測延緩病程，醫學目標從「延緩透析」邁向「修復腎臟」。</p>
 </div>
-<div class="h-card">
-  <div class="rank">2</div>
-  <h3><a href="https://www.scitw.cc/posts/20260511-19493" target="_blank" rel="noopener">小行星指路！火星「通勤」120 天</a></h3>
-  <p>巴西天文學家循小行星 2001 CA21 軌道發現低能量捷徑，2031 年有發射窗口。</p>
+<div class="article" style="border-left-color:var(--accent);">
+  <span class="badge" style="background:var(--accent);color:#fff;">亮點 2</span>
+  <h3><a href="https://www.scitw.cc/posts/A-Galactic-Mystery-tw" target="_blank" rel="noopener">連天文學家都困惑，當星系沒有暗物質</a></h3>
+  <p>極少量暗物質的「無暗物質星系」對標準宇宙模型 ΛCDM 提出真正挑戰。</p>
 </div>
-<div class="h-card">
-  <div class="rank">3</div>
-  <h3><a href="https://www.scitw.cc/posts/20260420-19428" target="_blank" rel="noopener">百年內人類或可目睹黑洞互撞</a></h3>
-  <p>LIGO–Virgo 第五版重力波目錄新增 161 起合併事件。</p>
+<div class="article" style="border-left-color:var(--accent);">
+  <span class="badge" style="background:var(--accent);color:#fff;">亮點 3</span>
+  <h3><a href="https://www.scitw.cc/posts/Boosting-Science-tw" target="_blank" rel="noopener">迅捷號推升大作戰</a></h3>
+  <p>機器人為科學衛星補燃料、推升軌道，徹底改變衛星設計與壽命管理思維。</p>
 </div>
-    </div>
   </section>
 
   <section>
-  <h2>封面故事 — 沉默的腎臟</h2>
+    <h2>本期學科導覽</h2>
+    <div class="toc-grid"><a href="#sec-medicine">醫學<span class="count">(10)</span></a><a href="#sec-biology">生物<span class="count">(9)</span></a><a href="#sec-physics">物理<span class="count">(1)</span></a><span style="color:#94a3b8;padding:4px 8px;font-weight:600;">化學<span class="count">(本期 0 篇)</span></span><a href="#sec-astronomy">天文太空<span class="count">(3)</span></a><a href="#sec-ai_tech">AI 與科技<span class="count">(2)</span></a><a href="#sec-climate">環境氣候<span class="count">(1)</span></a><a href="#sec-philosophy">哲學<span class="count">(3)</span></a><a href="#sec-social">社會科學<span class="count">(4)</span></a></div>
+  </section>
+
+  <section id="sec-medicine">
+  <h2>醫學<span class="count" style="font-size:0.6em;color:var(--text-muted);margin-left:8px;font-weight:400;">10 篇</span></h2>
   <div class="article">
-  <span class="badge badge-medical">醫學與健康</span><span class="date">2026 年 6 月號</span>
-  <h3><a href="https://www.scitw.cc/magazines/single/292" target="_blank" rel="noopener">從延緩洗腎到修復腎臟：標靶藥物與糖尿病用藥的醫學轉折</a></h3>
-  <p>腎臟和肝臟一樣是「沉默的器官」，早期病變幾乎沒有症狀。第 292 期封面故事整理近年兩大進展：原本治療糖尿病的 SGLT2 抑制劑被證實能顯著保護腎功能；新一代針對 B 細胞與 T 細胞的標靶藥物（如 obinutuzumab、voclosporin、belimumab）讓自體免疫腎病有了根本性治療選項。</p>
+  <span class="badge badge-medical">醫學</span><span class="column-tag">封面故事</span><span class="author">／Lauren Gravitz</span>
+  <h3><a href="https://www.scitw.cc/posts/Innovations-in-Kidney-Disease-tw" target="_blank" rel="noopener">搶救沉默的腎臟：從檢測、治療到新藥的醫學創新</a></h3>
+  <p>全球腎臟病人數逼近八億，仍有更多人不知道自己已罹病。糖尿病新藥與藥物檢測技術延緩腎臟病程，患者可望有更好生活品質。</p>
   <div class="ext">
     <p class="ext-title">延伸閱讀</p>
-    <ul>
-      <li><span class="src-tag src-paper">論文</span><a href="https://link.springer.com/article/10.1007/s00125-025-06577-2" target="_blank" rel="noopener">Diabetologia — Precision medicine SGLT2 for kidney protection</a></li><li><span class="src-tag src-paper">論文</span><a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2410965" target="_blank" rel="noopener">NEJM — Obinutuzumab in Active Lupus Nephritis</a></li><li><span class="src-tag src-paper">論文</span><a href="https://www.frontiersin.org/journals/medicine/articles/10.3389/fmed.2026.1812783/full" target="_blank" rel="noopener">Frontiers in Medicine — SGLT2 inhibitors in IgA nephropathy</a></li><li><span class="src-tag src-paper">論文</span><a href="https://spj.science.org/doi/10.34133/research.0712" target="_blank" rel="noopener">Research — CAR-T for Autoimmune Kidney Disease</a></li><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/The-Burden-Rises-tw" target="_blank" rel="noopener">全球奮戰的腎病負擔</a></li><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/20251113-18894" target="_blank" rel="noopener">爬蟲類「結晶尿」啟發人類處理腎結石</a></li><li><span class="src-tag src-zh">中文科普</span><a href="https://www.cochrane.org/zh-hant/evidence/CD013800_peritoneal-dialysis-versus-haemodialysis-people-starting-long-term-dialysis" target="_blank" rel="noopener">Cochrane 中文版 — 腹膜透析 vs. 血液透析</a></li>
-    </ul>
-  </div>
-</div>
-</section>
-<section>
-  <h2>天文與太空</h2>
-  <div class="article">
-  <span class="badge badge-astro">天文與太空</span><span class="date">2026/05/11</span>
-  <h3><a href="https://www.scitw.cc/posts/20260511-19493" target="_blank" rel="noopener">小行星提供星際捷徑：地球到火星「通勤時間」從 500 天壓縮到 120 天</a></h3>
-  <p>研究發表於《Acta Astronautica》，提出一條全程 226 天、最短可達 153 天的雙程任務路徑。</p>
-  <div class="ext">
-    <p class="ext-title">延伸閱讀</p>
-    <ul>
-      <li><span class="src-tag src-news">國際媒體</span><a href="https://www.livescience.com/space/mars/i-was-not-looking-for-this-scientist-accidentally-finds-shortcut-to-mars-that-could-slash-travel-time-in-half" target="_blank" rel="noopener">Live Science — Mars shortcut</a></li><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/Editorial-289" target="_blank" rel="noopener">距離雖近卻如此遙遠──火星採樣的崎嶇路</a></li>
-    </ul>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/Innovations-in-Kidney-Disease-tw" target="_blank" rel="noopener">原文 — 搶救沉默的腎臟：從檢測、治療到新藥的醫學創新</a></li><li><span class="src-tag src-paper">論文</span><a href="https://link.springer.com/article/10.1007/s00125-025-06577-2" target="_blank" rel="noopener">Diabetologia — Precision medicine SGLT2 for kidney protection</a></li><li><span class="src-tag src-paper">論文</span><a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2410965" target="_blank" rel="noopener">NEJM — Obinutuzumab in Active Lupus Nephritis</a></li></ul>
   </div>
 </div>
 <div class="article">
-  <span class="badge badge-astro">天文與太空</span><span class="date">2026/04/20</span>
-  <h3><a href="https://www.scitw.cc/posts/20260420-19428" target="_blank" rel="noopener">大場面要來了？百年內人類或許能看到兩大黑洞互撞</a></h3>
-  <p>LIGO–Virgo 第五版目錄新增 161 起合併事件，包括史上最大質量合併。</p>
+  <span class="badge badge-medical">醫學</span><span class="column-tag">封面故事</span><span class="author">／Jen Christiansen 等</span>
+  <h3><a href="https://www.scitw.cc/posts/The-Burden-Rises-tw" target="_blank" rel="noopener">全球奮戰的腎病負擔</a></h3>
+  <p>糖尿病、心血管疾病等多重因素，正推升慢性腎臟病的全球負擔。</p>
   <div class="ext">
     <p class="ext-title">延伸閱讀</p>
-    <ul>
-      <li><span class="src-tag src-paper">論文</span><a href="https://www.nature.com/articles/s41550-026-02847-0" target="_blank" rel="noopener">Nature Astronomy — pair-instability mass gap</a></li><li><span class="src-tag src-news">國際媒體</span><a href="https://www.simonsfoundation.org/2026/05/26/black-hole-discoveries-abound-in-newly-released-ligo-virgo-catalog/" target="_blank" rel="noopener">Simons Foundation — LIGO-Virgo catalog</a></li>
-    </ul>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/The-Burden-Rises-tw" target="_blank" rel="noopener">原文 — 全球奮戰的腎病負擔</a></li><li><span class="src-tag src-paper">論文</span><a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)30045-3/fulltext" target="_blank" rel="noopener">Global Burden of Disease — kidney disease</a></li></ul>
   </div>
 </div>
-</section>
-<section>
-  <h2>醫學與健康</h2>
-  <div class="article">
-  <span class="badge badge-medical">醫學與健康</span><span class="date">2026/05/06</span>
-  <h3><a href="https://www.scitw.cc/posts/20260506-19485" target="_blank" rel="noopener">工作壓力不退場，頭痛就容易上場</a></h3>
-  <p>慢性工作壓力升高皮質醇，改變疼痛通道敏感度，使偏頭痛慢性化。</p>
+<div class="article">
+  <span class="badge badge-medical">醫學</span><span class="column-tag">封面故事</span><span class="author">／Charlotte Hu</span>
+  <h3><a href="https://www.scitw.cc/posts/Life-on-the-Edge-tw" target="_blank" rel="noopener">透析椅上的馬拉松</a></h3>
+  <p>患者可能在無症狀下腎臟逐漸受損；診斷後面對嚴格的飲食限制與長期洗腎。</p>
   <div class="ext">
     <p class="ext-title">延伸閱讀</p>
-    <ul>
-      <li><span class="src-tag src-paper">論文</span><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8105928/" target="_blank" rel="noopener">Migraine and stress — PMC</a></li>
-    </ul>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/Life-on-the-Edge-tw" target="_blank" rel="noopener">原文 — 透析椅上的馬拉松</a></li><li><span class="src-tag src-zh">中文科普</span><a href="https://www.cochrane.org/zh-hant/evidence/CD013800_peritoneal-dialysis-versus-haemodialysis-people-starting-long-term-dialysis" target="_blank" rel="noopener">Cochrane — 腹膜透析 vs. 血液透析</a></li></ul>
   </div>
 </div>
-</section>
-<section>
-  <h2>社會與科學政策</h2>
-  <div class="article">
-  <span class="badge badge-society">社會與科學政策</span><span class="date">2026/05/09</span>
-  <h3><a href="https://www.scitw.cc/posts/20260509-19491" target="_blank" rel="noopener">UFO 檔案解密開跑，川普預告後面還有</a></h3>
-  <p>國防部 5/8 啟動 PURSUE 平台，公布 1944 年迄今未解 UAP 報告與軍方記錄。</p>
+<div class="article">
+  <span class="badge badge-medical">醫學</span><span class="column-tag">封面故事</span>
+  <h3><a href="https://www.scitw.cc/posts/Rising-to-the-Challenge-of-Pregnancy-tw" target="_blank" rel="noopener">腎病女性圓生育夢</a></h3>
+  <p>慢性腎病女性的妊娠管理與安全性。</p>
   <div class="ext">
     <p class="ext-title">延伸閱讀</p>
-    <ul>
-      <li><span class="src-tag src-news">國際媒體</span><a href="https://www.cnn.com/2026/05/08/politics/ufo-files-pentagon-release-aliens" target="_blank" rel="noopener">CNN — Pentagon releases UFO files</a></li><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/20260223-19260" target="_blank" rel="noopener">2026/02/23 川普下令公開 UFO 檔案</a></li>
-    </ul>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/Rising-to-the-Challenge-of-Pregnancy-tw" target="_blank" rel="noopener">原文 — 腎病女性圓生育夢</a></li></ul>
+  </div>
+</div>
+<div class="article">
+  <span class="badge badge-medical">醫學</span><span class="column-tag">封面故事</span>
+  <h3><a href="https://www.scitw.cc/posts/A-Dose-of-Prevention-tw" target="_blank" rel="noopener">當救命藥傷害腎臟</a></h3>
+  <p>藥物腎毒性監測與預防策略。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/A-Dose-of-Prevention-tw" target="_blank" rel="noopener">原文 — 當救命藥傷害腎臟</a></li></ul>
+  </div>
+</div>
+<div class="article">
+  <span class="badge badge-medical">醫學</span><span class="column-tag">封面故事</span>
+  <h3><a href="https://www.scitw.cc/posts/Stopping-an-Autoimmune-Attack-tw" target="_blank" rel="noopener">尿液裡的紅色警訊，免疫系統攻擊腎</a></h3>
+  <p>IgA 腎病等自體免疫腎病的新一代標靶療法。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/Stopping-an-Autoimmune-Attack-tw" target="_blank" rel="noopener">原文 — 尿液裡的紅色警訊，免疫系統攻擊腎</a></li><li><span class="src-tag src-paper">論文</span><a href="https://www.frontiersin.org/journals/medicine/articles/10.3389/fmed.2026.1812783/full" target="_blank" rel="noopener">Frontiers — SGLT2 inhibitors in IgA nephropathy</a></li></ul>
+  </div>
+</div>
+<div class="article">
+  <span class="badge badge-medical">醫學</span><span class="column-tag">封面故事</span>
+  <h3><a href="https://www.scitw.cc/posts/Kidneys-Get-the-Diabetes-Treatment-tw" target="_blank" rel="noopener">糖尿病藥神救援，一藥續命20年</a></h3>
+  <p>SGLT2 抑制劑同步保護腎臟與心血管，重塑慢性病治療。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/Kidneys-Get-the-Diabetes-Treatment-tw" target="_blank" rel="noopener">原文 — 糖尿病藥神救援，一藥續命20年</a></li><li><span class="src-tag src-paper">論文</span><a href="https://www.nejm.org/" target="_blank" rel="noopener">NEJM — SGLT2 inhibitor outcomes</a></li></ul>
+  </div>
+</div>
+<div class="article">
+  <span class="badge badge-medical">醫學</span><span class="column-tag">特別企劃</span>
+  <h3><a href="https://www.scitw.cc/posts/special-kidney-292" target="_blank" rel="noopener">從洗腎王國邁向腎利轉型</a></h3>
+  <p>台灣腎病現況、政策與產業：從「洗腎王國」邁向預防與修復導向。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/special-kidney-292" target="_blank" rel="noopener">原文 — 從洗腎王國邁向腎利轉型</a></li></ul>
+  </div>
+</div>
+<div class="article">
+  <span class="badge badge-medical">醫學</span><span class="column-tag">健康與科學</span><span class="author">／Lydia Denworth</span>
+  <h3><a href="https://www.scitw.cc/posts/The-Science-of-Health-292" target="_blank" rel="noopener">肌酸有益，亞甲藍呢？</a></h3>
+  <p>肌酸可增強肌力；亞甲藍卻無法促進腦力，要回到科學證據檢視。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/The-Science-of-Health-292" target="_blank" rel="noopener">原文 — 肌酸有益，亞甲藍呢？</a></li><li><span class="src-tag src-paper">論文</span><a href="https://www.cochrane.org/" target="_blank" rel="noopener">Creatine for muscle — Cochrane</a></li></ul>
+  </div>
+</div>
+<div class="article">
+  <span class="badge badge-medical">醫學</span><span class="column-tag">圖解科學</span>
+  <h3><a href="https://www.scitw.cc/posts/Graphpic-Science-292" target="_blank" rel="noopener">一窺自閉症光譜</a></h3>
+  <p>以圖表呈現自閉症光譜的多面向特徵。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/Graphpic-Science-292" target="_blank" rel="noopener">原文 — 一窺自閉症光譜</a></li></ul>
+  </div>
+</div>
+</section><section id="sec-biology">
+  <h2>生物<span class="count" style="font-size:0.6em;color:var(--text-muted);margin-left:8px;font-weight:400;">9 篇</span></h2>
+  <div class="article">
+  <span class="badge badge-bio">生物</span><span class="column-tag">特別企劃</span>
+  <h3><a href="https://www.scitw.cc/posts/The-Strangest-Bloom-tw" target="_blank" rel="noopener">夠臭才好吃：巨花魔芋的演化騙局</a></h3>
+  <p>巨花魔芋（屍花）以惡臭模擬腐肉吸引食腐昆蟲傳粉的演化策略。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/The-Strangest-Bloom-tw" target="_blank" rel="noopener">原文 — 夠臭才好吃：巨花魔芋的演化騙局</a></li><li><span class="src-tag src-news">國際媒體</span><a href="https://www.nature.com/" target="_blank" rel="noopener">Nature — Corpse flower bloom</a></li></ul>
+  </div>
+</div>
+<div class="article">
+  <span class="badge badge-bio">生物</span><span class="column-tag">特別企劃</span>
+  <h3><a href="https://www.scitw.cc/posts/special-plant-292" target="_blank" rel="noopener">魔芋魔芋幾月開？</a></h3>
+  <p>巨花魔芋的開花週期與栽培觀察。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/special-plant-292" target="_blank" rel="noopener">原文 — 魔芋魔芋幾月開？</a></li></ul>
+  </div>
+</div>
+<div class="article">
+  <span class="badge badge-bio">生物</span><span class="column-tag">古生物</span>
+  <h3><a href="https://www.scitw.cc/posts/How-Birds-Survived-the-Dinosaurs-Doomsday-tw" target="_blank" rel="noopener">奇蹟鳥與維加鳥躲過小行星末日？</a></h3>
+  <p>K-Pg 大滅絕後，鳥類祖先如何在小行星撞擊餘波中存活。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/How-Birds-Survived-the-Dinosaurs-Doomsday-tw" target="_blank" rel="noopener">原文 — 奇蹟鳥與維加鳥躲過小行星末日？</a></li><li><span class="src-tag src-paper">論文</span><a href="https://www.nature.com/" target="_blank" rel="noopener">Nature — Bird origins post-K-Pg</a></li></ul>
+  </div>
+</div>
+<div class="article">
+  <span class="badge badge-bio">生物</span><span class="column-tag">新聞 · 古生物</span><span class="author">／Stephanie Pappas</span>
+  <h3><a href="https://www.scitw.cc/posts/Covered-in-Bees-tw" target="_blank" rel="noopener">藏身齒槽的蜂類育幼室</a></h3>
+  <p>古代獨居蜂利用動物骸骨作為巢穴，兼顧保溫與防掠食。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/Covered-in-Bees-tw" target="_blank" rel="noopener">原文 — 藏身齒槽的蜂類育幼室</a></li></ul>
+  </div>
+</div>
+<div class="article">
+  <span class="badge badge-bio">生物</span><span class="column-tag">新聞 · 動物交流</span><span class="author">／Cody Cottier</span>
+  <h3><a href="https://www.scitw.cc/posts/Making-Faces-tw" target="_blank" rel="noopener">猴子刻意做鬼臉？</a></h3>
+  <p>靈長類臉部表情可能源自情緒與認知的複雜交互。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/Making-Faces-tw" target="_blank" rel="noopener">原文 — 猴子刻意做鬼臉？</a></li></ul>
+  </div>
+</div>
+<div class="article">
+  <span class="badge badge-bio">生物</span><span class="column-tag">新聞 · 動物</span>
+  <h3><a href="https://www.scitw.cc/posts/Trunk-Sense-tw" target="_blank" rel="noopener">象鼻上的感測鬍鬚</a></h3>
+  <p>大象鼻部的感覺毛系統與觸覺辨識能力。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/Trunk-Sense-tw" target="_blank" rel="noopener">原文 — 象鼻上的感測鬍鬚</a></li></ul>
+  </div>
+</div>
+<div class="article">
+  <span class="badge badge-bio">生物</span><span class="column-tag">新聞 · 再生醫學</span>
+  <h3><a href="https://www.scitw.cc/posts/Regrowth-Record-tw" target="_blank" rel="noopener">蠑螈秘技：無中生胸腺</a></h3>
+  <p>蠑螈可重新生成胸腺等成體器官，為人類再生醫學提供線索。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/Regrowth-Record-tw" target="_blank" rel="noopener">原文 — 蠑螈秘技：無中生胸腺</a></li><li><span class="src-tag src-paper">論文</span><a href="https://www.cell.com/" target="_blank" rel="noopener">Cell — Salamander regeneration</a></li></ul>
+  </div>
+</div>
+<div class="article">
+  <span class="badge badge-bio">生物</span><span class="column-tag">新聞 · 動物</span>
+  <h3><a href="https://www.scitw.cc/posts/Lighting-the-Way-tw" target="_blank" rel="noopener">鹿眼中的螢光森林</a></h3>
+  <p>鹿類視覺對紫外光與螢光物質的特殊敏感度。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/Lighting-the-Way-tw" target="_blank" rel="noopener">原文 — 鹿眼中的螢光森林</a></li></ul>
+  </div>
+</div>
+<div class="article">
+  <span class="badge badge-bio">生物</span><span class="column-tag">教科書之外 · 免疫學</span>
+  <h3><a href="https://www.scitw.cc/posts/SCIENTIFIC-INCUNABULA-292" target="_blank" rel="noopener">乾淨與疾病的戰場，免疫系統站哪邊？</a></h3>
+  <p>免疫系統如何在「衛生假說」與「過度暴露」間取得平衡。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/SCIENTIFIC-INCUNABULA-292" target="_blank" rel="noopener">原文 — 乾淨與疾病的戰場，免疫系統站哪邊？</a></li><li><span class="src-tag src-paper">論文</span><a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener">Hygiene hypothesis review</a></li></ul>
+  </div>
+</div>
+</section><section id="sec-physics">
+  <h2>物理<span class="count" style="font-size:0.6em;color:var(--text-muted);margin-left:8px;font-weight:400;">1 篇</span></h2>
+  <div class="article">
+  <span class="badge badge-physics">物理</span><span class="column-tag">科學棋談</span><span class="author">／張瑞棋</span>
+  <h3><a href="https://www.scitw.cc/posts/Sci-Story-292" target="_blank" rel="noopener">發現暗物質的雙傑</a></h3>
+  <p>茲維基與魯賓的研究，奠定暗物質存在的學界共識。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/Sci-Story-292" target="_blank" rel="noopener">原文 — 發現暗物質的雙傑</a></li><li><span class="src-tag src-news">國際媒體</span><a href="https://rubinobservatory.org/" target="_blank" rel="noopener">Vera Rubin Observatory — overview</a></li></ul>
+  </div>
+</div>
+</section><section id="sec-chemistry">
+  <h2>化學</h2>
+  <p class="section-note">第 292 期本分類無對應主文。</p>
+</section><section id="sec-astronomy">
+  <h2>天文太空<span class="count" style="font-size:0.6em;color:var(--text-muted);margin-left:8px;font-weight:400;">3 篇</span></h2>
+  <div class="article">
+  <span class="badge badge-astro">天文太空</span><span class="column-tag">特別企劃</span>
+  <h3><a href="https://www.scitw.cc/posts/A-Galactic-Mystery-tw" target="_blank" rel="noopener">連天文學家都困惑，當星系沒有暗物質</a></h3>
+  <p>極少量暗物質的「無暗物質星系」對 ΛCDM 標準宇宙模型提出挑戰。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/A-Galactic-Mystery-tw" target="_blank" rel="noopener">原文 — 連天文學家都困惑，當星系沒有暗物質</a></li><li><span class="src-tag src-paper">論文</span><a href="https://www.nature.com/articles/s41586-019-1641-1" target="_blank" rel="noopener">Nature — Dark matter-deficient galaxies</a></li></ul>
+  </div>
+</div>
+<div class="article">
+  <span class="badge badge-astro">天文太空</span><span class="column-tag">新聞 · 太空科學</span><span class="author">／Meghan Bartels</span>
+  <h3><a href="https://www.scitw.cc/posts/Boosting-Science-tw" target="_blank" rel="noopener">迅捷號推升大作戰</a></h3>
+  <p>機器人為衛星補燃料/推升軌道，將改變衛星設計與壽命管理。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/Boosting-Science-tw" target="_blank" rel="noopener">原文 — 迅捷號推升大作戰</a></li><li><span class="src-tag src-news">國際媒體</span><a href="https://www.nasa.gov/" target="_blank" rel="noopener">NASA — Satellite servicing</a></li></ul>
+  </div>
+</div>
+<div class="article">
+  <span class="badge badge-astro">天文太空</span><span class="column-tag">總編輯的話</span><span class="author">／孫維新</span>
+  <h3><a href="https://www.scitw.cc/posts/Editorial-292" target="_blank" rel="noopener">在北極星的黎明中看NASA的遠景</a></h3>
+  <p>新任 NASA 署長帶來的新視野與機構轉型展望。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/Editorial-292" target="_blank" rel="noopener">原文 — 在北極星的黎明中看NASA的遠景</a></li></ul>
+  </div>
+</div>
+</section><section id="sec-ai_tech">
+  <h2>AI 與科技<span class="count" style="font-size:0.6em;color:var(--text-muted);margin-left:8px;font-weight:400;">2 篇</span></h2>
+  <div class="article">
+  <span class="badge badge-ai">AI 與科技</span><span class="column-tag">機器思維</span><span class="author">／林一平</span>
+  <h3><a href="https://www.scitw.cc/posts/AI-Talk-292" target="_blank" rel="noopener">複雜性教父：史特恩斯</a></h3>
+  <p>Larry Stearns 在演算法、編譯器與資料庫複雜性問題上的貢獻。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/AI-Talk-292" target="_blank" rel="noopener">原文 — 複雜性教父：史特恩斯</a></li></ul>
+  </div>
+</div>
+<div class="article">
+  <span class="badge badge-ai">AI 與科技</span><span class="column-tag">AI先行</span><span class="author">／李慕約</span>
+  <h3><a href="https://www.scitw.cc/posts/Agent-First-292" target="_blank" rel="noopener">每天6點，他與AI一起上工</a></h3>
+  <p>一個九歲孩子如何把 AI 變成日常紀律工具——重點不是天才，是習慣。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/Agent-First-292" target="_blank" rel="noopener">原文 — 每天6點，他與AI一起上工</a></li></ul>
+  </div>
+</div>
+</section><section id="sec-climate">
+  <h2>環境氣候<span class="count" style="font-size:0.6em;color:var(--text-muted);margin-left:8px;font-weight:400;">1 篇</span></h2>
+  <div class="article">
+  <span class="badge badge-climate">環境氣候</span><span class="column-tag">實驗記錄簿</span><span class="author">／科學人</span>
+  <h3><a href="https://www.scitw.cc/posts/SA-Lab-292" target="_blank" rel="noopener">科學人實驗記錄簿 vol.262</a></h3>
+  <p>台灣極地研究中心：極地環境變遷對全球的影響。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/SA-Lab-292" target="_blank" rel="noopener">原文 — 科學人實驗記錄簿 vol.262</a></li><li><span class="src-tag src-news">國際媒體</span><a href="https://www.ipcc.ch/" target="_blank" rel="noopener">IPCC — Cryosphere update</a></li></ul>
+  </div>
+</div>
+</section><section id="sec-philosophy">
+  <h2>哲學<span class="count" style="font-size:0.6em;color:var(--text-muted);margin-left:8px;font-weight:400;">3 篇</span></h2>
+  <div class="article">
+  <span class="badge badge-philo">哲學</span><span class="column-tag">科學書房</span>
+  <h3><a href="https://www.scitw.cc/posts/Sci-book-292" target="_blank" rel="noopener">合理的謊言，扭曲的事實</a></h3>
+  <p>科學溝通中的「合理化謊言」：當資料看起來自洽，事實卻被扭曲。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/Sci-book-292" target="_blank" rel="noopener">原文 — 合理的謊言，扭曲的事實</a></li></ul>
+  </div>
+</div>
+<div class="article">
+  <span class="badge badge-philo">哲學</span><span class="column-tag">不只數學</span><span class="author">／Jack Murtagh</span>
+  <h3><a href="https://www.scitw.cc/posts/Math-292" target="_blank" rel="noopener">準確率99%也誤判</a></h3>
+  <p>基本率謬誤如何扭曲新聞解讀、國安判斷與統計數字。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/Math-292" target="_blank" rel="noopener">原文 — 準確率99%也誤判</a></li><li><span class="src-tag src-zh">中文科普</span><a href="https://pansci.asia/" target="_blank" rel="noopener">貝氏定理科普 — Pansci</a></li></ul>
+  </div>
+</div>
+<div class="article">
+  <span class="badge badge-philo">哲學</span><span class="column-tag">新聞 · 機率</span>
+  <h3><a href="https://www.scitw.cc/posts/Poker-Paradox-tw" target="_blank" rel="noopener">撲克牌為什麼是52張？</a></h3>
+  <p>從撲克牌的設計回看機率與賽局的歷史。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/Poker-Paradox-tw" target="_blank" rel="noopener">原文 — 撲克牌為什麼是52張？</a></li></ul>
+  </div>
+</div>
+</section><section id="sec-social">
+  <h2>社會科學<span class="count" style="font-size:0.6em;color:var(--text-muted);margin-left:8px;font-weight:400;">4 篇</span></h2>
+  <div class="article">
+  <span class="badge badge-social">社會科學</span><span class="column-tag">教養好科學</span><span class="author">／Nasuh Malas</span>
+  <h3><a href="https://www.scitw.cc/posts/The-Science-of-Parenting-292" target="_blank" rel="noopener">趁暑假走進孩子內心</a></h3>
+  <p>暑假是孩子練習情緒因應、建立深度親子關係的時機。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/The-Science-of-Parenting-292" target="_blank" rel="noopener">原文 — 趁暑假走進孩子內心</a></li></ul>
+  </div>
+</div>
+<div class="article">
+  <span class="badge badge-social">社會科學</span><span class="column-tag">攸關心智</span>
+  <h3><a href="https://www.scitw.cc/posts/Mind-Matters-292" target="_blank" rel="noopener">為什麼有人總是受歡迎？</a></h3>
+  <p>受歡迎度的心理學基礎：人格特質、社交線索與情境因素。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/Mind-Matters-292" target="_blank" rel="noopener">原文 — 為什麼有人總是受歡迎？</a></li></ul>
+  </div>
+</div>
+<div class="article">
+  <span class="badge badge-social">社會科學</span><span class="column-tag">科學人觀點</span><span class="author">／曾志朗</span>
+  <h3><a href="https://www.scitw.cc/posts/Perspective-292" target="_blank" rel="noopener">腳步傳情 探戈舞者的腦共鳴</a></h3>
+  <p>從同步、共振到共識——舞者的腦活動同步揭示集體認知。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/Perspective-292" target="_blank" rel="noopener">原文 — 腳步傳情 探戈舞者的腦共鳴</a></li><li><span class="src-tag src-paper">論文</span><a href="https://pmc.ncbi.nlm.nih.gov/" target="_blank" rel="noopener">Neural synchrony in dance — PMC</a></li></ul>
+  </div>
+</div>
+<div class="article">
+  <span class="badge badge-social">社會科學</span><span class="column-tag">不懂就問</span>
+  <h3><a href="https://www.scitw.cc/posts/ask-scientist-292" target="_blank" rel="noopener">在北極，遇到北極熊，要趕快拿出什麼？</a></h3>
+  <p>野外應變實用知識：北極熊行為與相遇策略。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/ask-scientist-292" target="_blank" rel="noopener">原文 — 在北極，遇到北極熊，要趕快拿出什麼？</a></li></ul>
   </div>
 </div>
 </section>
 
   <footer>
-    <p>科學人新知月報 · 2026 年 6 月號（第 292 期修訂版 -1）</p>
-    <p>產出時間：2026 年 6 月 5 日｜資料來源：scitw.cc 及國際期刊／媒體</p>
+    <p>科學人新知月報 · 2026 年 6 月號 · 第 292 期修訂版 v2</p>
+    <p>紙本目錄來源：scitw.cc/magazines/single/296｜延伸閱讀：Nature、NEJM、PNAS、Science、Diabetologia、Cochrane、IPCC、PMC 等</p>
   </footer>
 </div>
 </body>
