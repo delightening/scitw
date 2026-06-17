@@ -18,14 +18,17 @@
   var nav = document.getElementById('scitw-nav');
   if (!nav) return;
 
-  var m = location.pathname.match(/(\d{6})(-[^/]*)?\.html$/);
-  var baseYm, currentSuffix;
-  if (m) {
+  // 先抓 URL；允許 .html 或無副檔名（Cloudflare 補上）
+  var baseYm = null, currentSuffix = "";
+  var m = location.pathname.match(/(\d{6})(-[^/]+?)?(?:\.html)?$/);
+  if (m && m[1]) {
     baseYm = m[1];
     currentSuffix = m[2] || "";
-  } else {
-    baseYm = document.body && document.body.dataset && document.body.dataset.ym ? document.body.dataset.ym.split('-')[0] : null;
-    currentSuffix = "";
+  }
+  // URL 沒抓到（例如根路徑 /）→ fallback 讀 data-ym（含可能的 -1 後綴）
+  if (!baseYm && document.body && document.body.dataset && document.body.dataset.ym) {
+    var dm = document.body.dataset.ym.match(/^(\d{6})(-[^/]+)?$/);
+    if (dm) { baseYm = dm[1]; currentSuffix = dm[2] || ""; }
   }
   if (!baseYm) { nav.style.display='none'; return; }
 
@@ -40,8 +43,9 @@
     return '/Briefings/科學人/科學人新知月報' + ym + (suffix||'') + '.html';
   }
   function urlForMonth(targetYm){
-    if (/\d{6}(?:-[^/]*)?\.html$/.test(location.pathname)) {
-      return location.pathname.replace(/(\d{6})(?:-[^/]*)?\.html$/, targetYm + '.html');
+    // 跨月導覽：去掉任何 -suffix，純跳該月「原版」
+    if (/\d{6}(?:-[^/]*?)?(?:\.html)?$/.test(location.pathname)) {
+      return location.pathname.replace(/(\d{6})(?:-[^/]*?)?(?:\.html)?$/, targetYm + '.html');
     }
     return pathFor(targetYm, '');
   }
