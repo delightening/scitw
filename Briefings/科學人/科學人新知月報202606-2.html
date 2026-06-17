@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>科學人新知月報 — 2026 年 6 月號 v2</title>
+<style>
+:root {
+  --primary: #1a3a5c;
+  --primary-light: #2c5f8d;
+  --accent: #d4a017;
+  --bg: #e2e8f0;
+  --card-bg: #ffffff;
+  --text: #1f2937;
+  --text-muted: #4b5563;
+  --border: #cbd5e1;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.75;
+}
+.container { max-width: 980px; margin: 0 auto; padding: 24px 20px 64px; }
+.cover {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: #fff; padding: 56px 32px; border-radius: 16px;
+  margin-bottom: 32px; box-shadow: 0 8px 24px rgba(26, 58, 92, 0.15);
+}
+.cover h1 { margin: 0 0 8px; font-size: 2.3em; letter-spacing: 1px; font-weight: 700; }
+.cover .issue { font-size: 1.15em; opacity: 0.92; margin: 8px 0 14px; font-weight: 600; }
+.cover .picks { font-size: 1em; opacity: 0.92; margin: 6px 0; line-height: 1.7; }
+.cover .picks b { color: var(--accent); font-weight: 700; margin-right: 4px; }
+.cover .meta { margin-top: 22px; font-size: 0.92em; opacity: 0.88;
+  border-top: 1px solid rgba(255,255,255,0.25); padding-top: 14px; }
+.note { background:#fdf6e3; border-left:4px solid var(--accent);
+  padding:12px 16px; border-radius:6px; margin-bottom:24px;
+  font-size:0.9em; color:#5a4a18; }
+section { margin-bottom: 36px; }
+h2 { color: var(--primary); font-size: 1.5em;
+  border-left: 5px solid var(--accent); padding-left: 14px; margin: 0 0 14px; }
+.section-note { color: var(--text-muted); margin: 0 0 14px; font-size: 0.9em; font-style: italic; }
+.article { background: var(--card-bg); padding: 20px 22px; border-radius: 12px;
+  margin-bottom: 14px; box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  border-left: 3px solid var(--primary-light); }
+.article h3 { color: var(--primary); font-size: 1.1em; margin: 0 0 6px; }
+.article h3 a { color: var(--primary); text-decoration: none; border: none; }
+.article h3 a:hover { color: var(--accent); border-bottom: 2px solid var(--accent); }
+.article p { margin: 8px 0; color: var(--text-muted); }
+.article .ext { margin-top: 12px; background: #f1f5f9; border-radius: 8px;
+  padding: 10px 14px; font-size: 0.9em; }
+.article .ext-title { font-weight: 700; color: var(--primary); margin: 0 0 6px; font-size: 0.9em; }
+.article .ext-title::before { content: "→ "; color: var(--accent); }
+.article .ext ul { margin: 4px 0; padding-left: 22px; }
+.article .ext li { margin: 4px 0; }
+.badge { display: inline-block; padding: 3px 10px; border-radius: 12px;
+  font-size: 0.78em; font-weight: 600; color: #fff; margin-right: 8px;
+  margin-bottom: 6px; vertical-align: middle; }
+.badge-physics  { background: #7c3aed; }
+.badge-chem     { background: #ea580c; }
+.badge-bio      { background: #059669; }
+.badge-medical  { background: #dc2626; }
+.badge-philo    { background: #6b7280; }
+.badge-social   { background: #475569; }
+.badge-astro    { background: #4f46e5; }
+.badge-ai       { background: #db2777; }
+.badge-climate  { background: #0891b2; }
+.date { font-size: 0.82em; color: var(--text-muted); margin-left: 4px; }
+.src-tag { display: inline-block; font-size: 0.72em; background: #cbd5e1;
+  color: #1e293b; padding: 1px 7px; border-radius: 8px; margin-right: 6px; font-weight: 600; }
+.src-paper { background: #c7d2fe; color: #3730a3; }
+.src-news  { background: #fed7aa; color: #9a3412; }
+.src-scitw { background: #fecaca; color: #991b1b; }
+.src-zh    { background: #bbf7d0; color: #166534; }
+a { color: var(--primary-light); text-decoration: none;
+  border-bottom: 1px dashed var(--primary-light); transition: color 0.2s; }
+a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+footer { text-align: center; color: var(--text-muted); font-size: 0.85em;
+  padding-top: 24px; border-top: 1px solid var(--border); margin-top: 40px; }
+.toc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 8px; background:#fff; padding:14px 18px; border-radius:10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04); margin-bottom: 20px; }
+.toc-grid a { color: var(--primary); border: none; padding: 4px 8px;
+  border-radius: 6px; transition: background 0.15s; }
+.toc-grid a:hover { background: var(--accent); color: #fff; }
+.toc-grid .count { color: var(--text-muted); font-size: 0.85em; margin-left: 4px; }
+@media (max-width: 600px) { .cover { padding: 36px 22px; }
+  .cover h1 { font-size: 1.7em; } h2 { font-size: 1.25em; } }
+</style>
+</head>
+<body data-ym="202606-2">
+<!-- scitw-nav:start -->
+<nav id="scitw-nav" style="position:sticky;top:0;z-index:9999;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid #d0dbe6;padding:10px 16px;display:flex;gap:8px;align-items:center;font-family:system-ui,-apple-system,'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;font-size:14px;box-shadow:0 2px 6px rgba(26,58,92,.06);flex-wrap:wrap;">
+  <button data-scitw="prev" style="cursor:pointer;padding:6px 12px;border:1px solid #a8bdd0;border-radius:6px;background:#fff;color:#1a3a5c;font:inherit;">← 上月</button>
+  <button data-scitw="next" style="cursor:pointer;padding:6px 12px;border:1px solid #a8bdd0;border-radius:6px;background:#fff;color:#1a3a5c;font:inherit;">下月 →</button>
+  <span data-scitw="label" style="color:#5a6f80;margin-left:6px;"></span>
+  <span data-scitw="revs" style="margin-left:14px;display:none;color:#5a6f80;align-items:center;gap:6px;">
+    <span style="color:#7a8a9a;font-size:12px;">本期版本：</span>
+    <span data-scitw="rev-list" style="display:inline-flex;gap:4px;"></span>
+  </span>
+  <a href="/latest" style="margin-left:auto;padding:6px 12px;border:1px solid #2176ae;border-radius:6px;background:#2176ae;color:#fff;text-decoration:none;">最新一期</a>
+</nav>
+<script>
+(function(){
+  var REVISIONS = {
+    "202606": ["", "-1", "-2"]
+  };
+
+  var nav = document.getElementById('scitw-nav');
+  if (!nav) return;
+
+  // 先抓 URL；允許 .html 或無副檔名（Cloudflare 補上）
+  var baseYm = null, currentSuffix = "";
+  var m = location.pathname.match(/(\d{6})(-[^/]+?)?(?:\.html)?$/);
+  if (m && m[1]) {
+    baseYm = m[1];
+    currentSuffix = m[2] || "";
+  }
+  // URL 沒抓到（例如根路徑 /）→ fallback 讀 data-ym（含可能的 -1 後綴）
+  if (!baseYm && document.body && document.body.dataset && document.body.dataset.ym) {
+    var dm = document.body.dataset.ym.match(/^(\d{6})(-[^/]+)?$/);
+    if (dm) { baseYm = dm[1]; currentSuffix = dm[2] || ""; }
+  }
+  if (!baseYm) { nav.style.display='none'; return; }
+
+  var y = parseInt(baseYm.slice(0,4),10), mo = parseInt(baseYm.slice(4,6),10);
+  function shift(delta){
+    var yy=y, mm=mo+delta;
+    while(mm>12){mm-=12;yy++;}
+    while(mm<1){mm+=12;yy--;}
+    return yy + String(mm).padStart(2,'0');
+  }
+  function pathFor(ym, suffix){
+    return '/Briefings/科學人/科學人新知月報' + ym + (suffix||'') + '.html';
+  }
+  function urlForMonth(targetYm){
+    // 跨月導覽：去掉任何 -suffix，純跳該月「原版」
+    if (/\d{6}(?:-[^/]*?)?(?:\.html)?$/.test(location.pathname)) {
+      return location.pathname.replace(/(\d{6})(?:-[^/]*?)?(?:\.html)?$/, targetYm + '.html');
+    }
+    return pathFor(targetYm, '');
+  }
+
+  var now = new Date();
+  var currYM = now.getFullYear()*100 + (now.getMonth()+1);
+  var nextBtn = nav.querySelector('[data-scitw="next"]');
+  if (parseInt(shift(+1),10) > currYM) { nextBtn.style.display = 'none'; }
+  nav.querySelector('[data-scitw="label"]').textContent = y + ' 年 ' + mo + ' 月' + (currentSuffix ? ' (修訂' + currentSuffix.replace('-','') + ')' : '');
+  nav.querySelector('[data-scitw="prev"]').addEventListener('click', function(){ location.href = urlForMonth(shift(-1)); });
+  nextBtn.addEventListener('click', function(){ location.href = urlForMonth(shift(+1)); });
+
+  var revs = REVISIONS[baseYm] || [""];
+  if (revs.length > 1) {
+    var revsWrap = nav.querySelector('[data-scitw="revs"]');
+    var revsList = nav.querySelector('[data-scitw="rev-list"]');
+    revsWrap.style.display = 'inline-flex';
+    revs.forEach(function(suf){
+      var label = suf ? suf.replace('-','v') : '原版';
+      var btn = document.createElement('a');
+      btn.textContent = label;
+      btn.href = pathFor(baseYm, suf);
+      var active = (suf === currentSuffix);
+      btn.style.cssText = 'padding:3px 10px;border-radius:6px;text-decoration:none;border:1px solid '+(active?'#d4a017':'#a8bdd0')+';background:'+(active?'#d4a017':'#fff')+';color:'+(active?'#fff':'#1a3a5c')+';font-size:12px;font-weight:'+(active?'700':'500')+';';
+      revsList.appendChild(btn);
+    });
+  }
+})();
+</script>
+<!-- scitw-nav:end -->
+
+
+<div class="container">
+  <header class="cover">
+    <h1>科學人新知月報</h1>
+    <div class="issue">2026 年 6 月號（第 292 期修訂版 -2）</div>
+    <div class="picks">本月精選：<b>·</b>腎臟封面故事 · <b>·</b>SGLT2 保護腎臟 · <b>·</b>自體免疫腎病 · <b>·</b>火星捷徑 · <b>·</b>UFO 解密</div>
+    <div class="meta">產出日期：2026 年 6 月 5 日｜本版採學科分類，每篇含 scitw.cc 回連與延伸閱讀</div>
+  </header>
+
+  <div class="note">
+    <strong>關於本版（v2）：</strong>以第 292 期紙本主文為核心，按 9 個學科分類整理。每篇都至少包含一條 scitw.cc 站內連結（回連原文或本期目錄），下方附原始論文、國際媒體、scitw 站內相關舊文與中文科普 4 類延伸閱讀。
+    部分分類因目前無法確認對應主文，標示「本期未見」待後續補充。
+  </div>
+
+  <section>
+    <h2>本月亮點 Top 3</h2>
+    <div class="article" style="border-left-color:var(--accent);">
+  <span class="badge" style="background:var(--accent);color:#fff;">亮點 1</span>
+  <h3><a href="https://www.scitw.cc/magazines/single/292" target="_blank" rel="noopener">從延緩洗腎到修復腎臟（第 292 期封面）</a></h3>
+  <p>SGLT2 抑制劑保護腎功能 + B/T 細胞標靶藥治療自體免疫腎病，醫學目標從「延緩透析」走向「修復腎臟」。</p>
+</div>
+<div class="article" style="border-left-color:var(--accent);">
+  <span class="badge" style="background:var(--accent);color:#fff;">亮點 2</span>
+  <h3><a href="https://www.scitw.cc/posts/20260511-19493" target="_blank" rel="noopener">小行星指路！火星「通勤」120 天</a></h3>
+  <p>巴西天文學家循小行星 2001 CA21 軌道發現低能量捷徑，2031 年有發射窗口。</p>
+</div>
+<div class="article" style="border-left-color:var(--accent);">
+  <span class="badge" style="background:var(--accent);color:#fff;">亮點 3</span>
+  <h3><a href="https://www.scitw.cc/posts/20260420-19428" target="_blank" rel="noopener">百年內人類或可目睹黑洞互撞</a></h3>
+  <p>LIGO–Virgo 第五版重力波目錄新增 161 起合併事件，包括史上最大質量黑洞合併。</p>
+</div>
+  </section>
+
+  <section>
+    <h2>本期學科導覽</h2>
+    <div class="toc-grid"><span style="color:#94a3b8;padding:4px 8px;">物理<span class="count">(本期未見)</span></span><span style="color:#94a3b8;padding:4px 8px;">化學<span class="count">(本期未見)</span></span><a href="#sec-biology">生物<span class="count">(1)</span></a><a href="#sec-medicine">醫學<span class="count">(3)</span></a><span style="color:#94a3b8;padding:4px 8px;">哲學<span class="count">(本期未見)</span></span><a href="#sec-social">社會科學<span class="count">(1)</span></a><a href="#sec-astronomy">天文太空<span class="count">(2)</span></a><span style="color:#94a3b8;padding:4px 8px;">AI 與科技<span class="count">(本期未見)</span></span><span style="color:#94a3b8;padding:4px 8px;">環境氣候<span class="count">(本期未見)</span></span></div>
+  </section>
+
+  <section id="sec-physics">
+  <h2>物理</h2>
+  <p class="section-note">第 292 期暫無此分類對應紙本主文；待後續補充。</p>
+</section><section id="sec-chemistry">
+  <h2>化學</h2>
+  <p class="section-note">第 292 期暫無此分類對應紙本主文；待後續補充。</p>
+</section><section id="sec-biology">
+  <h2>生物</h2>
+  <div class="article">
+  <span class="badge badge-bio">生物</span><span class="date">2026/03/16</span>
+  <h3><a href="https://www.scitw.cc/posts/20260316-19319" target="_blank" rel="noopener">人工冬眠有望成真？冰封小鼠大腦解凍後竟順利恢復運作</a></h3>
+  <p>德國團隊以 –196 ℃ 玻璃化保存小鼠海馬迴 7 天，解凍後突觸傳導與可塑性近乎完整恢復，為長期太空旅行與重症「時間延緩治療」開啟可能。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/20260316-19319" target="_blank" rel="noopener">原文（scitw.cc）</a></li><li><span class="src-tag src-paper">論文</span><a href="https://www.pnas.org/doi/10.1073/pnas.2516848123" target="_blank" rel="noopener">PNAS — Functional recovery after vitrification</a></li><li><span class="src-tag src-news">國際媒體</span><a href="https://www.nature.com/articles/d41586-026-00756-w" target="_blank" rel="noopener">Nature — Scientists revive frozen mouse brains</a></li></ul>
+  </div>
+</div>
+</section><section id="sec-medicine">
+  <h2>醫學</h2>
+  <div class="article">
+  <span class="badge badge-medical">醫學</span><span class="date">2026 年 6 月號 · 封面故事</span>
+  <h3><a href="https://www.scitw.cc/magazines/single/292" target="_blank" rel="noopener">從延緩洗腎到修復腎臟：標靶藥物與糖尿病用藥的醫學轉折（封面故事）</a></h3>
+  <p>腎臟和肝臟一樣是「沉默的器官」，台灣 2024 年腎臟病居十大死因第九。封面故事整理 SGLT2 抑制劑保護腎功能、B/T 細胞標靶藥物（obinutuzumab、voclosporin、belimumab）治療自體免疫腎病兩大進展，醫學目標正從「延緩透析」邁向「修復腎臟」。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/magazines/single/292" target="_blank" rel="noopener">本期紙本目錄（第 292 期）</a></li><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/The-Burden-Rises-tw" target="_blank" rel="noopener">全球奮戰的腎病負擔</a></li><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/20251113-18894" target="_blank" rel="noopener">爬蟲類「結晶尿」啟發人類處理腎結石</a></li><li><span class="src-tag src-paper">論文</span><a href="https://link.springer.com/article/10.1007/s00125-025-06577-2" target="_blank" rel="noopener">Diabetologia — SGLT2 inhibitor kidney protection</a></li><li><span class="src-tag src-paper">論文</span><a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2410965" target="_blank" rel="noopener">NEJM — Obinutuzumab in Active Lupus Nephritis</a></li><li><span class="src-tag src-paper">論文</span><a href="https://spj.science.org/doi/10.34133/research.0712" target="_blank" rel="noopener">Research — CAR-T for Autoimmune Kidney Disease</a></li><li><span class="src-tag src-zh">中文科普</span><a href="https://www.cochrane.org/zh-hant/evidence/CD013800_peritoneal-dialysis-versus-haemodialysis-people-starting-long-term-dialysis" target="_blank" rel="noopener">Cochrane 中文版 — 腹膜透析 vs. 血液透析</a></li></ul>
+  </div>
+</div>
+<div class="article">
+  <span class="badge badge-medical">醫學</span><span class="date">2026/05/06</span>
+  <h3><a href="https://www.scitw.cc/posts/20260506-19485" target="_blank" rel="noopener">工作壓力不退場，頭痛就容易上場</a></h3>
+  <p>慢性工作壓力升高皮質醇，改變疼痛通道敏感度，使偏頭痛慢性化。對醫護、長工時族群尤具意義。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/20260506-19485" target="_blank" rel="noopener">原文（scitw.cc）</a></li><li><span class="src-tag src-paper">論文</span><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8105928/" target="_blank" rel="noopener">Migraine and stress — PMC</a></li><li><span class="src-tag src-paper">論文</span><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11081979/" target="_blank" rel="noopener">Migraine chronification as allostatic disorder</a></li></ul>
+  </div>
+</div>
+<div class="article">
+  <span class="badge badge-medical">醫學</span><span class="date">2026/04/20</span>
+  <h3><a href="https://www.scitw.cc/posts/20260420-19429" target="_blank" rel="noopener">高枕則無憂？枕頭過高是視力的殺手！</a></h3>
+  <p>枕頭由最低調到最高，頸椎角度增加 66%、前凸距離增加 25%，長期可能影響眼部血流並導致視力惡化。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/20260420-19429" target="_blank" rel="noopener">原文（scitw.cc）</a></li><li><span class="src-tag src-paper">論文</span><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5012320/" target="_blank" rel="noopener">Pillow height biomechanics — J. Phys. Ther. Sci.</a></li></ul>
+  </div>
+</div>
+</section><section id="sec-philosophy">
+  <h2>哲學</h2>
+  <p class="section-note">第 292 期暫無此分類對應紙本主文；待後續補充。</p>
+</section><section id="sec-social">
+  <h2>社會科學</h2>
+  <div class="article">
+  <span class="badge badge-social">社會科學</span><span class="date">2026/05/09</span>
+  <h3><a href="https://www.scitw.cc/posts/20260509-19491" target="_blank" rel="noopener">UFO 檔案解密開跑，川普預告後面還有</a></h3>
+  <p>國防部 5/8 啟動 PURSUE 平台，公布 1944 年迄今的未解 UAP 報告、照片、影片與軍方記錄。首批檔案並未證實外星生命，但開啟政府對 UAP 資料的滾動式解密機制。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/20260509-19491" target="_blank" rel="noopener">原文（scitw.cc）</a></li><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/20260223-19260" target="_blank" rel="noopener">2026/02/23 川普下令公開 UFO 檔案</a></li><li><span class="src-tag src-news">國際媒體</span><a href="https://www.cnn.com/2026/05/08/politics/ufo-files-pentagon-release-aliens" target="_blank" rel="noopener">CNN — Pentagon releases UFO files</a></li><li><span class="src-tag src-news">國際媒體</span><a href="https://defensescoop.com/2026/05/14/uap-trump-first-pursue-ufo-file-drop/" target="_blank" rel="noopener">DefenseScoop — UAP research community reacts</a></li></ul>
+  </div>
+</div>
+</section><section id="sec-astronomy">
+  <h2>天文太空</h2>
+  <div class="article">
+  <span class="badge badge-astro">天文太空</span><span class="date">2026/05/11</span>
+  <h3><a href="https://www.scitw.cc/posts/20260511-19493" target="_blank" rel="noopener">小行星提供星際捷徑：地球到火星「通勤時間」從 500 天壓縮到 120 天</a></h3>
+  <p>巴西天文學家在追蹤近地小行星 2001 CA21 時發現低能量捷徑。研究發表於《Acta Astronautica》，最短可達 153 天的雙程任務路徑。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/20260511-19493" target="_blank" rel="noopener">原文（scitw.cc）</a></li><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/Editorial-289" target="_blank" rel="noopener">距離雖近卻如此遙遠──火星採樣的崎嶇路</a></li><li><span class="src-tag src-news">國際媒體</span><a href="https://www.livescience.com/space/mars/i-was-not-looking-for-this-scientist-accidentally-finds-shortcut-to-mars-that-could-slash-travel-time-in-half" target="_blank" rel="noopener">Live Science — Mars shortcut</a></li></ul>
+  </div>
+</div>
+<div class="article">
+  <span class="badge badge-astro">天文太空</span><span class="date">2026/04/20</span>
+  <h3><a href="https://www.scitw.cc/posts/20260420-19428" target="_blank" rel="noopener">大場面要來了？百年內人類或許能看到兩大黑洞互撞</a></h3>
+  <p>隨 LIGO 與 Virgo 靈敏度提升，重力波信號量已增加至每週 3–4 起。GW240615 等新事件首度定位精準。LIGO–Virgo 第五版目錄新增 161 起合併事件。</p>
+  <div class="ext">
+    <p class="ext-title">延伸閱讀</p>
+    <ul><li><span class="src-tag src-scitw">scitw 站內</span><a href="https://www.scitw.cc/posts/20260420-19428" target="_blank" rel="noopener">原文（scitw.cc）</a></li><li><span class="src-tag src-paper">論文</span><a href="https://www.nature.com/articles/s41550-026-02847-0" target="_blank" rel="noopener">Nature Astronomy — pair-instability mass gap</a></li><li><span class="src-tag src-news">國際媒體</span><a href="https://www.simonsfoundation.org/2026/05/26/black-hole-discoveries-abound-in-newly-released-ligo-virgo-catalog/" target="_blank" rel="noopener">Simons Foundation — LIGO-Virgo catalog</a></li></ul>
+  </div>
+</div>
+</section><section id="sec-ai_tech">
+  <h2>AI 與科技</h2>
+  <p class="section-note">第 292 期暫無此分類對應紙本主文；待後續補充。</p>
+</section><section id="sec-climate">
+  <h2>環境氣候</h2>
+  <p class="section-note">第 292 期暫無此分類對應紙本主文；待後續補充。</p>
+</section>
+
+  <footer>
+    <p>科學人新知月報 · 2026 年 6 月號 · 第 292 期修訂版 v2</p>
+    <p>資料來源：scitw.cc（第 292 期主文）、Nature、NEJM、PNAS、Science、Diabetologia、PMC、CNN 等</p>
+  </footer>
+</div>
+</body>
+</html>
